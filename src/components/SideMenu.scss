@@ -1,0 +1,33 @@
+.side-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 20px;
+    font-size: 12px;
+  
+    .menu-heading {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      margin-top: 20px;
+      margin-left: 5px;
+    
+  
+      
+    }
+  
+    .menu-list {
+     margin-left: 10px;
+     margin: 10px;
+    }
+  
+    .menu-item {
+      display: flex;
+      gap: 10px;
+      margin: 10px;
+      font-size:  bold;
+      margin-left: 4px;
+     
+    }
+  }
+  
