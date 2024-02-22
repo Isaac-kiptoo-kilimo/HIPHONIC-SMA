@@ -1,0 +1,47 @@
+.profileContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
+    .ProfileContentTop{
+        width: 100%;
+        background-color: #ffffff;
+    }
+
+    .ProfileContentBottom{
+        display: flex;
+        gap: 10px;
+        background-color: #fff;
+
+        .ProfileContentBottomLeft {
+            background-color: #fff;
+            width: 32%;
+
+            .completeProfile {
+                background-color: #7b7b7b;
+            }
+
+            .intro {
+                background-color: #7a7a7a;
+            }
+
+            .photos {
+                background-color: #919191;
+            }
+        }
+        .ProfileContentBottomRight {
+            background-color: #fff;
+            width: 65%;
+
+            .statusInput {
+                background-color: #787878;
+            }
+
+            .statusPost {
+                background-color: #6f6f6f;
+            }
+        }
+    }
+}
