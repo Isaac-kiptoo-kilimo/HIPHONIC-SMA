@@ -6,11 +6,13 @@
 .mainContainer {
     ::-webkit-scrollbar {
         display: none;
+        
     }
     overflow: hidden;
 
 .navbar {
     background-color: #ff0000;
+    height: 10vh;
 }
 .mainBottom {
     display: flex;
