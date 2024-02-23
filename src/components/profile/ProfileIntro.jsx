@@ -1,6 +1,9 @@
 // import stylefile
 import './ProfileIntro.scss'
 
+//import react icons
+import { FaLocationDot } from 'react-icons';
+
 const ProfileIntro = () => {
     return (
         <div className="intro">
@@ -9,7 +12,7 @@ const ProfileIntro = () => {
           <p style={{ fontWeight: 600 }}>Intro</p>
         </div>
         <div className="intro-dots">
-          {/* <img src={Dots} alt="dots" /> */}
+        < FaLocationDot />
         </div>
       </div>
       <div>
