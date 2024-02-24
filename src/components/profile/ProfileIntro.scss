@@ -3,9 +3,6 @@
   flex-direction: column;
   font-size: 14px;
   gap: 10px;
-  border-radius: 13px;
-  padding: 5px;
-
 
   .Intro-top {
   display: flex;
@@ -13,12 +10,16 @@
   align-items: center;
   justify-content: space-between;
 }
+.profileAbout {
+  padding: 10px 0px 10px 0px;
+  border-bottom: 1px solid #F1F5F9;
+}
 
   .list {
   display: flex;
   flex-direction: column;
   font-weight: 500;
-  gap: 10px;
+  gap: 20px;
 
   > div {
     display: flex;
