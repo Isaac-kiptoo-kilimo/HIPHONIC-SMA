@@ -13,37 +13,49 @@
     .ProfileContentBottom{
         display: flex;
         gap: 10px;
+        padding: 10px;
         width: 100%;
-        background-color: #fff;
 
         .ProfileContentBottomLeft {
-            background-color: #fff;
             width: 32%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
 
             .completeProfile {
-                padding: 10px;
+                background-color: #ffffff;
                 border-radius: 13px;
-                background-color: #808080;
+                padding: 10px;
             }
 
             .intro {
-                background-color: #7a7a7a;
+                background-color: #ffffff;
+                border-radius: 13px;
+                padding: 10px;
             }
 
             .photos {
-                background-color: #919191;
+                background-color: #ffffff;
+                border-radius: 13px;
+                padding: 10px;
             }
         }
         .ProfileContentBottomRight {
-            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
             width: 65%;
 
             .statusInput {
-                background-color: #787878;
+                background-color: #ffffff;
+                padding: 10px;
+                border-radius: 13px;
             }
 
             .statusPost {
-                background-color: #6f6f6f;
+                background-color: #ffffff;
+                padding: 10px;
+                border-radius: 13px;
             }
         }
     }
