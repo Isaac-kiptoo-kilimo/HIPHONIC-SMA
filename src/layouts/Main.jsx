@@ -3,6 +3,7 @@ import './Main.scss'
 
 // import pages
 import Profile from '../pages/profile/Profile';
+
 import { Route, Routes } from 'react-router-dom';
 
 //Importing layouts
@@ -25,6 +26,8 @@ const mainContent = () => {
          
 
        <Route path='/profile' element={ <Profile />}/>
+       <Route path='/timeline' element={ <Timeline />}/>
+       <Route path='/videos' element={ <Videos />}/>
         
          </Routes>
          </div>
@@ -33,7 +36,11 @@ const mainContent = () => {
           </div>
          </div>
      </div>
+
       
+
+      </div>
+
     );
 }
 
