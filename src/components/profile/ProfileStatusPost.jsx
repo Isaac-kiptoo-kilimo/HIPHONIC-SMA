@@ -11,17 +11,14 @@ import Avatar from '../../assets/Avatar.png'
 //stylefile
 import './ProfileStatusPost.scss'
 
+//import components
+import User from "../profile/userInfocard.jsx"
+
 const ProfileStatusPost = () => {
     return (
         <div className="profileStatusPost">
-            <div className='profileStatusPostHeader'>
-                <div className="profilePic">
-                <img src={Avatar} alt="" />
-                </div>
-                <div className="user">
-                <p className="username">Angela Lee</p>
-                <p className="postDate">56 mins ago</p>
-                </div>
+            <div>
+                <User />
             </div>
             <div className='profileStatusPostTextContent'>
                 <p style={{color:'#64748B'}}>Here are some photography works that I made on the weekend with some of my friends, happy for that!</p>

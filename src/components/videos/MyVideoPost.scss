@@ -1,0 +1,28 @@
+.myVideo {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 13px;
+
+    .videosBottomProfile {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .videosBottomtext {
+        font-weight: 500;
+        font-size: 14px;
+        color: #64748B;
+    }
+    .videosBottomPreview {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 285px;
+        background-color: #000000;
+        border-radius: 13px;
+    }
+}
