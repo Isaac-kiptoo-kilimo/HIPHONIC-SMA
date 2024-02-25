@@ -97,8 +97,8 @@ const SignUp = () => {
               </div>
               <div className="input-group">
               <div className='bx bxs-user'><PiPasswordFill /></div>
-                <input type="password"  {...register("password")} placeholder="Confirm password" />
-                <p>{errors.password?.message}</p>
+                <input type="text"  {...register("TagName")} placeholder="TagName" />
+                <p>{errors.TagName?.message}</p>
               </div>
               <button type='submit'>
                 Sign up
