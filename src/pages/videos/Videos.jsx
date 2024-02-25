@@ -3,6 +3,7 @@ import './Videos.scss'
 
 //import components
 import { VideoPost } from "../../components/videos/VideoPost";
+import MyVideo from "../../components/videos/MyVideoPost"
 
 //import icons
 import { CiSearch } from "react-icons/ci";
@@ -25,7 +26,9 @@ const Videos = () => {
                 </div>
             </div>
         </div>
-        <div className="videosBottom"></div>
+        <div className="videosBottom">
+            <MyVideo />
+        </div>
     </div>
     )
 }
