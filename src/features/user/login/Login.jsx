@@ -9,11 +9,12 @@ import { useForm } from "react-hook-form";
 import SocialMedia1 from '../../../assets/social-media2.jpg'
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
+import { useAuthenticateUserMutation } from '../userApi';
 
 const Login = () => {
   const schema = yup.object().shape({
-    email: yup.string().email().required('Email is required'),
-    password: yup
+    Email: yup.string().email().required('Email is required'),
+    Password: yup
       .string()
       .required('Password is required')
       .matches(
@@ -23,13 +24,13 @@ const Login = () => {
   });
 
   const navigate = useNavigate();
-  const [storedUsers, setStoredUsers] = useState([]);
+  const [storedUser, setStoredUser] = useState([]);
   const [loginError, setLoginError] = useState('');
   const [loginSuccess, setLoginSuccess] = useState('');
-
+  const [authenticateUser]=useAuthenticateUserMutation()
   useEffect(() => {
-    const allUsers = JSON.parse(localStorage.getItem('allUsers')) || [];
-    setStoredUsers(allUsers);
+    const userDetails = JSON.parse(localStorage.getItem('userDetails')) || [];
+    setStoredUser(userDetails);
   }, []);
 
   const {
@@ -40,15 +41,17 @@ const Login = () => {
     resolver: yupResolver(schema),
   });
 
-  const loginUser = (data) => {
-    const user = storedUsers.find(
-      (storedUser) => storedUser.email === data.email && storedUser.password === data.password
-    );
+  const loginUser = async(data) => {
+    await authenticateUser({
+      Email: data.Email,
+      Password: data.Password
+    });
 
-    if (user) {
-      console.log('User logged in:', user);
 
-      localStorage.setItem('loggedInUser', JSON.stringify(user));
+    if (authenticateUser) {
+      console.log('User logged in:', authenticateUser);
+
+      localStorage.setItem('loggedInUser', JSON.stringify(authenticateUser));
 
       
       setLoginError('');
@@ -70,15 +73,17 @@ const Login = () => {
         <div className="col align-items-center flex-col ">
           <div className="form-wrapper">
             
-            <form className="form sign-in">
+            <form className="form sign-in" onSubmit={handleSubmit(loginUser)}>
             <h2>Sign In</h2>
             <div className="input-group">
               <div className='bx bxs-user'><MdEmail /></div>
-                <input type="email" placeholder="Email" />
+                <input type="email" id='Email' name='Email' {...register('Email')} placeholder="Email" />
+                <p>{errors.Email?.message}</p>
               </div>
               <div className="input-group">
               <div className='bx bxs-user'><RiLockPasswordLine /></div>
-                <input type="password" placeholder="Password" />
+                <input type="password" id='Password' name='Password' {...register('Password')} placeholder="Password" />
+                <p>{errors.Password?.message}</p>
               </div>
               <button>
                 Sign in

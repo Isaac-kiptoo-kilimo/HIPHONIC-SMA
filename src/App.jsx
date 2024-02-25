@@ -5,7 +5,7 @@ import "./App.scss";
 //Importing layouts
 // import Navbar from './layouts/Navbar';
 // import Sidebar from './layouts/Sidebar';
-// import MainContent from './layouts/Main';
+import MainContent from './layouts/Main';
 // import RightBar from './layouts/RightBar';
 import Login from "./features/user/login/Login";
 import SignUp from "./features/user/register/SignUp";
@@ -17,6 +17,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         {/* <Route path="*" element={<Main/>} /> */}
+        <Route path="*" element={<MainContent/>} />
       </Routes>
     </div>
     // <div className='mainContainer'>
