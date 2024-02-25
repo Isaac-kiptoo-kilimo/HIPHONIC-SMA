@@ -11,30 +11,37 @@ import { FaUser } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { PiPasswordFill } from "react-icons/pi";
 import { RiLockPasswordLine } from "react-icons/ri";
+import { useAddUserMutation } from '../userApi';
+
 
 const SignUp = () => {
      
-  const [navToLogin, setNavToLogin] = useState('/register');
-  const [mockUsersData, setMockUsersData] = useState({ users: [] });
+  const [navToLogin, setNavToLogin] = useState('/signup');
 
   const navigate=useNavigate()
 
+  const [addUser]=useAddUserMutation()
+
   const schema = yup.object().shape({
     Username: yup.string().required("Username is required"),
-    email: yup.string().email().required("Email is required"),
-    password: yup
+    Email: yup.string().email().required("Email is required"),
+    Password: yup
       .string()
       .required("password is required")
       .matches(
         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{4,}$/,
         "Must Contain 4 Chars, 1 Uppercase, 1 Lowercase, 1 Number & 1 special Char"
       ),
+      TagName: yup.string().required("TagName is required"),
+      Location: yup.string().required("Location is required")
+
   });
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -46,58 +53,52 @@ const SignUp = () => {
     navigate("/");
   };
 
-  useEffect(() => {
-    const allUsers = JSON.parse(localStorage.getItem('allUsers')) || [];
-    console.log("testing existing users",allUsers);
-    setMockUsersData({ users: allUsers });
-    console.log('Existing users:', allUsers);
-  }, []);
+   const onSubmit = async(formData) => {
+    await addUser({
+      Username: formData.Username,
+      Email: formData.Email,
+      Password: formData.Password,
+      TagName: formData.TagName,
+      Location: formData.Location,
+    });
 
-
-   const RegisterUser = (data) => {
-    const newUserId = mockUsersData.users.length + 1;
-
-    const newUser = {
-      id: newUserId,
-      Username: data.Username,
-      email: data.email,
-      password: data.password,
-    };
-
-    setMockUsersData(prevState => ({ users: [...prevState.users, newUser] }));
-
-    localStorage.setItem('allUsers', JSON.stringify([...mockUsersData.users, newUser]));
-
+    console.log('User registered:', formData);
+    reset();
     setTimeout(() => {
-      console.log("User registered:", newUser);
       navigate("/");
-    }, 1000);
+    }, 4000);
   };
+
   return (
     <div className='container'>
       <div className="row">
         <div className="col align-items-center flex-col sign-up">
           <div className="form-wrapper align-items-center">
-            <form className="form sign-up" onSubmit={handleSubmit(RegisterUser)}>
+            <form className="form sign-up" onSubmit={handleSubmit(onSubmit)}>
               <div className="input-group">
               
                 <div className='bx bxs-user'><FaUser /></div>
-                <input type="text"  {...register("Username")} placeholder="Username" />
+                <input type="text" name='Username' id='Username'  {...register("Username")} placeholder="Username" />
                 <p>{errors.Username?.message}</p>
               </div>
               <div className="input-group">
               <div className='bx bxs-user'><MdEmail /></div>
-                <input type="email"  {...register("email")} placeholder="Email" />
-                <p>{errors.email?.message}</p>
+                <input type="email"  name='Email' id='Email'  {...register("Email")} placeholder="Email" />
+                <p>{errors.Email?.message}</p>
               </div>
               <div className="input-group">
               <div className='bx bxs-user'><RiLockPasswordLine /></div>
-                <input type="password"  {...register("password")} placeholder="Password" />
-                <p>{errors.password?.message}</p>
+                <input type="password" id='Password' name='Password' {...register("Password")} placeholder="Password" />
+                <p>{errors.Password?.message}</p>
               </div>
               <div className="input-group">
               <div className='bx bxs-user'><PiPasswordFill /></div>
-                <input type="text"  {...register("TagName")} placeholder="TagName" />
+                <input type="text"  {...register("TagName")}  id='TagName' name='TagName' placeholder="TagName" />
+                <p>{errors.TagName?.message}</p>
+              </div>
+              <div className="input-group">
+              <div className='bx bxs-user'><PiPasswordFill /></div>
+                <input type="text"  {...register("Location")}  id='Location' name='Location' placeholder="Location" />
                 <p>{errors.TagName?.message}</p>
               </div>
               <button type='submit'>

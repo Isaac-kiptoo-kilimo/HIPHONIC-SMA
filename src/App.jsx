@@ -7,8 +7,8 @@ import "./App.scss";
 // import Sidebar from './layouts/Sidebar';
 // import MainContent from './layouts/Main';
 // import RightBar from './layouts/RightBar';
-import Login from "./features/auth/login/Login";
-import SignUp from "./features/auth/register/SignUp";
+import Login from "./features/user/login/Login";
+import SignUp from "./features/user/register/SignUp";
 
 function App() {
   return (
