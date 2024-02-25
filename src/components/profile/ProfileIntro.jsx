@@ -2,8 +2,7 @@
 import './ProfileIntro.scss'
 
 //import react icons
-import { FaLocationDot } from 'react-icons';
-
+import { FaLocationDot } from "react-icons/fa6";
 const ProfileIntro = () => {
     return (
         <div className="intro">
