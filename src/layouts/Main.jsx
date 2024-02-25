@@ -3,8 +3,9 @@ import './Main.scss'
 
 // import pages
 import Profile from '../pages/profile/Profile';
-import Timeline from '../pages/timeline/Timeline'
 import Videos from '../pages/videos/Videos'
+import Timeline from '../pages/timeline/Timeline'
+// import Photos from '../pages/photos/photos'
 
 import { Route, Routes } from 'react-router-dom';
 
@@ -18,19 +19,17 @@ const mainContent = () => {
       <div className='mainContainer'>
       <div className="navbar">
           <Navbar />
-        </div>
+      </div>
         <div className="mainBottom">
           <div className="sidebar">
           <Sidebar />
           </div>
           <div className="mainPageContent">
          <Routes>
-         
-
        <Route path='/profile' element={ <Profile />}/>
        <Route path='/timeline' element={ <Timeline />}/>
        <Route path='/videos' element={ <Videos />}/>
-        
+       {/* <Route path='/photos' element={ <Photos />}/> */}
          </Routes>
          </div>
            <div className="rightBar">
@@ -39,7 +38,7 @@ const mainContent = () => {
          </div>
      </div>
 
-  
+      
 
     );
 }
