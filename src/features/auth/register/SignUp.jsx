@@ -3,6 +3,10 @@ import React from 'react';
 import './SignUp.scss';
 import SocialMedia1 from '../../../assets/social-media1.jpg'
 import SocialMedia2 from '../../../assets/social-media2.jpg'
+import { FaUser } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { PiPasswordFill } from "react-icons/pi";
+import { RiLockPasswordLine } from "react-icons/ri";
 
 const SignUp = () => {
   return (
@@ -12,19 +16,20 @@ const SignUp = () => {
           <div className="form-wrapper align-items-center">
             <div className="form sign-up">
               <div className="input-group">
-                <i className='bx bxs-user'></i>
+              
+                <div className='bx bxs-user'><FaUser /></div>
                 <input type="text" placeholder="Username" />
               </div>
               <div className="input-group">
-                <i className='bx bx-mail-send'></i>
+              <div className='bx bxs-user'><MdEmail /></div>
                 <input type="email" placeholder="Email" />
               </div>
               <div className="input-group">
-                <i className='bx bxs-lock-alt'></i>
+              <div className='bx bxs-user'><RiLockPasswordLine /></div>
                 <input type="password" placeholder="Password" />
               </div>
               <div className="input-group">
-                <i className='bx bxs-lock-alt'></i>
+              <div className='bx bxs-user'><PiPasswordFill /></div>
                 <input type="password" placeholder="Confirm password" />
               </div>
               <button>

@@ -56,14 +56,18 @@
     position: relative;
     width: 100%;
     margin: 1rem 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
 }
 
-.input-group i {
+.input-group .bxs-user {
     position: absolute;
-    top: 50%;
-    left: 1rem;
-    transform: translateY(-50%);
-    font-size: 1.4rem;
+    // top: 50%;
+    left: 0.2rem;
+    // transform: translateY(-50%);
+    font-size: 1rem;
     color: var(--gray-2);
 }
 
@@ -92,10 +96,17 @@
     font-size: 1.2rem;
     outline: none;
 }
+.pointer{
+    cursor: pointer;
+    margin-left:.5rem;
+    &:hover{
+color: var(--secondary-color);
+    }
+}
 
 .form p {
     margin: 1rem 0;
-    font-size: .7rem;
+    font-size: 1rem;
 }
 
 .flex-col {
