@@ -1,20 +1,25 @@
 // Login.jsx
 import React from 'react';
-// import './Login.scss';
+import './Login.scss';
+import SocialMedia1 from '../../../assets/social-media2.jpg'
+import { MdEmail } from "react-icons/md";
+import { RiLockPasswordLine } from "react-icons/ri";
 
 const Login = () => {
   return (
-    <div>
+    <div className='container'>
       <div className="row">
         <div className="col align-items-center flex-col ">
-          <div className="form-wrapper align-items-center">
-            <div className="form sign-in">
-              <div className="input-group">
-                <i className='bx bxs-user'></i>
-                <input type="text" placeholder="Username" />
+          <div className="form-wrapper">
+            
+            <form className="form sign-in">
+            <h2>Sign In</h2>
+            <div className="input-group">
+              <div className='bx bxs-user'><MdEmail /></div>
+                <input type="email" placeholder="Email" />
               </div>
               <div className="input-group">
-                <i className='bx bxs-lock-alt'></i>
+              <div className='bx bxs-user'><RiLockPasswordLine /></div>
                 <input type="password" placeholder="Password" />
               </div>
               <button>
@@ -33,21 +38,22 @@ const Login = () => {
                   Sign up here
                 </b>
               </p>
-            </div>
+            </form>
           </div>
-          <div className="form-wrapper">
+          {/* <div className="form-wrapper">
 
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="row content-row">
         <div className="col align-items-center flex-col">
-          <div className="text sign-in">
+          <div className="text-sign-in">
             <h2>
-              Welcome
+              Welcome To Hiphonic SMA
             </h2>
           </div>
-          <div className="img sign-in">
+          <div className="sign-in-img">
+          <img src={SocialMedia1} alt="" />
 
           </div>
         </div>

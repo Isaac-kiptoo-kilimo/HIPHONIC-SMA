@@ -13,8 +13,8 @@ function App() {
 
   return (
     <div>
-      {/* <Login/> */}
-      <SignUp/>
+      <Login/>
+      {/* <SignUp/> */}
     </div>
     // <div className='mainContainer'>
     //   <div className="navbar">
