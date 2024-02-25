@@ -1,61 +1,59 @@
-import React from 'react'
+// Login.jsx
+import React from 'react';
+// import './Login.scss';
 
 const Login = () => {
   return (
-    <div id="container" class="container">
-      <div class="row">
-			<div class="col align-items-center flex-col sign-in">
-				<div class="form-wrapper align-items-center">
-					<div class="form sign-in">
-						<div class="input-group">
-							<i class='bx bxs-user'></i>
-							<input type="text" placeholder="Username"/>
-						</div>
-						<div class="input-group">
-							<i class='bx bxs-lock-alt'></i>
-							<input type="password" placeholder="Password"/>
-						</div>
-						<button>
-							Sign in
-						</button>
-						<p>
-							<b>
-								Forgot password?
-							</b>
-						</p>
-						<p>
-							<span>
-								Don't have an account?
-							</span>
-							<b onclick="toggle()" class="pointer">
-								Sign up here
-							</b>
-						</p>
-					</div>
-				</div>
-				<div class="form-wrapper">
-		
-				</div>
-			</div>
+    <div>
+      <div className="row">
+        <div className="col align-items-center flex-col ">
+          <div className="form-wrapper align-items-center">
+            <div className="form sign-in">
+              <div className="input-group">
+                <i className='bx bxs-user'></i>
+                <input type="text" placeholder="Username" />
+              </div>
+              <div className="input-group">
+                <i className='bx bxs-lock-alt'></i>
+                <input type="password" placeholder="Password" />
+              </div>
+              <button>
+                Sign in
+              </button>
+              <p>
+                <b>
+                  Forgot password?
+                </b>
+              </p>
+              <p>
+                <span>
+                  Don't have an account?
+                </span>
+                <b className="pointer" >
+                  Sign up here
+                </b>
+              </p>
+            </div>
+          </div>
+          <div className="form-wrapper">
 
-            </div>
-            <div class="row content-row">
-            <div class="col align-items-center flex-col">
-				<div class="text sign-in">
-					<h2>
-						Welcome
-					</h2>
-	
-				</div>
-				<div class="img sign-in">
-		
-				</div>
-			</div>
-            </div>
+          </div>
+        </div>
+      </div>
+      <div className="row content-row">
+        <div className="col align-items-center flex-col">
+          <div className="text sign-in">
+            <h2>
+              Welcome
+            </h2>
+          </div>
+          <div className="img sign-in">
+
+          </div>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
 export default Login;
-
-
