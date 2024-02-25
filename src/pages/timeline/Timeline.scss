@@ -1,7 +1,7 @@
 .Timeline {
     display: flex;
     flex-direction: column;
-    background-color: #000000;
+    background-color: #F8FAFC;
     padding: 10px;
     gap: 10px;
 
@@ -11,17 +11,14 @@
         background-color: #fff;
         gap: 10px;
         padding: 10px;
+        border-radius: 13px;
 
         .TimelineHeader {
-            background-color: #ff0000;
+            background-color: #ffffff;
         }
 
         .TimelineList {
-            height: 50px;
-            background-color: #eb0000;
+            background-color: #ffffff;
         }
-    }
-    .PostContent {
-        background-color: #fff;
     }
 }
