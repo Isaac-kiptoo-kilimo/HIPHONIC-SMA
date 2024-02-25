@@ -2,11 +2,15 @@
 import './ProfileIntro.scss'
 
 //import react icons
+
+import { FaLocationDot } from "react-icons/fa6";
+
 import { CiLocationOn } from "react-icons/ci";
 import { TbBriefcase } from "react-icons/tb";
 import { CiCalendarDate } from "react-icons/ci";
 import { GoLink } from "react-icons/go";
 import { HiDotsHorizontal } from "react-icons/hi";
+
 
 const ProfileIntro = () => {
     return (
