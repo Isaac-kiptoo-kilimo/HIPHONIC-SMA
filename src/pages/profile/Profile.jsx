@@ -8,6 +8,7 @@ import ProfilePhotos from '../../components/profile/ProfilePhotos'
 import ProfileStatusInput from '../../components/profile/ProfileStatusInput'
 import ProfileStatusPost from '../../components/profile/ProfileStatusPost'
 
+
 const Profile = () => {
     return (
       <div className="profileContainer">

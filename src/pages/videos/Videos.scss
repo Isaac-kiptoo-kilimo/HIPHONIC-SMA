@@ -1,0 +1,32 @@
+.Videos {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+
+    .videosTop {
+        background-color: #fff;
+        border-radius: 13px;
+
+        .videosTopHeader {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #F1F5F9;
+            padding: 20px;
+        }
+
+        .videosTopContent {
+            .videosTopContentheader {
+                display: flex;
+                justify-content: space-between;
+                padding: 20px;
+                font-weight: 700;
+            }
+            .videosTopContentCards {
+                display: flex;
+                flex-direction: row;
+                overflow: scroll;
+            }
+        }
+    }
+}
