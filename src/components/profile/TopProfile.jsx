@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 
 const TopProfile = () => {
   const navigate = useNavigate();
-  const [userDetails, setUserDetails] = useState('');
+  const [userDetails, setUserDetails] = useState({});
 
   useEffect(() => {
     const storedUserDetails = JSON.parse(localStorage.getItem('loggedInUser'));
@@ -34,8 +34,8 @@ const TopProfile = () => {
       </div>
       <div className="bottom-top">
       <div className="head-pro">
-       <h2> {userDetails.user.Username}</h2> 
-        <p>{userDetails.user.TagName}</p>
+       <h2>{userDetails.user && userDetails.user.Username}</h2> 
+        <p>{userDetails.user && userDetails.user.TagName}</p>
       </div>
       <div className="navs">
         <div className="posts">
