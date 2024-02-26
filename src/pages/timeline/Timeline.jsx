@@ -2,9 +2,9 @@
 import './Timeline.scss'
 
 // import components
-import Updates from '../../components/timeline/Updates.jsx'
-import PostContent from '../../components/profile/ProfileStatusPost.jsx'
-import Addupdate from '../../components/profile/ProfileStatusInput.jsx'
+// import Updates from '../../components/timeline/Updates'
+import PostContent from '../../components/profile/ProfileStatusPost'
+import Addupdate from '../../components/profile/ProfileStatusInput'
 
 const Timeline =() => {
     return (
@@ -13,9 +13,9 @@ const Timeline =() => {
             <div className="TimelineHeader">
                 <span>Your Timeline</span>
             </div>
-            <div className="TimelineList">
+            {/* <div className="TimelineList">
                 <Updates />
-            </div>
+            </div> */}
         </div>
         <div className="Addupdate">
             <Addupdate />

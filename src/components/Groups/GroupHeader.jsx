@@ -1,9 +1,8 @@
 import React from 'react'
-import NavIcon from '../shared/NavIcon';
-import SearchIcon from '../../assets/search-circle.png'
+import { IoSearch } from "react-icons/io5";
 import Button from '../shared/Button'
-import Plus from '../../assets/plus.png'
-import SearchForm from '../navbar/SearchForm'
+import { FaPlusSquare } from "react-icons/fa";
+import SearchForm from '../shared/SearchForm'
 import './GroupHeader.scss'
 
 
@@ -18,10 +17,10 @@ const GroupHeader = () => {
       </div>
       <div className="group-page-icon">
         <div className="circled-search-icon">
-          <NavIcon url={SearchIcon}/>
+        <IoSearch />
           </div>
           <div className="create-group-btn">
-        <Button  btnicon={Plus} msg="Create New Group" />
+        <Button  btnicon={FaPlusSquare} msg="Create New Group" />
         </div>
         <div className="larger-search-bar">
         <SearchForm className="search-form" />

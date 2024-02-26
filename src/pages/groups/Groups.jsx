@@ -1,5 +1,6 @@
-import JoinGroupCard from "../components/Groups/JoinGroupCard";
-import RecentActivityCard from "../components/Groups/RecentActivityCard";
+import React from "react";
+import JoinGroupCard from '../../components/Groups/JoinGroupCard'
+import RecentActivityCard from "../../components/Groups/RecentActivityCard";
 import "./Groups.scss";
 
 const Groups= () => {

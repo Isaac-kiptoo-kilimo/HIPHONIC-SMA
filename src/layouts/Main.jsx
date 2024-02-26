@@ -13,6 +13,8 @@ import { Route, Routes } from 'react-router-dom';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import RightBar from './RightBar';
+import Groups from '../pages/groups/Groups';
+import FriendsPage from '../pages/friends/FriendsPage';
 
 const mainContent = () => {
     return (
@@ -29,6 +31,8 @@ const mainContent = () => {
        <Route path='/profile' element={ <Profile />}/>
        <Route path='/timeline' element={ <Timeline />}/>
        <Route path='/videos' element={ <Videos />}/>
+       <Route path='/groups' element={ <Groups />}/>
+       <Route path='/friends' element={ <FriendsPage />}/>
        {/* <Route path='/photos' element={ <Photos />}/> */}
          </Routes>
          </div>

@@ -22,7 +22,7 @@ function SideMenu() {
     {
       name: 'Groups',
       icon: groups,
-      path: '/groupsx', 
+      path: '/groups', 
     },
     {
       name: 'Videos',
