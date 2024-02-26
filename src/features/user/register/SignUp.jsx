@@ -17,7 +17,8 @@ import { useAddUserMutation } from '../userApi';
 const SignUp = () => {
      
   const [navToLogin, setNavToLogin] = useState('/signup');
-
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate=useNavigate()
 
   const [addUser]=useAddUserMutation()
@@ -54,19 +55,34 @@ const SignUp = () => {
   };
 
    const onSubmit = async(formData) => {
-    await addUser({
-      Username: formData.Username,
-      Email: formData.Email,
-      Password: formData.Password,
-      TagName: formData.TagName,
-      Location: formData.Location,
-    });
+try{
+  const response=await addUser({
+    Username: formData.Username,
+    Email: formData.Email,
+    Password: formData.Password,
+    TagName: formData.TagName,
+    Location: formData.Location,
+  });
+  console.log('User registered:', response);
 
-    console.log('User registered:', formData);
+  if (response.data && response.data.message) {
+    setSuccessMessage(response.data.message);
+    setErrorMessage('');
     reset();
+
     setTimeout(() => {
       navigate("/");
     }, 4000);
+  } else {
+    setErrorMessage('Registration failed. Please try again.');
+    setSuccessMessage('');
+  }
+}catch (error) {
+    console.error('Error during registration:', error);
+    setErrorMessage('Registration failed. Please try again.');
+    setSuccessMessage('');
+  }
+  
   };
 
   return (
@@ -75,6 +91,8 @@ const SignUp = () => {
         <div className="col align-items-center flex-col sign-up">
           <div className="form-wrapper align-items-center">
             <form className="form sign-up" onSubmit={handleSubmit(onSubmit)}>
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
+            {successMessage && <p className="success-message">{successMessage}</p>}
               <div className="input-group">
               
                 <div className='bx bxs-user'><FaUser /></div>
