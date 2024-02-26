@@ -7,14 +7,15 @@ import ProfileIntro from '../../components/profile/ProfileIntro'
 import ProfilePhotos from '../../components/profile/ProfilePhotos'
 import ProfileStatusInput from '../../components/profile/ProfileStatusInput'
 import ProfileStatusPost from '../../components/profile/ProfileStatusPost'
+import TopProfile from '../../components/profile/TopProfile'
 
 
 const Profile = () => {
     return (
       <div className="profileContainer">
         <div className="ProfileContentTop">
-          This is the top section of the profile. To be worked on by Isaac
-        </div>
+        <TopProfile/>
+               </div>
         <div className="ProfileContentBottom">
           <div className="ProfileContentBottomLeft">
             <div className="completeProfile">
