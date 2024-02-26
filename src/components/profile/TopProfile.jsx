@@ -1,8 +1,24 @@
 import React from 'react'
 import Avatar from "../../assets/Avatar.png"
 import './TopProfile.scss'
+import { useState } from 'react'
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const TopProfile = () => {
+  const navigate = useNavigate();
+  const [userDetails, setUserDetails] = useState('');
+
+  useEffect(() => {
+    const storedUserDetails = JSON.parse(localStorage.getItem('loggedInUser'));
+    setUserDetails(storedUserDetails);
+    console.log(storedUserDetails.user.Username);
+
+    if (!storedUserDetails || !storedUserDetails.token) {
+      navigate('/login');
+    }
+  }, [navigate]);
+
   return (
     <div className="Top">
       <div className="BackGround">
@@ -13,14 +29,13 @@ const TopProfile = () => {
          <button  className='profile-btn'>Edit Profile</button>
          </div>
          </div> 
-          {/* <img className="bg-img" src={BackGround} alt="noimage" /> */}
           <img className="avatar"src={Avatar} alt="noimage" />
         </div>
       </div>
       <div className="bottom-top">
       <div className="head-pro">
-       <h2> Angela Lee</h2> 
-        <p>@angela</p>
+       <h2> {userDetails.user.Username}</h2> 
+        <p>{userDetails.user.TagName}</p>
       </div>
       <div className="navs">
         <div className="posts">
