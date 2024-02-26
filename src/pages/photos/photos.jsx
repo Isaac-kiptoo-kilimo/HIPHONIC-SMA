@@ -1,10 +1,10 @@
 import React from 'react';
 import './Photos.scss';
 
-import Mask from '../assets/images/palbum7  (2).png';
-import matt from '../assets/images/palbum1.png';
-import mapp from '../assets/images/palbum2.png';
-import mopp from '../assets/images/palbum7  (1).png';
+import Mask from '../../assets/palbum1.png';
+import matt from '../../assets/palbum1.png';
+import mapp from '../../assets/palbum2.png';
+import mopp from '../../assets/palbum7  (1).png';
 
 const imagePaths = [Mask, matt, mapp, mopp, Mask, matt, mapp, mopp, Mask, matt, mapp, mopp, Mask, matt, mapp, Mask, matt,  mapp, mopp, Mask];
 
