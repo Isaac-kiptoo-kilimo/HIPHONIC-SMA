@@ -1,13 +1,20 @@
 import React from 'react'
+import { createPortal } from "react-dom";
 import Avatar from "../../assets/Avatar.png"
 import './TopProfile.scss'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import UpdateUser from '../../features/user/UpdateUser'
+const updateUserEl = document.getElementById("edit-post");
 
-const TopProfile = () => {
+
+const TopProfile = ({user}) => {
   const navigate = useNavigate();
   const [userDetails, setUserDetails] = useState({});
+  const [editingPostId, setEditingPostId] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+
 
   useEffect(() => {
     const storedUserDetails = JSON.parse(localStorage.getItem('loggedInUser'));
@@ -19,6 +26,19 @@ const TopProfile = () => {
     }
   }, [navigate]);
 
+
+  const handleEdit = () => {
+    console.log(userDetails.user.userID);
+    setEditingPostId(userDetails.user.userID);
+    setShowModal(true);
+  };
+
+
+  const closeModal = () => {
+    setShowModal(false);
+    setEditingPostId(null);
+  };
+
   return (
     <div className="Top">
       <div className="BackGround">
@@ -26,8 +46,15 @@ const TopProfile = () => {
           
          <div className="btn">
          <div>
-         <button  className='profile-btn'>Edit Profile</button>
+         <button onClick={handleEdit} disabled={editingPostId !== null} className='profile-btn'>Edit Profile</button>
          </div>
+         <div>
+        {showModal &&
+          createPortal(
+            <UpdateUser user={user} closeModal={closeModal} />,
+            updateUserEl
+          )}
+      </div>
          </div> 
           <img className="avatar"src={Avatar} alt="noimage" />
         </div>

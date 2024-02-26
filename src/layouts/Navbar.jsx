@@ -14,11 +14,12 @@ import { useState } from 'react';
 const Navbar = () => {
     // const navigate = useNavigate();
 
-    const [isLogoutVisible, setLogoutVisibility] = useState(false);
+    // const [isLogoutVisible, setLogoutVisibility] = useState(false);
     const toggleLogout = () => {
-        console.log("Correct");
-        setLogoutVisibility(!isLogoutVisible);
-        console.log("Toggle Logout: ", isLogoutVisible);
+        console.log("I am clicked");
+        // console.log("Correct");
+        // setLogoutVisibility(!isLogoutVisible);
+        // console.log("Toggle Logout: ", isLogoutVisible);
       };
     return (
         <>
@@ -36,16 +37,16 @@ const Navbar = () => {
                         <NavIcon url={Message} />
                         <NavIcon url={ActiveNotification} />
                         <img className="profile"  width={80} src={Profile} alt="profile" />
-                        <NavIcon url={Chevron} onClick={toggleLogout} />
+                        <NavIcon onClick={toggleLogout} url={Chevron}  />
                     </div>
                 </div>
             </div>
         </div>
-           {isLogoutVisible && (
+           {/* {isLogoutVisible && (
             <div className="logout">
               <Dropdown />
             </div>
-          )}
+          )} */}
     
     </>
     );
