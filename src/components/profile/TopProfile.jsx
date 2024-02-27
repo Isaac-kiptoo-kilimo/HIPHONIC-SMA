@@ -12,11 +12,12 @@ const TopProfile = () => {
   useEffect(() => {
     const storedUserDetails = JSON.parse(localStorage.getItem('loggedInUser'));
     setUserDetails(storedUserDetails);
-    console.log(storedUserDetails.user.Username);
+    // console.log(storedUserDetails.user.Username);
 
     if (!storedUserDetails || !storedUserDetails.token) {
       navigate('/login');
     }
+    
   }, [navigate]);
 
   return (

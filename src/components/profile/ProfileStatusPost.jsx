@@ -1,3 +1,6 @@
+import React, { useEffect, useState } from 'react';
+import { useGetPostsQuery } from '../../features/posts/postApi.js';
+
 //icons
 import { TbMoodSmile } from "react-icons/tb";
 import { IoIosLink } from "react-icons/io";
@@ -14,22 +17,43 @@ import './ProfileStatusPost.scss'
 //import components
 import User from "../profile/userInfocard.jsx"
 
-const ProfileStatusPost = () => {
+const ProfileStatusPost = ({ UserID }) => {
+    // Fetch posts
+    const { data: posts = [], isLoading, isError, error } = useGetPostsQuery();
+    const [currentPostIndex, setCurrentPostIndex] = useState(0);
+
+    useEffect(() => {
+        console.log(posts);
+    }, [posts]);
+
+    const userPosts = posts.filter(post => post.userId === UserID);
+    const currentPost = userPosts[currentPostIndex];
+
     return (
         <div className="profileStatusPost">
             <div>
                 <User />
             </div>
             <div className='profileStatusPostTextContent'>
-                <p style={{color:'#64748B'}}>Here are some photography works that I made on the weekend with some of my friends, happy for that!</p>
+                {/* Display posts */}
+                {isLoading ? (
+                    <p>Loading...</p>
+                ) : isError ? (
+                    <p>Error: {error.message}</p>
+                ) : (
+                    <div key={currentPost?.post_id}>
+                        {/* Render current post */}
+                        <p>{currentPost?.content}</p>
+                    </div>
+                )}
             </div>
             <div className='profileStatusPostImageContent'>
                 2 fetched pics
             </div>
             <div className='profileStatusPostInteraction'>
-                {/* //color #94A3B8 */}
-                <div className="like"><FaHeart /> 2.6K Likes</div>
-                <div className="comment"><AiOutlineMessage/> 297 Comments</div>
+                {/* Assuming 'post' is defined somewhere, we use it here */}
+                <div className="like"><FaHeart /> {currentPost?.likes} Likes</div>
+                <div className="comment"><AiOutlineMessage/> {currentPost?.comments} Comments</div>
                 <div className="share"><GoShareAndroid/> 201 Share</div>
             </div>
             <div className='profileStatusPostComment'>
