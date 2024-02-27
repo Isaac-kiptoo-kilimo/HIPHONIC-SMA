@@ -6,6 +6,8 @@ import Profile from '../pages/profile/Profile';
 import Videos from '../pages/videos/Videos'
 import Timeline from '../pages/timeline/Timeline'
 import Photos from '../pages/photos/photos'
+import Event from '../pages/events/Events';
+
 
 import { Route, Routes } from 'react-router-dom';
 
@@ -36,7 +38,8 @@ const mainContent = () => {
        <Route path='/friends' element={ <FriendsPage />}/>
 
        <Route path='/photos' element={ <Photos />}/>
-
+       <Route path='/events' element={<Event/>}/>
+ 
          </Routes>
          </div>
            <div className="rightBar">
