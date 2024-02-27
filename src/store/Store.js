@@ -17,8 +17,7 @@ export const store=configureStore({
         [postApi.reducerPath]:postApi.reducer,
     },
 
-    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(userApi.middleware,photoApi.middleware, eventApi.middleware, postApi.middleware)
-
+    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(userApi.middleware,photoApi.middleware, eventApi.middleware, postApi.middleware),
     auth: authReducer,
 
 
