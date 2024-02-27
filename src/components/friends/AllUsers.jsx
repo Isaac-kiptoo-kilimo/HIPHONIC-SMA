@@ -8,7 +8,6 @@ const AllUsers = ({ user }) => {
      <div>
      <img width={60} src={user && user.profileImage} alt="avatar" />
      </div>
-
       <div className="friends-content">
         <h3>{user.Username}</h3>
         <div className="friendship-btn">
