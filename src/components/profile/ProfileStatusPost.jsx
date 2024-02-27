@@ -17,43 +17,26 @@ import './ProfileStatusPost.scss'
 //import components
 import User from "../profile/userInfocard.jsx"
 
-const ProfileStatusPost = ({ UserID }) => {
-    // Fetch posts
-    const { data: posts = [], isLoading, isError, error } = useGetPostsQuery();
-    const [currentPostIndex, setCurrentPostIndex] = useState(0);
-
-    useEffect(() => {
-        console.log(posts);
-    }, [posts]);
-
-    const userPosts = posts.filter(post => post.userId === UserID);
-    const currentPost = userPosts[currentPostIndex];
-
+const ProfileStatusPost = () => {
+    const user = JSON.parse(localStorage.getItem('loggedInUser'));
+    
     return (
         <div className="profileStatusPost">
             <div>
                 <User />
             </div>
             <div className='profileStatusPostTextContent'>
-                {/* Display posts */}
-                {isLoading ? (
-                    <p>Loading...</p>
-                ) : isError ? (
-                    <p>Error: {error.message}</p>
-                ) : (
-                    <div key={currentPost?.post_id}>
-                        {/* Render current post */}
-                        <p>{currentPost?.content}</p>
+                    <div>
+                        <p>content</p>
                     </div>
-                )}
             </div>
             <div className='profileStatusPostImageContent'>
                 2 fetched pics
             </div>
             <div className='profileStatusPostInteraction'>
-                {/* Assuming 'post' is defined somewhere, we use it here */}
-                <div className="like"><FaHeart /> {currentPost?.likes} Likes</div>
-                <div className="comment"><AiOutlineMessage/> {currentPost?.comments} Comments</div>
+
+                <div className="like"><FaHeart /> Likes</div>
+                <div className="comment"><AiOutlineMessage/> Comments</div>
                 <div className="share"><GoShareAndroid/> 201 Share</div>
             </div>
             <div className='profileStatusPostComment'>
