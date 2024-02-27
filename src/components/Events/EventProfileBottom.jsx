@@ -1,17 +1,17 @@
 import React from 'react';
-import NationalSeminor from '../../assets/Mask Group (7).png'; 
-import Poutry from "../../assets/Mask Group (8).png"
+import Party from '../../assets/Mask Group (9).png'; 
+import final from '../../assets/Mask Group (10).png'; 
 import userIcon from '../../assets/Avatar.png';
 import popIcon from '../../assets/mapicon.png'; 
 import calender from '../../assets/calendar.png'
 import './EventsProfile.scss'
 
-const EventProfileTop = () => {
+const EventProfileBottom = () => {
   return (
     <div className="poetry">
       <div className="Nationalseminor">
         <div className="seminor">
-          <img src={NationalSeminor} alt="" />
+          <img src={Party} alt="" />
         </div>
         <div className="national">
          <div>
@@ -45,7 +45,7 @@ const EventProfileTop = () => {
     <div className="poetry">
     <div className="Nationalseminor">
       <div className="seminor">
-        <img src={Poutry} alt="" />
+        <img src={final} alt="" />
       </div>
       <div className="national">
        <div>
@@ -80,6 +80,4 @@ const EventProfileTop = () => {
   );
 }
 
-export default EventProfileTop;
-
-
+export default EventProfileBottom;
