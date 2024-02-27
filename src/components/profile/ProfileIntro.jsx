@@ -2,8 +2,12 @@
 import './ProfileIntro.scss'
 
 //import react icons
-
 import { FaLocationDot } from "react-icons/fa6";
+
+//import react
+import { useState } from 'react'
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { CiLocationOn } from "react-icons/ci";
 import { TbBriefcase } from "react-icons/tb";
@@ -13,6 +17,14 @@ import { HiDotsHorizontal } from "react-icons/hi";
 
 
 const ProfileIntro = () => {
+  // const navigate = useNavigate();
+  const [userDetails, setUserDetails] = useState({});
+
+  useEffect(() => {
+    const storedUserDetails = JSON.parse(localStorage.getItem('loggedInUser'))
+    setUserDetails(storedUserDetails);
+  },[])
+
     return (
       <div className="intro">
         <div className="Intro-top">
@@ -31,7 +43,7 @@ const ProfileIntro = () => {
       <div className="list">
         <div className="map-pin">
         < CiLocationOn />
-          <p>2972 Westheimer Rd.</p>
+          <p>{userDetails.user && userDetails.user.Location}</p>
         </div>
         <div className="Briefcase">
         <TbBriefcase />

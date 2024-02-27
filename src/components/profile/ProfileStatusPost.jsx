@@ -1,3 +1,6 @@
+import React, { useEffect, useState } from 'react';
+import { useGetPostsQuery } from '../../features/posts/postApi.js';
+
 //icons
 import { TbMoodSmile } from "react-icons/tb";
 import { IoIosLink } from "react-icons/io";
@@ -15,21 +18,25 @@ import './ProfileStatusPost.scss'
 import User from "../profile/userInfocard.jsx"
 
 const ProfileStatusPost = () => {
+    const user = JSON.parse(localStorage.getItem('loggedInUser'));
+    
     return (
         <div className="profileStatusPost">
             <div>
                 <User />
             </div>
             <div className='profileStatusPostTextContent'>
-                <p style={{color:'#64748B'}}>Here are some photography works that I made on the weekend with some of my friends, happy for that!</p>
+                    <div>
+                        <p>content</p>
+                    </div>
             </div>
             <div className='profileStatusPostImageContent'>
                 2 fetched pics
             </div>
             <div className='profileStatusPostInteraction'>
-                {/* //color #94A3B8 */}
-                <div className="like"><FaHeart /> 2.6K Likes</div>
-                <div className="comment"><AiOutlineMessage/> 297 Comments</div>
+
+                <div className="like"><FaHeart /> Likes</div>
+                <div className="comment"><AiOutlineMessage/> Comments</div>
                 <div className="share"><GoShareAndroid/> 201 Share</div>
             </div>
             <div className='profileStatusPostComment'>

@@ -5,6 +5,7 @@ import './Timeline.scss'
 // import Updates from '../../components/timeline/Updates'
 import PostContent from '../../components/profile/ProfileStatusPost'
 import Addupdate from '../../components/profile/ProfileStatusInput'
+import TimelineStatusPostList from '../../components/Timeline/timelineStatusPostList'
 
 const Timeline =() => {
     return (
@@ -21,7 +22,7 @@ const Timeline =() => {
             <Addupdate />
         </div>
         <div className="PostContent">
-            <PostContent />
+            <TimelineStatusPostList />
         </div>
     </div>
     )

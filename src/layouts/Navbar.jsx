@@ -11,6 +11,7 @@ import Dropdown from '../components/navbar/DropDown';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { FaChevronDown } from "react-icons/fa6";
+import Notification from '../components/Notification/Notification';
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -39,6 +40,11 @@ const Navbar = () => {
         setLogoutVisibility(!isLogoutVisible);
         console.log("Toggle Logout: ", isLogoutVisible);
       };
+      const [showNotifications, setShowNotifications] = useState(false);
+      
+      const handleNotificationsClick = () => {
+        setShowNotifications(!showNotifications);
+  };
     return (
         <>
         <div className="navbar">
@@ -53,8 +59,14 @@ const Navbar = () => {
                 <div>
                     <div className="nav-icons">
                         <NavIcon url={Message} />
+                        <div className="notification-icon" onClick={handleNotificationsClick}>
                         <NavIcon url={ActiveNotification} />
+
                         <img className="profile" onClick={handleProfile}  width={80} src={userDetails.user && userDetails.user.profileImage} alt="profile" />
+
+                        {showNotifications && <Notification />}
+                      </div>
+
                         {/* <NavIcon onClick={toggleLogout} url={Chevron}  /> */}
                         <FaChevronDown onClick={toggleLogout}/>
 
