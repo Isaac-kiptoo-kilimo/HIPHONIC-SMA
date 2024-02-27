@@ -5,9 +5,12 @@ import { useUpdateUserMutation } from "./userApi";
 
 
 const UpdateUser = ({ closeModal }) => {
+
   const user = JSON.parse(localStorage.getItem("loggedInUser"));
+
   console.log(user);
   const [updatePost] = useUpdateUserMutation();
+
   const [formData, setFormData] = useState({
     Username: user?.user.Username || "",
     TagName: user?.user.TagName || "",
@@ -119,18 +122,6 @@ const UpdateUser = ({ closeModal }) => {
             placeholder="Profile Image Link"
           />
         </div>
-      
-    
-     
-        {/* <label className="form-input" htmlFor="updatePostTitle">
-          Title:
-          <input type="text"  value={title}
-            onChange={(e) => setTitle(e.target.value)} />
-        </label> */}
-        {/* <label className="form-input" htmlFor="updatePostContent">
-          Content:
-          <textarea value={body} onChange={(e) => setBody(e.target.value)} />
-        </label> */}
         <button type="submit">Update User</button>
       </form>
     </section>
