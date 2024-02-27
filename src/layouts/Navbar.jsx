@@ -15,6 +15,13 @@ import Notification from '../components/Notification/Notification';
 
 const Navbar = () => {
     const navigate = useNavigate();
+    const[showProfile, setShowProfile]=useState(false)
+
+  const handleProfile=()=>{
+      setShowProfile(true)
+      navigate("/profile");
+      console.log("navigation");
+  }
     const [userDetails, setUserDetails] = useState({});
   
     useEffect(() => {
@@ -54,9 +61,12 @@ const Navbar = () => {
                         <NavIcon url={Message} />
                         <div className="notification-icon" onClick={handleNotificationsClick}>
                         <NavIcon url={ActiveNotification} />
+
+                        <img className="profile" onClick={handleProfile}  width={80} src={userDetails.user && userDetails.user.profileImage} alt="profile" />
+
                         {showNotifications && <Notification />}
                       </div>
-                        <img className="profile"  width={80} src={userDetails.user && userDetails.user.profileImage} alt="profile" />
+
                         {/* <NavIcon onClick={toggleLogout} url={Chevron}  /> */}
                         <FaChevronDown onClick={toggleLogout}/>
 
