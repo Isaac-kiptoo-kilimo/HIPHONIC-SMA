@@ -5,14 +5,17 @@ export const userApi=createApi({
     baseQuery: fetchBaseQuery({baseUrl:'http://localhost:5000/api/'}),
     tagTypes: ['Users'],
     endpoints: (builder)=>({
+
         getUsers:builder.query({
             query:()=> 'users',
             providesTags: ['Users']
         }),
+
         getUser:builder.query({
             query:(userID)=> `users/single/${userID}`,
             providesTags: ['Users']
         }),
+
         addUser:builder.mutation({
             query:(user)=>({
                 url: 'users/register',
@@ -21,6 +24,7 @@ export const userApi=createApi({
             }),
             invalidatesTags:['Users']
         }),
+
         authenticateUser:builder.mutation({
             query:(user)=>({
                 url: 'users/login',
@@ -34,6 +38,7 @@ export const userApi=createApi({
   },
             invalidatesTags:['Users']
         }),
+
         updateUser:builder.mutation({
             query:(user)=>({
                 url: `users/update/${user.UserID}`,
@@ -42,6 +47,7 @@ export const userApi=createApi({
             }),
             invalidatesTags: ['Users']
         }),
+
         updatePassword:builder.mutation({
             query:(user)=>({
                 url: `users/update/${user.userID}`,
@@ -50,6 +56,7 @@ export const userApi=createApi({
             }),
             invalidatesTags: ['Users']
         }),
+
         deleteUser: builder.mutation({
             query:(userID)=>({
                 url: `user/delete/${userID}`,
@@ -57,7 +64,7 @@ export const userApi=createApi({
             }),
             invalidatesTags: ['Users']
         })
-
     })
 })
+
 export const {useGetUsersQuery,useGetUserQuery,useAddUserMutation,useAuthenticateUserMutation,useUpdateUserMutation,useUpdatePasswordMutation,useDeleteUserMutation}=userApi
