@@ -11,17 +11,17 @@ import { GoShareAndroid } from "react-icons/go";
 //import assets
 
 //stylefile
-import './timelineStatusPost.scss'
+import './ProfilePostCard.scss'
 
 //import components
-import User from "./TimelineUser.jsx"
+// import User from "./TimelineUser.jsx"
 
 const ProfileStatusPost = ({post}) => {
 
     return (
         <div className="profileStatusPost">
             <div>
-                <User />
+                {/* <User /> */}
             </div>
             <div className='profileStatusPostTextContent'>
                 <p>{post.content}</p>
