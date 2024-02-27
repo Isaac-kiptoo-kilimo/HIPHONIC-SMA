@@ -16,7 +16,7 @@ import Avatar from "../../assets/Avatar.png"
 //stylefile
 import './ProfileStatusInput.scss'
 
-const ProfileStatusInput = ({ addPostContent }) => {
+const ProfileStatusInput = () => {
     const [postContent, setPostContent] = useState('');
     const user = JSON.parse(localStorage.getItem('loggedInUser'));
     const [addPost] = useAddPostMutation();
@@ -29,11 +29,10 @@ const ProfileStatusInput = ({ addPostContent }) => {
         e.preventDefault();
         
         if (postContent.trim() !== '') {
-          const postWithUserID = {postContent: postContent, UserID: user.user.UserID};
-          addPost(postWithUserID)
+          const postWithUserId = {content: postContent, UserID: user.user.UserID};
+          addPost(postWithUserId)
           .then((response) => {
             console.log('Post created successfully:', response);
-            addPostContent(postContent);
             setPostContent('');
           })
           .catch((error) => {

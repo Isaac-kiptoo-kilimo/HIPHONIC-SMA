@@ -14,33 +14,9 @@ import { GoShareAndroid } from "react-icons/go";
 import './timelineStatusPost.scss'
 
 //import components
-import User from "../profile/userInfocard.jsx"
+import User from "./TimelineUser.jsx"
 
-const ProfileStatusPost = () => {
-
-    // Fetch posts
-    const { data: posts = [], isLoading, isError, error } = useGetPostsQuery();
-    const [currentPostIndex, setCurrentPostIndex] = useState(0);
-
-    useEffect(() => {
-        
-        // You can perform additional actions based on the fetched posts, if needed
-        console.log(posts);
-    }, [posts]);
-
-    const currentPost = posts[currentPostIndex];
-
-    const displayNextPost = () => {
-        if (currentPostIndex < posts.length - 1) {
-            setCurrentPostIndex(prevIndex => prevIndex + 1);
-        }
-    };
-
-    const displayPreviousPost = () => {
-        if (currentPostIndex > 0) {
-            setCurrentPostIndex(prevIndex => prevIndex - 1);
-        }
-    };
+const ProfileStatusPost = ({post}) => {
 
     return (
         <div className="profileStatusPost">
@@ -48,25 +24,14 @@ const ProfileStatusPost = () => {
                 <User />
             </div>
             <div className='profileStatusPostTextContent'>
-                {/* Display posts */}
-                {isLoading ? (
-                    <p>Loading...</p>
-                ) : isError ? (
-                    <p>Error: {error.message}</p>
-                ) : (
-                    <div key={currentPost?.post_id}>
-                        {/* Render current post */}
-                        <p>{currentPost?.content}</p>
-                    </div>
-                )}
+                <p>{post.content}</p>
             </div>
             <div className='profileStatusPostImageContent'>
                 2 fetched pics
             </div>
             <div className='profileStatusPostInteraction'>
-                {/* Assuming 'post' is defined somewhere, we use it here */}
-                <div className="like"><FaHeart /> {currentPost?.likes} Likes</div>
-                <div className="comment"><AiOutlineMessage/> {currentPost?.comments} Comments</div>
+                <div className="like"><FaHeart />{post.likes} Likes</div>
+                <div className="comment"><AiOutlineMessage/>{post.comments} Comments</div>
                 <div className="share"><GoShareAndroid/> 201 Share</div>
             </div>
             <div className='profileStatusPostComment'>
@@ -78,8 +43,6 @@ const ProfileStatusPost = () => {
                     <IoIosLink />
                 </div>
             </div>
-            <button onClick={displayPreviousPost}>Previous Post</button>
-            <button onClick={displayNextPost}>Next Post</button>
         </div>
     )
 }

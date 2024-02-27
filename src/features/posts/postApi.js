@@ -12,11 +12,10 @@ export const postApi = createApi({
         }),
 
         getPost:builder.query({
-            query:(postID)=> `users/single/${postID}`,
-            // providesTags: ['Posts']
+            query:(post_id)=> `posts/${post_id}`,
+            providesTags: ['Posts']
         }),
 
-        // Working on this one
         addPost:builder.mutation({
             query:(post) => ({
                 url: 'posts',
