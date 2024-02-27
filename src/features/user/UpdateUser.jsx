@@ -2,20 +2,37 @@ import React, { useState } from "react";
 import { MdOutlineCancel } from "react-icons/md";
 import "./UpdateUser.scss";
 import { useUpdateUserMutation } from "./userApi";
-import { useRef } from "react";
 
-const UpdateUser = ({ user, closeModal }) => {
+
+const UpdateUser = ({ closeModal }) => {
+  const user = JSON.parse(localStorage.getItem("loggedInUser"));
+  console.log(user);
   const [updatePost] = useUpdateUserMutation();
+  const [formData, setFormData] = useState({
+    Username: user?.user.Username || "",
+    TagName: user?.user.TagName || "",
+    Location: user?.user.Location || "",
+    company_name: user?.user.company_name || "",
+    website_link: user?.user.website_link || "",
+    profileImage: user?.user.profileImage || "",
+  });
 
-  const [title, setTitle] = useState(user ? user.title : "");
-  const [body, setBody] = useState(user ? user.body : "");
-  const modalCardRef = useRef(null);
-
-
-  const handleUpdate = (e) => {
+  const handleUpdate = async(e) => {
     e.preventDefault();
-    updatePost({ title: title, body: body, id: post.id });
-    // console.log("love it", { post_title: title, post_content: content }, "id");
+    const response = await updatePost(
+      {
+        ...formData,
+        UserID: user?.user.UserID,
+      },
+      {
+        headers: {
+          Authorization: `${user.token}`,
+        },
+      }
+    );
+  
+      console.log("love it", response.data);
+    
     closeModal();
   };
 
@@ -23,14 +40,17 @@ const UpdateUser = ({ user, closeModal }) => {
     closeModal();
   };
 
-  const handleBackgroundClick = (e) => {
-    if (modalCardRef.current && !modalCardRef.current.contains(e.target)) {
-      closeModal();
-    }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
+
   return (
-    <section onClick={handleBackgroundClick} className="modal-card">
-      <div ref={modalCardRef} className="close">
+    <section  className="modal-card">
+      <div className="close">
         <MdOutlineCancel className="close-icon" onClick={handleClose} />
       </div>
 
@@ -42,7 +62,10 @@ const UpdateUser = ({ user, closeModal }) => {
             type="text"
             name="Username"
             id="Username"
+            value={formData.Username}
+            onChange={handleChange}
             placeholder="Username"
+            
           />
         </div>
         <div className="input-group">
@@ -50,7 +73,10 @@ const UpdateUser = ({ user, closeModal }) => {
             type="text"
             name="TagName"
             id="TagName"
+            value={formData.TagName}
+            onChange={handleChange}
             placeholder="TagName"
+            
           />
         </div>
         <div className="input-group">
@@ -58,6 +84,8 @@ const UpdateUser = ({ user, closeModal }) => {
             type="text"
             name="Location"
             id="Location"
+            value={formData.Location}
+            onChange={handleChange}
             placeholder="Location"
           />
         </div>
@@ -66,6 +94,8 @@ const UpdateUser = ({ user, closeModal }) => {
             type="text"
             name="company_name"
             id="company_name"
+            value={formData.company_name}
+            onChange={handleChange}
             placeholder="company name"
           />
         </div>
@@ -74,6 +104,8 @@ const UpdateUser = ({ user, closeModal }) => {
             type="text"
             name="website_link"
             id="website_link"
+            value={formData.website_link}
+            onChange={handleChange}
             placeholder="Website Link"
           />
         </div>
@@ -82,6 +114,8 @@ const UpdateUser = ({ user, closeModal }) => {
             type="text"
             name="profileImage"
             id="profileImage"
+            value={formData.profileImage}
+            onChange={handleChange}
             placeholder="Profile Image Link"
           />
         </div>

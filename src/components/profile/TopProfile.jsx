@@ -12,7 +12,7 @@ const updateUserEl = document.getElementById("edit-post");
 const TopProfile = ({user}) => {
   const navigate = useNavigate();
   const [userDetails, setUserDetails] = useState({});
-  const [editingPostId, setEditingPostId] = useState(null);
+  const [editingUserId, setEditingUserId] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
 
@@ -28,15 +28,16 @@ const TopProfile = ({user}) => {
 
 
   const handleEdit = () => {
-    console.log(userDetails.user.userID);
-    setEditingPostId(userDetails.user.userID);
+    // console.log(userDetails.user);
+    console.log(userDetails.user.UserID);
+    setEditingUserId(userDetails.user.UserID);
     setShowModal(true);
   };
 
 
   const closeModal = () => {
     setShowModal(false);
-    setEditingPostId(null);
+    setEditingUserId(null);
   };
 
   return (
@@ -46,7 +47,7 @@ const TopProfile = ({user}) => {
           
          <div className="btn">
          <div>
-         <button onClick={handleEdit} disabled={editingPostId !== null} className='profile-btn'>Edit Profile</button>
+         <button onClick={handleEdit} disabled={editingUserId !== null} className='profile-btn'>Edit Profile</button>
          </div>
          <div>
         {showModal &&
@@ -56,7 +57,7 @@ const TopProfile = ({user}) => {
           )}
       </div>
          </div> 
-          <img className="avatar"src={Avatar} alt="noimage" />
+          <img className="avatar"src={userDetails.user && userDetails.user.profileImage} alt="noimage" />
         </div>
       </div>
       <div className="bottom-top">
