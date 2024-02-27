@@ -31,12 +31,17 @@ export const userApi=createApi({
                 method:'POST',
                 body: user
             }),
+              onSuccess: (response, variables, api) => {
+    const { token, user } = response;
+    storeToken(token);
+    storeUser(user);
+  },
             invalidatesTags:['Users']
         }),
 
         updateUser:builder.mutation({
             query:(user)=>({
-                url: `users/update/${user.userID}`,
+                url: `users/update/${user.UserID}`,
                 method: 'PUT',
                 body: user
             }),

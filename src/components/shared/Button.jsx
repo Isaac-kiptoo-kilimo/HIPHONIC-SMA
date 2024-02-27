@@ -1,9 +1,9 @@
 import './Button.scss'
 
-function Button({ btnicon,msg }) {
+function Button({ btnicon,msg ,onClick}) {
     return (
         <div>
-            <button className='button'>
+            <button onClick={onClick} className='button'>
                <img src={btnicon} alt="" />
                 <span>{msg}</span>
             </button>
