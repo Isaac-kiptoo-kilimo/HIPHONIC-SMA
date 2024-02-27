@@ -33,10 +33,8 @@ const mainContent = () => {
        <Route path='/profile' element={ <Profile />}/>
        <Route path='/timeline' element={ <Timeline />}/>
        <Route path='/videos' element={ <Videos />}/>
-
        <Route path='/groups' element={ <Groups />}/>
        <Route path='/friends' element={ <FriendsPage />}/>
-
        <Route path='/photos' element={ <Photos />}/>
        <Route path='/events' element={<Event/>}/>
  
