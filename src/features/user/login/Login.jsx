@@ -49,6 +49,7 @@ const Login = () => {
         Email: data.Email,
         Password: data.Password,
       });
+      
       console.log(response.data.user);
       console.log(response.data.user.token);
 
