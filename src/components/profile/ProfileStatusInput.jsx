@@ -48,9 +48,7 @@ const ProfileStatusInput = () => {
             <div className='ProfileStatusInputTopContainer'>
                 <div className="ProfileStatusInputTop">
                     <div className="profilePic"><img src={Avatar} alt="" /></div>
-                    <div className="publicContainer"><CiGlobe /> <p>Public</p> <FaChevronDown /></div>
-                </div>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className='ProfilePostForm'>
                     <input
                         className="statusInputArea"
                         type="text"
@@ -60,6 +58,7 @@ const ProfileStatusInput = () => {
                         required
                     />
                 </form>
+                </div>
             </div>
             <div className='ProfileStatusInputBottom'>
                 <div><AiOutlineYoutube /> Live Video</div>
