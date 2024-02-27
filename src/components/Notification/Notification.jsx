@@ -6,6 +6,7 @@ import esther from '../../assets/Avatar2.png';
 import cameron from '../../assets/Avatar3.png';
 import brooklyn from '../../assets/Avatar4.png';
 import './Notification.scss';
+import { useGetNotificationsQuery } from '../../features/notifications/notificationApi';
 
 const friends = [
   { icon: wade, name: 'Angela Lee' },
@@ -16,6 +17,12 @@ const friends = [
 ];
 
 const Notification = ({ onClose }) => {
+
+  const {data:Notifications}=useGetNotificationsQuery()
+  // console.log(Notifications);
+  const notifications = Notifications || [];
+  console.log(notifications);
+
   return (
     <div className="bigmain">
       <div className="notification">
@@ -33,10 +40,9 @@ const Notification = ({ onClose }) => {
           <h4>Today</h4>
         </div>
         <div className='TodayNotification'>
-          {friends.map((friend, index) => (
+          {notifications && notifications.map((notification, index) => (
             <div key={index} className="notification-item">
-              <img src={friend.icon} alt={friend.name} />
-              <span>{friend.name} Notification</span>
+              <span>{notification.message} </span>
             </div>
           ))}
         </div>
