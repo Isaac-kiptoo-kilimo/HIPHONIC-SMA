@@ -10,9 +10,9 @@ import './Navbar.scss'
 import Dropdown from '../components/navbar/DropDown';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { FaChevronDown } from "react-icons/fa6";
 
 const Navbar = () => {
-    // const navigate = useNavigate();
     const navigate = useNavigate();
     const [userDetails, setUserDetails] = useState({});
   
@@ -25,12 +25,12 @@ const Navbar = () => {
         navigate('/login');
       }
     }, [navigate]);
-    // const [isLogoutVisible, setLogoutVisibility] = useState(false);
+    const [isLogoutVisible, setLogoutVisibility] = useState(false);
     const toggleLogout = () => {
         console.log("I am clicked");
-        // console.log("Correct");
-        // setLogoutVisibility(!isLogoutVisible);
-        // console.log("Toggle Logout: ", isLogoutVisible);
+        console.log("Correct");
+        setLogoutVisibility(!isLogoutVisible);
+        console.log("Toggle Logout: ", isLogoutVisible);
       };
     return (
         <>
@@ -48,16 +48,18 @@ const Navbar = () => {
                         <NavIcon url={Message} />
                         <NavIcon url={ActiveNotification} />
                         <img className="profile"  width={80} src={userDetails.user && userDetails.user.profileImage} alt="profile" />
-                        <NavIcon onClick={toggleLogout} url={Chevron}  />
+                        {/* <NavIcon onClick={toggleLogout} url={Chevron}  /> */}
+                        <FaChevronDown onClick={toggleLogout}/>
+
                     </div>
                 </div>
             </div>
         </div>
-           {/* {isLogoutVisible && (
+           {isLogoutVisible && (
             <div className="logout">
               <Dropdown />
             </div>
-          )} */}
+          )}
     
     </>
     );

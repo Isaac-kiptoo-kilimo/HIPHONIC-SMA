@@ -26,8 +26,7 @@ const FriendsPage=()=>{
             <Button msg="Suggestions" onClick={handleSuggestionsClick} />
           </div>
          <div className="top">
-         {displayFriends ? <FriendsCard /> : <UsersList />}
-         
+         {displayFriends ? <FriendsCard /> : <UsersList />}  
         </div>
        
       </div>             

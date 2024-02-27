@@ -1,9 +1,9 @@
 // import './NavIcon.scss';
 
 
-const NavIcon=({url})=>{
+const NavIcon=({url,onClick})=>{
     return(
-        <img className='img' src={url} alt="Hiphonic" />
+        <img className='img' onClick={onClick} src={url} alt="Hiphonic" />
     )
 }
 
