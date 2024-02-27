@@ -3,12 +3,13 @@ import './Photos.scss';
 import PhotoForm from '../../components/photos/PhotoForm';
 import { FaRegComment } from "react-icons/fa6";
 import { CiHeart } from "react-icons/ci";
+// import {Notification} from "../../components/Notification//Notification"
+
 
 const Photos = () => {
   const [imagePaths, setImagePaths] = useState([]);
 
   useEffect(() => {
-    // Retrieve imagePaths from localStorage when component mounts
     const storedImagePaths = localStorage.getItem('imagePaths');
     if (storedImagePaths) {
       setImagePaths(JSON.parse(storedImagePaths));
@@ -16,7 +17,6 @@ const Photos = () => {
   }, []);
 
   const addPhotoUrl = (photoUrl) => {
-    // Update state with new photo URL and also store it in localStorage
     const newImagePaths = [...imagePaths, photoUrl];
     setImagePaths(newImagePaths);
     localStorage.setItem('imagePaths', JSON.stringify(newImagePaths));
@@ -48,6 +48,9 @@ const Photos = () => {
             <CiHeart /> 
             <div>
               <FaRegComment />  
+            </div>
+            <div>
+
             </div>
           </div>
         </div>

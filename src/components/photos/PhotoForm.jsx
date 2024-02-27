@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useAddPhotoMutation } from '../../features/Photos/Photoapi';
+import './PhotoForm.scss'
 
 const PhotoForm = ({ addPhotoUrl }) => {
   const [photoUrl, setPhotoUrl] = useState('');
@@ -41,7 +42,7 @@ const PhotoForm = ({ addPhotoUrl }) => {
             required
           />
         </div>
-        <button type="submit">Upload Photo</button>
+        <button id='uploadbutton' type="submit">Upload Photo</button>
       </form>
     </div>
   );
