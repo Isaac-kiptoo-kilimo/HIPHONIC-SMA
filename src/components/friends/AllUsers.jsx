@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import Button from "../shared/Button";
 import "./AllUsers.scss";
 import { useAddFriendshipMutation } from "../../features/friends/friendApi";
+import { ErrorToast, ToasterContainer, SuccessToast } from "../../toaster/Toaster"; 
+import { LoadingToast } from "../../toaster/Toaster"; 
 
 const AllUsers = ({ user }) => {
   const [addFriendship]=useAddFriendshipMutation();
@@ -13,10 +15,18 @@ console.log(userID1);
 
   const handleSubmit=async()=>{
   const response=await addFriendship({User1ID:userID1,User2ID:user.UserID})
-  console.log(response);
+
+  if(response.error){
+    ErrorToast(response.error.data.message);
+
+  }else{
+    SuccessToast(response.data.message);
+  }
   }
 
   return (
+    <>
+    <ToasterContainer />
     <article className="Friendscard" key={user.userID}>
      <div>
      <img width={60} src={user && user.profileImage} alt="avatar" />
@@ -35,6 +45,7 @@ console.log(userID1);
         </div>
       </div>
     </article>
+    </>
   );
 };
 

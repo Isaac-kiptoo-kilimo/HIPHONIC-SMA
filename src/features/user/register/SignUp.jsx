@@ -14,6 +14,10 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import { useAddUserMutation } from '../userApi';
 import { IoPricetagsOutline } from "react-icons/io5";
 import { CiLocationOn } from "react-icons/ci";
+import { ErrorToast, ToasterContainer, SuccessToast } from '../../../toaster/Toaster'
+import { LoadingToast } from '../../../toaster/Toaster'; 
+
+
 
 const SignUp = () => {
      
@@ -56,7 +60,9 @@ const SignUp = () => {
   };
 
    const onSubmit = async(formData) => {
+    LoadingToast();
 try{
+  
   const response=await addUser({
     Username: formData.Username,
     Email: formData.Email,
@@ -67,23 +73,27 @@ try{
   console.log('User registered:', response);
 
   if (response.data && response.data.message) {
-    setSuccessMessage(response.data.message);
-    setErrorMessage('');
+    SuccessToast(response.data.message);
+    // setSuccessMessage(response.data.message);
+    // setErrorMessage('');
     reset();
 
     setTimeout(() => {
       navigate("/");
-    }, 4000);
-  } else {
+    }, 2000);
+  } else { 
+    // 5319983 
+    // ErrorToast(response.data.error);
     setErrorMessage('Registration failed. Please try again.');
-    setSuccessMessage('');
+    // setSuccessMessage('');
   }
 }catch (error) {
     console.error('Error during registration:', error);
+    // ErrorToast(response.data.error);
     setErrorMessage('Registration failed. Please try again.');
-    setSuccessMessage('');
+    // setSuccessMessage('');
   }
-  
+  LoadingToast(false);
   };
 
   return (
@@ -92,6 +102,7 @@ try{
         <div className="col align-items-center flex-col sign-up">
           <div className="form-wrapper align-items-center">
             <form className="form sign-up" onSubmit={handleSubmit(onSubmit)}>
+            <ToasterContainer />
             <div>
             {errorMessage && <p className="error-message">{errorMessage}</p>}
             </div>

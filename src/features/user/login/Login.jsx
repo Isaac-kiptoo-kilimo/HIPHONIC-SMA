@@ -10,6 +10,9 @@ import SocialMedia1 from "../../../assets/social-media2.jpg";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { useAuthenticateUserMutation } from "../userApi";
+import { ErrorToast, ToasterContainer, SuccessToast } from '../../../toaster/Toaster'
+import { LoadingToast } from '../../../toaster/Toaster'; 
+import { toast } from "sonner";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -57,21 +60,27 @@ const Login = () => {
         console.log("User logged in:", response);
 
         localStorage.setItem("loggedInUser", JSON.stringify(response.data.user));
+        SuccessToast(response.data.message);
 
         setLoginError("");
-        setLoginSuccess("Logged In successfully!");
+        // setLoginSuccess("Logged In successfully!");
 
         setTimeout(() => {
           navigate("/profile");
         }, 2000);
       } else {
         setLoginSuccess("");
-        setLoginError("Invalid email or password");
+        console.log(response.data);
+        ErrorToast(response.data.error);
+
+        // setLoginError("Invalid email or password");
       }
     } catch (error) {
-      console.error("Error during login:", error);
-      setLoginSuccess("");
-      setLoginError("Invalid email or password");
+      toast.error('Check Your login Details')
+      // ErrorToast(response.data.error);
+
+      // setLoginSuccess("");
+      // setLoginError("Invalid email or password");
     }
   };
   return (
@@ -79,12 +88,19 @@ const Login = () => {
       <div className="row">
         <div className="col align-items-center flex-col ">
           <div className="form-wrapper">
+          
             <form className="form sign-in" onSubmit={handleSubmit(loginUser)}>
               <h2>Sign In</h2>
-              {loginError && <p className="error-message">{loginError}</p>}
-              {loginSuccess && (
+             <div>
+             <ToasterContainer />
+             {loginError && <p className="error-message">{loginError}</p>}
+             </div>
+             <div>
+             {loginSuccess && (
                 <p className="success-message">{loginSuccess}</p>
               )}
+             </div>
+              <div>
               <div className="input-group">
                 <div className="bx bxs-user">
                   <MdEmail />
@@ -96,8 +112,11 @@ const Login = () => {
                   {...register("Email")}
                   placeholder="Email"
                 />
-                <p>{errors.Email?.message}</p>
+                
               </div>
+              <p className="errors">{errors.Email?.message}</p>
+              </div>
+              <div>
               <div className="input-group">
                 <div className="bx bxs-user">
                   <RiLockPasswordLine />
@@ -109,7 +128,9 @@ const Login = () => {
                   {...register("Password")}
                   placeholder="Password"
                 />
-                <p>{errors.Password?.message}</p>
+                
+              </div>
+              <p className="errors">{errors.Password?.message}</p>
               </div>
               <button className="signin-btn">Sign in</button>
               <p>
