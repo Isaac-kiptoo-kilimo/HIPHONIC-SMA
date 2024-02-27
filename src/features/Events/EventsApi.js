@@ -6,12 +6,12 @@ export const eventApi = createApi({
     tagTypes: ['Event'],
     endpoints: (builder) => ({
         getEvents: builder.query({
-            query: () => 'event', // Assuming 'event' is the endpoint for fetching events
+            query: () => 'event', 
             providesTags: ['Event']
         }),
         addEvent: builder.mutation({
             query: (event) => ({
-                url: 'events', // Assuming 'events' is the endpoint for adding events
+                url: 'events', 
                 method: 'POST',
                 body: event
             }),
@@ -19,7 +19,7 @@ export const eventApi = createApi({
         }),
         updateEvent: builder.mutation({
             query: ({ id, event }) => ({
-                url: `event/${id}`, // Assuming 'event/:id' is the endpoint for updating events
+                url: `event/${id}`, 
                 method: 'PUT',
                 body: event
             }),
@@ -27,7 +27,7 @@ export const eventApi = createApi({
         }),
         deleteEvent: builder.mutation({
             query: (id) => ({
-                url: `event/${id}`, // Assuming 'event/:id' is the endpoint for deleting events
+                url: `event/${id}`, 
                 method: 'DELETE'
             }),
             invalidatesTags: ['Event'],
