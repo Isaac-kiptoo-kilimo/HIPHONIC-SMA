@@ -14,6 +14,13 @@ import { FaChevronDown } from "react-icons/fa6";
 
 const Navbar = () => {
     const navigate = useNavigate();
+    const[showProfile, setShowProfile]=useState(false)
+
+  const handleProfile=()=>{
+      setShowProfile(true)
+      navigate("/profile");
+      console.log("navigation");
+  }
     const [userDetails, setUserDetails] = useState({});
   
     useEffect(() => {
@@ -47,7 +54,7 @@ const Navbar = () => {
                     <div className="nav-icons">
                         <NavIcon url={Message} />
                         <NavIcon url={ActiveNotification} />
-                        <img className="profile"  width={80} src={userDetails.user && userDetails.user.profileImage} alt="profile" />
+                        <img className="profile" onClick={handleProfile}  width={80} src={userDetails.user && userDetails.user.profileImage} alt="profile" />
                         {/* <NavIcon onClick={toggleLogout} url={Chevron}  /> */}
                         <FaChevronDown onClick={toggleLogout}/>
 

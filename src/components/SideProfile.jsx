@@ -6,9 +6,16 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 function SideProfile() {
+
   const navigate = useNavigate();
   const [userDetails, setUserDetails] = useState({});
+  const[showProfile, setShowProfile]=useState(false)
 
+  const handleProfile=()=>{
+      setShowProfile(true)
+      navigate("/profile");
+      console.log("navigation");
+  }
   useEffect(() => {
     const storedUserDetails = JSON.parse(localStorage.getItem('loggedInUser'));
     setUserDetails(storedUserDetails);
@@ -21,7 +28,7 @@ function SideProfile() {
   return (
     <div className="sideProfile">
       <div className="SideImage">
-        <img width={60} src={userDetails.user && userDetails.user.profileImage} alt="avatar" />
+        <img onClick={handleProfile} width={60} src={userDetails.user && userDetails.user.profileImage} alt="avatar" />
       </div>
       <div className="leftprofile">
         <p className="Profilename">{userDetails.user && userDetails.user.Username}</p>

@@ -3,17 +3,19 @@ import { setupListeners } from '@reduxjs/toolkit/query/react';
 import {userApi} from '../features/user/userApi'
 import authReducer from "../features/user/authSllice";
 import { photoApi } from '../features/Photos/Photoapi';
-import {eventApi} from  '../features/Events/EventsApi'
-
+import {eventApi} from  '../features/Events/EventsApi';
+import { friendApi } from '../features/friends/friendApi';
 
 export const store=configureStore({
     reducer:{
         [userApi.reducerPath]:userApi.reducer,
         [photoApi.reducerPath]:photoApi.reducer,
+        [eventApi.reducerPath]:eventApi.reducer,
+        [friendApi.reducerPath]:friendApi.reducer
     },
 
     auth: authReducer,
-    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(userApi.middleware,photoApi.middleware, eventApi.middleware)
+    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(userApi.middleware,photoApi.middleware, eventApi.middleware, friendApi.middleware)
 
 
 })

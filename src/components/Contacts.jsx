@@ -1,48 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Contacts.scss';
-import wade from "../assets/Avatar1.png";
-import jane from "../assets/Avatar 11.png";
-import esther from "../assets/Avatar2.png";
-// import cameron from "../assets/Avatar3.png";
-
+import { useGetUsersQuery } from '../features/user/userApi';
 
 function Contacts() {
-  const contacts = [
-    {
-      icon: wade,
-      name: 'Wade Warren'
-    },
-    {
-      icon: jane,
-      name: 'Jane Cooper'
-    },
-    {
-      icon: esther,
-      name: 'Esther Howard'
-    },
-    // {
-    //     icon: cameron,
-    //     name: 'Cameron Williamson'
-    //   },
- 
- 
-  ];
+  const { data: users, error, isLoading, isError, isFetching } = useGetUsersQuery();
+  const [showAll, setShowAll] = useState(false);
+
+  const displayedUsers = showAll ? users : (users ? users.slice(0, 3) : []);
+
+  const handleSeeAllClick = () => {
+    setShowAll(!showAll);
+  };
 
   return (
     <div className="Contacts">
       <div className="Heading">
         <p style={{ textTransform: "uppercase" }}>Contacts</p>
-        <button className='see-all'>
-          <p>See-all</p>
+        <button className='see-all' onClick={handleSeeAllClick}>
+          <p>{showAll ? 'Show less' : 'See all'}</p>
         </button>
       </div>
       <div className="ContactsMenu">
-        {contacts &&
-          contacts.map((item, index) => (
-            <div className='ContactContainer' key={index}>
+        {displayedUsers &&
+          displayedUsers.map((user) => (
+            <div className='ContactContainer' key={user.UserID}>
               <div className="ContactItem">
-                <img src={item.icon} alt={item.name} />
-                <p>{item.name}</p>
+                <img width={50} src={user.profileImage} alt={user.name} />
+                <p>{user.Username}</p>
               </div>
             </div>
           ))}

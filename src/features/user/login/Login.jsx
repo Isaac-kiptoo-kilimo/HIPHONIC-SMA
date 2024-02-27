@@ -111,7 +111,7 @@ const Login = () => {
                 />
                 <p>{errors.Password?.message}</p>
               </div>
-              <button>Sign in</button>
+              <button className="signin-btn">Sign in</button>
               <p>
                 <b>Forgot password?</b>
               </p>
