@@ -5,13 +5,13 @@ import {userApi} from '../features/user/userApi'
 
 
 import authReducer from "../features/user/authSllice";
-
 import { photoApi } from '../features/Photos/Photoapi';
 import {eventApi} from  '../features/Events/EventsApi';
 import { friendApi } from '../features/friends/friendApi';
 import { commentApi } from '../features/Comments/CommentsApi';
 import { notificationApi } from '../features/notifications/notificationApi';
 import { postApi } from '../features/posts/postApi';
+import { statusApi } from '../features/timeline/TimelineApi';
 
 
 
@@ -30,10 +30,10 @@ export const store=configureStore({
   
 
     middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(userApi.middleware,photoApi.middleware, eventApi.middleware, friendApi.middleware,notificationApi.middleware,postApi.middleware,commentApi.middleware)
-   
-
-
-
+        [postApi.reducerPath]:postApi.reducer,
+        [notificationApi.reducerPath]:notificationApi.reducer,
+        [statusApi.reducerPath]:statusApi.reducer
+    },
 })
 
 setupListeners(store.dispatch)
