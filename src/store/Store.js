@@ -9,7 +9,9 @@ import authReducer from "../features/user/authSllice";
 import { photoApi } from '../features/Photos/Photoapi';
 import {eventApi} from  '../features/Events/EventsApi';
 import { friendApi } from '../features/friends/friendApi';
-import {postApi} from '../features/posts/postApi';
+import { notificationApi } from '../features/notifications/notificationApi';
+import { postApi } from '../features/posts/postApi';
+
 
 
 export const store=configureStore({
@@ -18,12 +20,17 @@ export const store=configureStore({
         [photoApi.reducerPath]:photoApi.reducer,
         [postApi.reducerPath]:postApi.reducer,
         [eventApi.reducerPath]:eventApi.reducer,
-        [friendApi.reducerPath]:friendApi.reducer
+        [friendApi.reducerPath]:friendApi.reducer,
+        [postApi.reducerPath]:postApi.reducer,
+        [notificationApi.reducerPath]:notificationApi.reducer
 
     },
 
   
-    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(postApi.middleware,userApi.middleware,photoApi.middleware, eventApi.middleware, friendApi.middleware)
+
+    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(userApi.middleware,photoApi.middleware, eventApi.middleware, friendApi.middleware,notificationApi.middleware,postApi.middleware)
+   
+
 
 
 
