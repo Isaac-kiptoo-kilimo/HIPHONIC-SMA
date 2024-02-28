@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useGetPostsQuery } from '../../features/posts/postApi.js';
+import { useAddCommentMutation } from '../../features/Comments/CommentsApi.js';
 
 //icons
 import { TbMoodSmile } from "react-icons/tb";
@@ -17,6 +18,30 @@ import './timelineStatusPost.scss'
 import User from "./TimelineUser.jsx"
 
 const ProfileStatusPost = ({post}) => {
+    //Comment action
+    const [commentContent, setCommentContent] = useState('');
+        const user = JSON.parse(localStorage.getItem('loggedInUser'));
+        const [addComment] = useAddCommentMutation();
+        const handlePostContentChange = (e) => {
+            setCommentContent(e.target.value);
+        }
+        const handleSubmit = (e) => {
+            e.preventDefault();
+
+            if (commentContent.trim() !== '') {
+                const commentWithUserId = {Content: commentContent, UserID: user.user.UserID};
+                addComment(commentWithUserId)
+                .then((response) => {
+                    console.log('Comment sent!:', response);
+                    setCommentContent('')
+                })
+                .catch((error) => {
+                    console.error('Error sending the comment:', error);
+                });
+            } else {
+                console.log('No post content entered');
+            }
+        }
 
     return (
         <div className="profileStatusPost">
@@ -35,9 +60,16 @@ const ProfileStatusPost = ({post}) => {
                 <div className="share"><GoShareAndroid/> 201 Share</div>
             </div>
             <div className='profileStatusPostComment'>
+            <form onSubmit={handleSubmit} className='commentForm'>
                 <input 
+                    className='commentInputArea'
                     type="text" 
-                    placeholder='Write your message...' />
+                    placeholder='Write your message...'
+                    value={commentContent}
+                    onChange={handlePostContentChange}
+                    required
+                    />
+                </form>
                 <div className="btnIcons">
                     <TbMoodSmile />
                     <IoIosLink />
