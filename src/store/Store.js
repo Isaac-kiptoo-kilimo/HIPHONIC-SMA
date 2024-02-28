@@ -23,13 +23,14 @@ export const store=configureStore({
         [eventApi.reducerPath]:eventApi.reducer,
         [friendApi.reducerPath]:friendApi.reducer,
         [postApi.reducerPath]:postApi.reducer,
-        [notificationApi.reducerPath]:notificationApi.reducer
+        [notificationApi.reducerPath]:notificationApi.reducer,
+        [commentApi.reducerPath]: commentApi.reducer
 
     },
 
   
 
-    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(userApi.middleware,photoApi.middleware, eventApi.middleware, friendApi.middleware,notificationApi.middleware,postApi.middleware)
+    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(userApi.middleware,commentApi.middleware,photoApi.middleware, eventApi.middleware, friendApi.middleware,notificationApi.middleware,postApi.middleware)
    
 
 
