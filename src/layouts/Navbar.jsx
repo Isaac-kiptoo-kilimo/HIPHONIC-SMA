@@ -62,10 +62,10 @@ const Navbar = () => {
                         <div className="notification-icon" onClick={handleNotificationsClick}>
                         <NavIcon url={ActiveNotification} />
 
-                        <img className="profile" onClick={handleProfile}  width={80} src={userDetails.user && userDetails.user.profileImage} alt="profile" />
-
+                        
                         {showNotifications && <Notification />}
                       </div>
+                      <img className="profile" onClick={handleProfile}  width={80} src={userDetails.user && userDetails.user.profileImage} alt="profile" />
 
                         {/* <NavIcon onClick={toggleLogout} url={Chevron}  /> */}
                         <FaChevronDown onClick={toggleLogout}/>

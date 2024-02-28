@@ -6,7 +6,7 @@ export const friendApi = createApi({
   tagTypes: ['friendships'],
   endpoints: (builder) => ({
     getFriends: builder.query({
-      query: (friendship) => `friendships/user/${friendship.User1ID}`,
+      query: (User1ID) => `friendships/user/${User1ID}`,
       providesTags: ['friendships'],
     }),
     addFriendship: builder.mutation({

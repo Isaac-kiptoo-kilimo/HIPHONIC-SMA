@@ -16,11 +16,13 @@ import { useGetFriendsQuery } from "../../features/friends/friendApi";
 
 
 const FriendsCard = () => {
-  const { data:Friendships, error, isLoading, isError, isFetching } = useGetFriendsQuery();
-  const loggedInUserDetails=JSON.parse(localStorage.getItem("loggedInUser"))
-  const User1ID=loggedInUserDetails.user.UserID
+  const loggedInUserDetails = JSON.parse(localStorage.getItem("loggedInUser"));
+  const User1ID = loggedInUserDetails?.user?.UserID;
 
-console.log(Friendships);
+  const { data: friendships, error, isLoading, isError, isFetching } = useGetFriendsQuery(User1ID);
+  console.log(User1ID);
+  console.log(friendships);
+
   // const contacts = [
   //   {
   //     image: Angela,
@@ -77,19 +79,19 @@ console.log(Friendships);
     <div className="friendsContainer">
       <div className=""></div>
       <div className="friends-menu">
-        {Friendships &&
-          Friendships.map((friend, index) => (
+        {friendships &&
+          friendships.map((friend, index) => (
             <div className="friendsCard">
               <div className="friend" key={index}>
                 <div className="friends-card-top">
                  <div className="img-name">
-                 <img src={friend.user.ProfileImage} alt={item.name} />
+                 <img width={60} src={friend.profileImage} alt={friend.ProfileImage} />
                   <div className="friends-name">
-                    {/* <p>{friend.name}</p>
-                    <p>{friend.username}</p> */}
+                   <p>{friend.Username}</p>
+                   <p>{friend.TagName}</p>
                   </div>
                  </div>
-                  <img src={FriendIcon} alt={item.name} />
+                  <img src={FriendIcon} alt="icon" />
                 </div>
                 <div className="btn">
                   <Button msg="Message" />
