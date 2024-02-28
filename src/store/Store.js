@@ -27,7 +27,7 @@ export const store=configureStore({
     },
 
 
-    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(userApi.middleware, commentApi.middleware,photoApi.middleware, eventApi.middleware, friendApi.middleware,notificationApi.middleware,postApi.middleware)
+    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(userApi.middleware, commentApi.middleware,photoApi.middleware, eventApi.middleware, friendApi.middleware,notificationApi.middleware, postApi.middleware, statusApi.middleware)
    
 })
 
