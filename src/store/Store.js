@@ -5,13 +5,16 @@ import {userApi} from '../features/user/userApi'
 
 
 import authReducer from "../features/user/authSllice";
-
 import { photoApi } from '../features/Photos/Photoapi';
 import {eventApi} from  '../features/Events/EventsApi';
 import { friendApi } from '../features/friends/friendApi';
 import { notificationApi } from '../features/notifications/notificationApi';
 import { postApi } from '../features/posts/postApi';
+<<<<<<< HEAD
 import { commentApi } from '../features/Comments/CommentsApi';
+=======
+import { statusApi } from '../features/timeline/TimelineApi';
+>>>>>>> 025d11497101796c0f50375b6f52dd209d03e1b5
 
 
 
@@ -30,12 +33,20 @@ export const store=configureStore({
 
   
 
+<<<<<<< HEAD
     middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(userApi.middleware,commentApi.middleware,photoApi.middleware, eventApi.middleware, friendApi.middleware,notificationApi.middleware,postApi.middleware)
    
 
 
 
 
+=======
+    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(userApi.middleware,photoApi.middleware, eventApi.middleware, friendApi.middleware,notificationApi.middleware,postApi.middleware,commentApi.middleware)
+        [postApi.reducerPath]:postApi.reducer,
+        [notificationApi.reducerPath]:notificationApi.reducer,
+        [statusApi.reducerPath]:statusApi.reducer
+    },
+>>>>>>> 025d11497101796c0f50375b6f52dd209d03e1b5
 })
 
 setupListeners(store.dispatch)

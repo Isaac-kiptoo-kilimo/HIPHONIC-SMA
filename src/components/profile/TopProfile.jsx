@@ -35,6 +35,9 @@ const TopProfile = ({user}) => {
     setShowModal(true);
   };
 
+  // const [editingUserId, setEditingUserId] = useState(null);
+  // const [showModal, setShowModal] = useState(false);
+  // onClick={handleEdit} disabled={editingUserId !== null}
 
   const closeModal = () => {
     setShowModal(false);
