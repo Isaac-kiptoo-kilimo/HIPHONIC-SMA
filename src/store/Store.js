@@ -11,6 +11,7 @@ import {eventApi} from  '../features/Events/EventsApi';
 import { friendApi } from '../features/friends/friendApi';
 import { notificationApi } from '../features/notifications/notificationApi';
 import { postApi } from '../features/posts/postApi';
+import { statusApi } from '../features/timeline/TimelineApi';
 
 
 
@@ -22,13 +23,14 @@ export const store=configureStore({
         [eventApi.reducerPath]:eventApi.reducer,
         [friendApi.reducerPath]:friendApi.reducer,
         [postApi.reducerPath]:postApi.reducer,
-        [notificationApi.reducerPath]:notificationApi.reducer
+        [notificationApi.reducerPath]:notificationApi.reducer,
+        [statusApi.reducerPath]:statusApi.reducer
 
     },
 
   
 
-    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(userApi.middleware,photoApi.middleware, eventApi.middleware, friendApi.middleware,notificationApi.middleware,postApi.middleware)
+    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(userApi.middleware,photoApi.middleware, eventApi.middleware, friendApi.middleware,notificationApi.middleware,postApi.middleware,statusApi.middleware)
    
 
 
