@@ -23,58 +23,7 @@ const FriendsCard = () => {
   console.log(User1ID);
   console.log(friendships);
 
-  // const contacts = [
-  //   {
-  //     image: Angela,
-  //     name: "Angela Lee",
-  //     username: "@anglee",
-  //   },
-  //   {
-  //     image: wade,
-  //     name: "Wade Warren",
-  //     username: "@wadee",
-  //   },
-  //   {
-  //     image: jane,
-  //     name: "Jane Cooper",
-  //     username: "@jane",
-  //   },
-  //   {
-  //     image: esther,
-  //     name: "Esther Howard",
-  //     username: "@esther",
-  //   },
-  //   {
-  //     image: brooklyn,
-  //     name: "Brooklyn Simmons",
-  //     username: "@Brooklyn",
-  //   },
-  //   {
-  //     image: Leslie,
-  //     name: "Leslie Alendarer",
-  //     username: "@Leslie",
-  //   },
-  //   {
-  //     image: Jenny,
-  //     name: "Jenny Wilson",
-  //     username: "@Jenny",
-  //   },
-  //   {
-  //     image: Robert,
-  //     name: "Robert Fox",
-  //     username: "@Robert",
-  //   },
-  //   {
-  //     image: Cody,
-  //     name: "Cody Fisher",
-  //     username: "@Cody",
-  //   },
-  //   {
-  //     image: Kristina,
-  //     name: "Kristin Watson",
-  //     username: "@Kristina",
-  //   },
-  // ];
+  
   return (
     <div className="friendsContainer">
       <div className=""></div>

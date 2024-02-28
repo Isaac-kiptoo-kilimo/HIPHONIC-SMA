@@ -11,7 +11,7 @@ const RightBar = () => {
                 <Shortcuts/>
             </div>
             <div className="Contacts">
-                {/* <Contacts/> */}
+                <Contacts/>
             </div>
             <div className="Groups">
                 <Groups/>
