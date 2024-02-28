@@ -9,20 +9,27 @@ import { AiOutlineMessage } from "react-icons/ai";
 import { GoShareAndroid } from "react-icons/go";
 
 //import assets
+import Avatar from "../../assets/Avatar.png"
 
 //stylefile
-import './timelineStatusPost.scss'
+import './ProfilePostCard.scss'
 
 //import components
-import User from "./TimelineUser.jsx"
+import User from "../../components/Timeline/timelineStatusPost.jsx"
 
 const ProfileStatusPost = ({post}) => {
 
     return (
         <div className="profileStatusPost">
-            <div>
-                <User />
+            <div className='profileStatusPostHeader'>
+            <div className="profilePic">
+                <img src={Avatar} alt="" />
             </div>
+            <div className="user">
+                <p className="username">User</p>
+                <p className="postDate">56 mins ago</p>
+            </div>
+        </div>
             <div className='profileStatusPostTextContent'>
                 <p>{post.content}</p>
             </div>

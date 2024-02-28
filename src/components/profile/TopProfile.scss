@@ -1,7 +1,8 @@
 
 .Top{
-    width: 100%;
+   width: 100%;
    background-color: white;
+
     .BackGround{
         width: 100%;
 
@@ -37,7 +38,7 @@
         flex-direction: row;
         background-color: white;
         padding: 1rem;
-        width: 100%;
+        // width: 100%;
         gap: 20px;
         align-items: center;
        }
@@ -56,11 +57,12 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            flex: 0.8;
+            flex: 0.7;
             background-color: #F8FAFC;
-            width: 100%;
+            width: 10%;
             // gap: 30px;
             padding: 1rem;
+
             .posts,.post{
                 width: 20%;
                 padding: 0 10px;

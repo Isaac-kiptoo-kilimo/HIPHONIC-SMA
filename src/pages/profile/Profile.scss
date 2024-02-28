@@ -17,7 +17,7 @@
         width: 100%;
 
         .ProfileContentBottomLeft {
-            width: 32%;
+            width: 35%;
             display: flex;
             flex-direction: column;
             gap: 10px;
@@ -46,16 +46,10 @@
             gap: 10px;
             width: 65%;
 
-            .statusInput {
-                // background-color: #ffffff;
-                // padding: 10px;
-                // border-radius: 13px;
-            }
-
             .statusPost {
-                // background-color: #ffffff;
-                // padding: 10px;
-                // border-radius: 13px;
+                height: 20%;
+                overflow: scroll;
+                width: 100%;
             }
         }
     }

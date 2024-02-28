@@ -6,7 +6,7 @@ import CompleProfile from '../../components/profile/CompleteProfile'
 import ProfileIntro from '../../components/profile/ProfileIntro'
 import ProfilePhotos from '../../components/profile/ProfilePhotos'
 import ProfileStatusInput from '../../components/profile/ProfileStatusInput'
-import ProfileStatusPost from '../../components/profile/ProfileStatusPost'
+import ProfileStatusPost from '../../components/profile/ProfilePostList'
 import TopProfile from '../../components/profile/TopProfile'
 
 //import react features
