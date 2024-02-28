@@ -14,7 +14,6 @@ import { commentApi } from '../features/Comments/CommentsApi';
 import { statusApi } from '../features/timeline/TimelineApi';
 
 
-
 export const store=configureStore({
     reducer:{
         [userApi.reducerPath]:userApi.reducer,
@@ -26,14 +25,15 @@ export const store=configureStore({
         [notificationApi.reducerPath]:notificationApi.reducer,
         [commentApi.reducerPath]: commentApi.reducer,
         [statusApi.reducerPath]:statusApi.reducer
+
     },
 
-  
 
 
     middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(userApi.middleware,photoApi.middleware, eventApi.middleware, friendApi.middleware,notificationApi.middleware,postApi.middleware,commentApi.middleware,statusApi.middleware)
        
     })
+
 
 setupListeners(store.dispatch)
 
