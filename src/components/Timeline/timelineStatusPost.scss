@@ -34,6 +34,7 @@
             gap: 10px;
             color: #94A3B8;}
     }
+
     .profileStatusPostComment {
         display: flex;
         align-items: center;
@@ -41,12 +42,29 @@
         background-color: #F8FAFC;
         border-radius: 13px;
 
-        input {
+        .commentForm {
+            width: 90%;
+
+            input {
+                background-color: #F8FAFC;
+                border: none;
+                width: 100%;
+                padding: 10px;
+
+            .commentInputArea {
+                width: 90%;
+                height: 100%;
+                border: none;
+                padding: 10px;
+            }}
+
+        inputs {
             display: flex;
             align-items: center;
             width: 87%;
             border: none;
             background-color: #F8FAFC;
+        }
         }
 
         .btnIcons {
@@ -56,5 +74,6 @@
             width: 10%;
             color: #94A3B8;
         }
+    
     }
 }

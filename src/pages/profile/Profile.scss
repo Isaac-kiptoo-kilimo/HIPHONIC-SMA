@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    background-color: #ffffff;
     
     .ProfileContentTop{
         width: 100%;
@@ -45,9 +46,10 @@
             flex-direction: column;
             gap: 10px;
             width: 65%;
+            // height: fit-content;
 
             .statusPost {
-                height: 20%;
+                height: 23%;
                 overflow: scroll;
                 width: 100%;
             }
