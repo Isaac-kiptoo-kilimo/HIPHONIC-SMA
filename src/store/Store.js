@@ -1,3 +1,4 @@
+//import react features
 import {configureStore} from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query/react';
 import {userApi} from '../features/user/userApi'
@@ -5,6 +6,8 @@ import {userApi} from '../features/user/userApi'
 
 
 import authReducer from "../features/user/authSllice";
+
+//import the APIs
 import { photoApi } from '../features/Photos/Photoapi';
 import {eventApi} from  '../features/Events/EventsApi';
 import { friendApi } from '../features/friends/friendApi';
