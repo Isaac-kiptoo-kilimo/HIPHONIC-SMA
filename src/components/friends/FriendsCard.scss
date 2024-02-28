@@ -27,11 +27,17 @@
                     .img-name{
                         display: flex;
                         align-items: center;
+                        gap: 2rem;
+                        .friends-name{
+                            display: flex;
+                            flex-direction: column;
+                            gap: .5rem;
+                        }
                     }
                 }
                 .btn{
                     width: 100%;
-                    button{
+                    Button{
                         width: 100%;
                         background-color: white;
                         padding: 1rem 0;
@@ -40,6 +46,8 @@
                         color: blue;
                         font-size: 17px;
                         font-weight: 600;
+                        display: flex;
+                        justify-content: center;
                     }
                 }
             }
