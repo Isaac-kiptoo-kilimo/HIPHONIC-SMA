@@ -5,11 +5,11 @@ export const photoApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/api/' }),
     tagTypes: ['Photo'],
     endpoints: (builder) => ({
-        getPhotos: builder.query({
-            query: (UserID) => `photos/${UserID}`,
+        getPhotoComment: builder.query({
+            query: () => 'photo',
             providesTags: ['Photo']
         }),
-        addPhoto: builder.mutation({
+        addPhotoComment: builder.mutation({
             query: (photo) => ({
                 url: 'photos',
                 method: 'POST',
@@ -17,7 +17,7 @@ export const photoApi = createApi({
             }),
             invalidatesTags: ['Photo']
         }),
-        updatePhoto: builder.mutation({
+        updatePhotoComment: builder.mutation({
             query: ({ id, photo }) => ({
                 url: `photo/${id}`,
                 method: 'PUT',
@@ -25,7 +25,7 @@ export const photoApi = createApi({
             }),
             invalidatesTags: ['Photo'],
         }),
-        deletePhoto: builder.mutation({
+        deletePhotoComment: builder.mutation({
             query: (id) => ({
                 url: `photo/${id}`,
                 method: 'DELETE'
@@ -35,5 +35,5 @@ export const photoApi = createApi({
     })
 });
 
-export const { useGetPhotosQuery, useAddPhotoMutation, useDeletePhotoMutation, useUpdatePhotoMutation } = photoApi;
+export const { useGetPhotoCommentQuery, useAddPhotoCommentMutation, us } = photoApi;
 
