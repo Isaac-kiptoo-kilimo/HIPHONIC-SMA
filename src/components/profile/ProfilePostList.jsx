@@ -1,26 +1,33 @@
-import ProfilePostCard from './ProfilePostCard'
-
-import './ProfilePostList.scss'
-
-import React from 'react'
-
-import { useGetPostsQuery } from '../../features/posts/postApi'
+import ProfilePostCard from './ProfilePostCard';
+import './ProfilePostList.scss';
+import React from 'react';
+import { useGetPostsQuery } from '../../features/posts/postApi';
 import { ClipLoader } from 'react-spinners';
 
 const PostList = () => {
     const { data: posts, error, isLoading, isError, isFetching } = useGetPostsQuery({ refetchOnReconnect: true });
 
+    let latestPost = null;
+
+    if (isLoading || isFetching) {
+        return <ClipLoader color='#000' loading={true}/>;
+    }
+
+    if (isError) {
+        return <div>{error.data.message}</div>;
+    }
+
+    if (posts && posts.length > 0) {
+
+        // Find the most recent post
+        latestPost = posts[0];
+    }
+
     return (
         <div className='UserPostsList'>
-            {isError && <div>{error.data.message} </div> }
-            {(isLoading || isFetching) && <ClipLoader color='#000' loading={true}/>}
-            <section className='section'>
-                {posts && posts.map((post, index) => (
-                    <ProfilePostCard key={index} post = {post}/>
-                ))}
-            </section>
+            {latestPost && <ProfilePostCard key={latestPost.id} post={latestPost} />}
         </div>
-    )
+    );
 }
 
 export default PostList;

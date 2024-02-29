@@ -8,6 +8,7 @@ import { ClipLoader } from 'react-spinners';
 const PostList = () => {
     const { data: posts, error, isLoading, isError, isFetching } = useGetPostsQuery({ refetchOnReconnect: true });
 
+    // console.log("This is the logged posts:", posts);
     return (
         <div>
             {isError && <div>{error.data.message} </div> }

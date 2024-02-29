@@ -43,6 +43,13 @@ const ProfileStatusInput = () => {
         }
     };
 
+    //Function to show and hide photo url input
+        const [isVisible, setIsVisible] = useState(false);
+
+        const toggleVisibility = () => {
+            setIsVisible(!isVisible);
+        };
+
     return (
         <div className="ProfileStatusInput">
             <div className='ProfileStatusInputTopContainer'>
@@ -57,12 +64,22 @@ const ProfileStatusInput = () => {
                         onChange={handlePostContentChange}
                         required
                     />
+
+                {isVisible && (
+                    <input
+                    className="statusInputArea"
+                    type="text"
+                    placeholder="Photo Url"
+                    // value={postContent}
+                    // onChange={handlePostContentChange}
+                    required
+                    />)}
                 </form>
                 </div>
             </div>
             <div className='ProfileStatusInputBottom'>
                 <div><AiOutlineYoutube /> Live Video</div>
-                <div> <IoImageOutline /> Image/Video</div>
+                <div onClick={toggleVisibility}> <IoImageOutline /> Image/Video</div>
                 <div><FaRegStar /> Activity</div>
             </div>
         </div>

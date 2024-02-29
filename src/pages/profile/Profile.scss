@@ -4,7 +4,8 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    background-color: #ffffff;
+    // padding: 10px;
+    background-color: #F8FAFC;
     
     .ProfileContentTop{
         width: 100%;
@@ -49,8 +50,8 @@
             // height: fit-content;
 
             .statusPost {
-                height: 23%;
-                overflow: scroll;
+                height: 30%;
+                // overflow: scroll;
                 width: 100%;
             }
         }

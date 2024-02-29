@@ -16,6 +16,11 @@ export const commentApi = createApi({
             providesTags: ['Comments']
         }),
 
+        getPostComment:builder.query({
+            query:(PostID)=> `comments/${PostID}`,
+            providesTags: ['Comments']
+        }),
+
         addComment:builder.mutation({
             query:(comment) => ({
                 url: 'comments',
@@ -25,7 +30,7 @@ export const commentApi = createApi({
             invalidatesTags:['Comments']
         }),
 
-        updatePost: builder.mutation({
+        updateComment: builder.mutation({
             query:(comment)=>({
                 url: `comment/patch/${comment.CommentID}`,
                 method: 'PUT',
@@ -35,7 +40,7 @@ export const commentApi = createApi({
             invalidatesTags: ['Comments']
         }),
 
-        deletePost: builder.mutation({
+        deleteComment: builder.mutation({
             query:(CommentID) => ({
                 url: `comments/delete/${CommentID}`,
                 method: 'DELETE',
@@ -44,4 +49,4 @@ export const commentApi = createApi({
         })
     })
 })
-export const { useGetCommentsQuery, useGetCommentQuery, useAddCommentMutation, useUpdateCommentMutation, useDeleteCommentMutation}=commentApi
+export const { useGetCommentsQuery, useGetPostCommentQuery, useAddCommentMutation, useUpdateCommentMutation, useDeleteCommentMutation}=commentApi
