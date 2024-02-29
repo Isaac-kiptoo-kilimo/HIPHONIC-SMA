@@ -3,7 +3,7 @@ import React from 'react'
 const MembersIcons = ({MbrIcon}) => {
   return (
     <div>
-      <img src={MbrIcon} alt="" />
+      <img style={{width:"40px",borderRadius:"50%"}} src={MbrIcon} alt="" />
     </div>
   )
 }
