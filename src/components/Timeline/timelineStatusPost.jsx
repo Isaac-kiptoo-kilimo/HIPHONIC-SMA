@@ -16,8 +16,10 @@ import './timelineStatusPost.scss'
 
 //import components
 import User from "./TimelineUser.jsx"
+import CommentList from '../profile/PostCommentList.jsx';
 
 const ProfileStatusPost = ({post}) => {
+
     //Comment action
     const [commentContent, setCommentContent] = useState('');
         const user = JSON.parse(localStorage.getItem('loggedInUser'));
@@ -25,8 +27,24 @@ const ProfileStatusPost = ({post}) => {
         const handlePostContentChange = (e) => {
             setCommentContent(e.target.value);
         }
-        const handleSubmit = (e) => {
-            e.preventDefault();
+
+    //Likes action
+    const [count, setCount] = useState(0);
+
+    const handleClick = () => {
+        setCount(count + 1);
+    };
+
+    //Comments action
+    const [isVisible, setIsVisible] = useState(false);
+
+    const toggleVisibility = () => {
+        setIsVisible(!isVisible);
+    };
+
+    //Submit functions
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
             if (commentContent.trim() !== '') {
                 const commentWithUserId = {Content: commentContent, UserID: user.user.UserID};
@@ -55,10 +73,11 @@ const ProfileStatusPost = ({post}) => {
                 {/* {UserID} */}
             </div>
             <div className='profileStatusPostInteraction'>
-                <div className="like"><FaHeart />{post.likes} Likes</div>
-                <div className="comment"><AiOutlineMessage/>{post.comments} Comments</div>
+                <div className="like" onClick={handleClick}><FaHeart />{count} Likes</div>
+                <div className="comment" onClick={toggleVisibility}><AiOutlineMessage/>{post.comments} Comments</div>
                 <div className="share"><GoShareAndroid/> 201 Share</div>
             </div>
+            <div>
             <div className='profileStatusPostComment'>
             <form onSubmit={handleSubmit} className='commentForm'>
                 <input 
@@ -74,6 +93,12 @@ const ProfileStatusPost = ({post}) => {
                     <TbMoodSmile />
                     <IoIosLink />
                 </div>
+            </div>
+            <div className="fetchedComments">
+                            {isVisible && (
+                                <div><CommentList /></div>
+                            )}
+                        </div>
             </div>
         </div>
     )
