@@ -2,6 +2,8 @@
     display: flex;
     flex-wrap: wrap;
     background-color: #F8FAFC;
+    overflow: hidden;
+    width: 100%;
     .group-middle-content{
     display: flex;
     flex-direction: column;
@@ -13,8 +15,6 @@
         padding: 14px 10px;
     }
     }
-
-
 }
 
 
@@ -44,11 +44,3 @@
     }
 }
 
-@media screen and (min-width: 821px) and (max-width: 1024px){
-    .group-right-content{
-        // .group-middle-content{
-            
-        // }   
-    
-    }
-}

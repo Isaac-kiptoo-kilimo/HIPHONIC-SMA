@@ -5,7 +5,7 @@ import FriendIcon from "../../assets/friend-icon.png";
 import "./PostsCard.scss";
 
 
-const PostsCard = () => {
+const PostsCard = ({group}) => {
   return (
       <div className="post-card-head">
         <div className="post-card-left-items">
@@ -15,7 +15,7 @@ const PostsCard = () => {
           </div>
           </div>
           <div className="post-card-user-desc">
-            <h4>UI / UX Designer</h4>
+            <h4>{group.GroupName}</h4>
             <p>
               Bandung • <span>7 posts a day</span>
             </p>

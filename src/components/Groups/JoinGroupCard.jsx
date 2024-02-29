@@ -11,8 +11,21 @@ import MembersIcons from "../shared/MembersIcons";
 import EventOne from "../../assets/event-one.png";
 import EventTwo from "../../assets/event-two.png";
 import EventThree from "../../assets/event-three.png";
+import { useGetGroupsQuery } from "../../features/groups/groupApi";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const JoinGroupCard = () => {
+  const {data,error, isLoading, isError, isFetching}=useGetGroupsQuery()
+  // const groupArray=groups.groups
+  // console.log(groups);
+
+
+  if (isLoading || isFetching) {
+    return <ClipLoader color={"#000"} loading={isLoading} size={150} />;
+  }
+  if (isError) {
+    return <div>😐: {error.data.message}</div>;
+  }
   return (
     <div className="group-container">
       <GroupHeader />
@@ -26,40 +39,28 @@ const JoinGroupCard = () => {
         </div>
       </div>
       <div className="group-card-container">
-        <div className="card-contents">
-          <PostsCard />
-          <PostImageCard PostImage={MaskGroup1} />
-          <div className="group-page-icon">
-          <div className="group-btn-card">
-            <Button msg="Join Group" />
-            </div>
-            <div className="group-bottom">
-              <MembersIcons MbrIcon={EventThree} />
-              <MembersIcons MbrIcon={EventOne} />
-              <MembersIcons MbrIcon={EventTwo} />
-              <div className="group-para">
-              <p>2K</p>
-              </div>
-            </div>
+      {
+  [...data].sort((a, b) => b.id - a.id).map(group => (
+    <div className="card-contents" key={group.GroupID}>
+      <PostsCard group={group}/>
+      <PostImageCard PostImage={group.group_image} />
+      <div className="group-page-icon">
+        <div className="group-btn-card">
+          <Button msg="Join Group" />
+        </div>
+        <div className="group-bottom">
+          <MembersIcons MbrIcon={EventThree} />
+          <MembersIcons MbrIcon={EventOne} />
+          <MembersIcons MbrIcon={EventTwo} />
+          <div className="group-para">
+            <p>2K</p>
           </div>
         </div>
-        <div className="card-contents">
-          <PostsCard />
-          <PostImageCard PostImage={MaskGroup2} />
-          <div className="group-page-icon">
-            <div className="group-btn-card">
-            <Button msg="Join Group" />
-            </div>
-            <div className="group-bottom">
-              <MembersIcons  MbrIcon={EventThree} />
-              <MembersIcons className="mbrs-icon" MbrIcon={EventOne} />
-              <MembersIcons MbrIcon={EventTwo} />
-              <div className="group-para">
-              <p>2K</p>
-              </div>
-            </div>
-          </div>
-        </div>
+      </div>
+    </div>
+  ))
+}
+      
       </div>
     </div>
   );
