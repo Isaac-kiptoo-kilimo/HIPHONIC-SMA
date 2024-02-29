@@ -24,9 +24,13 @@
             padding: 10px;
             .navlink{
                 text-decoration: none;
-                color: #2563EB;
-                font-size: 14px;
+                color: #7591ce;
+                font-size: 16px;
                 font-weight: 400;
+                &:hover{
+                    cursor: pointer;
+                    color: #2563EB;
+                }
             }
         }
     }
@@ -36,7 +40,7 @@
         width: 100%;
         gap: 10px 5px;
         flex-wrap: wrap;
-       padding: 1rem 1.2rem;
+       padding: 1rem 0;
         .card-contents{
             background-color: #F8FAFC;
             border-radius: 12px;

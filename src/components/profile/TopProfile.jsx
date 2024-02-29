@@ -61,7 +61,9 @@ const TopProfile = ({user}) => {
           )}
       </div>
          </div> 
+          <div className="profile-img-top">
           <img className="avatar"src={userDetails.user && userDetails.user.profileImage} alt="noimage" />
+          </div>
         </div>
       </div>
       <div className="bottom-top">

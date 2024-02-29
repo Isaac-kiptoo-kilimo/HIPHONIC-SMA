@@ -15,6 +15,9 @@ import { notificationApi } from '../features/notifications/notificationApi';
 import { postApi } from '../features/posts/postApi';
 import { commentApi } from '../features/Comments/CommentsApi';
 import { statusApi } from '../features/timeline/TimelineApi';
+import { groupApi } from '../features/groups/groupApi';
+import { groupMembersApi } from '../features/groupMembers/groupMembersApi';
+import { groupPostApi } from '../features/groups/groupPostApi';
 
 
 export const store=configureStore({
@@ -27,13 +30,16 @@ export const store=configureStore({
         [postApi.reducerPath]:postApi.reducer,
         [notificationApi.reducerPath]:notificationApi.reducer,
         [commentApi.reducerPath]: commentApi.reducer,
-        [statusApi.reducerPath]:statusApi.reducer
+        [statusApi.reducerPath]:statusApi.reducer,
+        [groupApi.reducerPath]:groupApi.reducer,
+        [groupMembersApi.reducerPath]:groupMembersApi.reducer,
+        [groupPostApi.reducerPath]:groupPostApi.reducer,
 
     },
 
 
 
-    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(userApi.middleware,photoApi.middleware, eventApi.middleware, friendApi.middleware,notificationApi.middleware,postApi.middleware,commentApi.middleware,statusApi.middleware)
+    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(userApi.middleware,photoApi.middleware, eventApi.middleware, friendApi.middleware,notificationApi.middleware,postApi.middleware,commentApi.middleware,statusApi.middleware,groupApi.middleware,groupMembersApi.middleware,groupPostApi.middleware)
        
     })
 

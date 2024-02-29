@@ -14,7 +14,7 @@ import { TbBriefcase } from "react-icons/tb";
 import { CiCalendarDate } from "react-icons/ci";
 import { GoLink } from "react-icons/go";
 import { HiDotsHorizontal } from "react-icons/hi";
-
+import { format } from 'date-fns';
 
 const ProfileIntro = () => {
   // const navigate = useNavigate();
@@ -23,8 +23,11 @@ const ProfileIntro = () => {
   useEffect(() => {
     const storedUserDetails = JSON.parse(localStorage.getItem('loggedInUser'))
     setUserDetails(storedUserDetails);
+    const registeredDate=storedUserDetails.user.registeredDate
+    let currentDate = format(registeredDate, 'MMMM do yyyy');
+  console.log(currentDate);
   },[])
-
+  
     return (
       <div className="intro">
         <div className="Intro-top">
@@ -37,7 +40,7 @@ const ProfileIntro = () => {
         </div>
       <div className='profileAbout'>
         <p style={{ fontWeight: "500", color: "#64748B" }}>
-          I am an experienced joiner with well developed skills
+        {userDetails.user && userDetails.user.bio}
         </p>
       </div>
       <div className="list">
@@ -47,18 +50,18 @@ const ProfileIntro = () => {
         </div>
         <div className="Briefcase">
         <TbBriefcase />
-          <p>Binford Ltd.</p>
+          <p>{userDetails.user && userDetails.user.company_name}.</p>
         </div>
         <div className="Calender">
         <CiCalendarDate />
-          <p>September 24 2017</p>
+          <p>{userDetails.user && userDetails.user.registeredDate && format(userDetails.user.registeredDate, 'MMMM do yyyy')}</p>
         </div>
         <div className="link">
         <GoLink />
-          <p>dribble.com/Angela</p>
+          <p>{userDetails.user && userDetails.user.website_link}</p>
         </div>
       </div>
     </div>
   );
 }
-export default ProfileIntro;
+export default ProfileIntro ;
