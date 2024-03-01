@@ -17,6 +17,8 @@ import Sidebar from './Sidebar';
 import RightBar from './RightBar';
 import Groups from '../pages/groups/Groups';
 import FriendsPage from '../pages/friends/FriendsPage';
+import Messages from '../pages/messages/Messages';
+import SingleGroup from '../pages/SingleGroup/SingleGroup';
 
 const mainContent = () => {
     return (
@@ -37,6 +39,8 @@ const mainContent = () => {
        <Route path='/friends' element={ <FriendsPage />}/>
        <Route path='/photos' element={ <Photos />}/>
        <Route path='/events' element={<Event/>}/>
+       <Route path='/messages' element={<Messages/>}/>
+       <Route path='/Single/:GroupID' element={<SingleGroup/>}/>
  
          </Routes>
          </div>
