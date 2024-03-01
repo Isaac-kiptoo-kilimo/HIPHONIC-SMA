@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useGetPostsQuery } from '../../features/posts/postApi.js';
 import { useAddCommentMutation } from '../../features/Comments/CommentsApi.js';
+import { useGetUserQuery } from '../../features/user/userApi.js';
 
 //icons
 import { TbMoodSmile } from "react-icons/tb";
@@ -10,12 +11,12 @@ import { AiOutlineMessage } from "react-icons/ai";
 import { GoShareAndroid } from "react-icons/go";
 
 //import assets
+import Avatar from "../../assets/Avatar.png"
 
 //stylefile
 import './timelineStatusPost.scss'
 
 //import components
-import User from "./TimelineUser.jsx"
 import CommentList from '../profile/PostCommentList.jsx';
 
 const ProfileStatusPost = ({post}) => {
@@ -63,14 +64,24 @@ const ProfileStatusPost = ({post}) => {
 
     return (
         <div className="profileStatusPost">
-            <div>
-                <User />
-            </div>
+            <div className='profileStatusPostHeader'>
+                        <div className="profilePic">
+                            <img src={Avatar} alt="err" />
+                        </div>
+                        <div className="user">
+                            <p className="username">{user.username}</p>
+                            <p className="postDate">On {post.post_date}</p>
+                        </div>
+                    </div>
             <div className='profileStatusPostTextContent'>
                 <p>{post.content}</p>
             </div>
             <div className='profileStatusPostImageContent'>
-                {/* {UserID} */}
+                <img style={{borderRadius:"16px", backgroundColor:"black"}} height="200px" width="300px" src={post.imageUrl} alt="" />
+                <video style={{borderRadius:"16px", backgroundColor:"black"}} height="200px" width="300px" controls autoPlay>
+                    <source src={post.videoUrl}/>
+                </video>
+                
             </div>
             <div className='profileStatusPostInteraction'>
                 <div className="like" onClick={handleClick}><FaHeart />{count} Likes</div>

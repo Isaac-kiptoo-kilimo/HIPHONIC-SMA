@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PostCommentCard from './PostCommentCard.jsx';
 import './PostCommentList.scss';
 import { useGetCommentsQuery } from '../../features/Comments/CommentsApi.js';
@@ -19,10 +19,10 @@ const PostCommentList = () => {
 
     return (
         <div className='PostCommentList'>
-            <p style={{color:"white", padding:"10px 0 0 0"}}>Comments...</p>
+            <p style={{color:"white", padding:"10px 0 0 0"}}>Get all comments...</p>
             
             <section className='section'>
-                {comments && <PostCommentCard key={comments.id} comments={comments} /> 
+                {comments && <PostCommentCard key={comments.id} comments={comments} />
                 }
             </section>
             <p style={{color:"white", padding:"10px 0 0 0"}}>The end of comments</p>

@@ -2,23 +2,26 @@ import React, { useState } from "react";
 import { MdOutlineCancel } from "react-icons/md";
 import "./CreateGroupPost.scss";
 import { useAddGroupPostMutation } from "./groupPostApi";
+import { useParams } from "react-router-dom";
 
 
 
 const CreateGroupPost = ({ closeModal }) => {
+  const { GroupID } = useParams();
+
 const [addGroupPost]=useAddGroupPostMutation()
   const user = JSON.parse(localStorage.getItem("loggedInUser"));
   const UserID= user?.user?.UserID
 
   console.log(user);
 
- 
+  GroupID
 
   const HandleSubmitGroupPost=(e)=>{
     e.preventDefault()
-    addGroupPost({post_description:e.target[0].value,post_image:e.target[2].value,postedByID:UserID})
+    addGroupPost({description:e.target[0].value,activity_photo:e.target[1].value,UploadedByID:UserID,GroupID:GroupID})
    
-    closeModal();
+   
   }
 
 
@@ -26,40 +29,36 @@ const [addGroupPost]=useAddGroupPostMutation()
     closeModal();
   };
 
+  const onSubmit=()=>{
+    console.log("I can submit");
+  }
+
 
   return (
-    <section  className="modal-card">
-      <div className="close">
-        <MdOutlineCancel className="close-icon" onClick={handleClose} />
-      </div>
-
-      <form className="form" onSubmit={HandleSubmitGroupPost} >
-      <h2>Post Programmes</h2>
-      
-        <div className="input-group">
-          <input
-            type="text"
-            name="description"
-            id="post_description"
-            placeholder="post Description"          
-          />
-          
+    <div className="singlegroup-page">
+      {/* <ToasterContainer /> */}
+      <div className='container-single-group'>
+        <div className="header">
+          <h3>Post What you have in mind</h3>
         </div>
-        <div className="input-group">
-          <input
-            type="text"
-            name="group_image"
-            id="post_image"
+        <form onSubmit={HandleSubmitGroupPost}>
+          <div className="form-inputs">
+            <label htmlFor="description" className='username'>
+              <input type="text" id="description" name="description" placeholder="Description" />
+            </label>
             
-            placeholder="post image"
-            
-          />
-        </div> 
-      
-        <button type="submit">post</button>
-      </form>
-    </section>
-  );
+            <label htmlFor="activity_photo" className='password'>
+              <input type="text" id="activity_photo" name="activity_photo" placeholder="Activity photo" />
+            </label>
+           
+          </div>
+    
+          <button type="submit">Post</button>
+        </form>
+       
+      </div>
+    </div>
+  )
 };
 
 export default CreateGroupPost;

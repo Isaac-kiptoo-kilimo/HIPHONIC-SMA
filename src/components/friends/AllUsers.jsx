@@ -29,7 +29,7 @@ console.log(userID1);
     <ToasterContainer />
     <article className="Friendscard" key={user.userID}>
      <div>
-     <img width={60} src={user && user.profileImage} alt="avatar" />
+     <img width={60} height={60} style={{borderRadius:'50%'}} src={user && user.profileImage} alt="avatar" />
      </div>
       <div className="friends-content">
         <h3>{user.Username}</h3>
