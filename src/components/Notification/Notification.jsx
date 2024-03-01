@@ -6,7 +6,7 @@ import esther from '../../assets/Avatar2.png';
 import cameron from '../../assets/Avatar3.png';
 import brooklyn from '../../assets/Avatar4.png';
 import './Notification.scss';
-import { useGetNotificationsQuery } from '../../features/notifications/notificationApi';
+import { useGetNotificationQuery } from '../../features/notifications/notificationApi';
 
 const friends = [
   { icon: wade, name: 'Angela Lee' },
@@ -17,8 +17,11 @@ const friends = [
 ];
 
 const Notification = ({ onClose }) => {
+const loggedInUserNotification=JSON.parse(localStorage.getItem('loggedInUser'))
+console.log(loggedInUserNotification);
+const UserID=loggedInUserNotification.user.UserID
 
-  const {data:Notifications}=useGetNotificationsQuery()
+  const {data:Notifications}=useGetNotificationQuery(UserID)
   // console.log(Notifications);
   const notifications = Notifications || [];
   console.log(notifications);
@@ -40,12 +43,18 @@ const Notification = ({ onClose }) => {
           <h4>Today</h4>
         </div>
         <div className='TodayNotification'>
-          {notifications && notifications.map((notification, index) => (
+        <div className="people">
+        {notifications && notifications.map((notification, index) => (
             <div key={index} className="notification-item">
+              <img style={{width:"40px",height:"40px",borderRadius:"50%"}} src={notification.profileImage} alt="profile image" />
               <span>{notification.message} </span>
             </div>
           ))}
-        </div>
+            
+          </div>
+          </div>
+          
+          {/* useGetNotificationQuery */}
 
         <div className="yesterdayNotification">
           <h4>YESTERDAY</h4>
