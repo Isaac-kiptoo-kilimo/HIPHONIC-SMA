@@ -1,89 +1,85 @@
-import React, { useState } from 'react';
-
-//Import mutations
+//ProfileStatusInput
+import React, { useState, useEffect } from 'react';
 import { useAddPostMutation } from '../../features/posts/postApi';
-
-//import icons
-import { AiOutlineYoutube } from "react-icons/ai";
-import { IoImageOutline } from "react-icons/io5";
-import { FaRegStar } from "react-icons/fa";
-import { CiGlobe } from "react-icons/ci";
-import { FaChevronDown } from "react-icons/fa";
-
-//import assets
-import Avatar from "../../assets/Avatar.png"
-
-//stylefile
-import './ProfileStatusInput.scss'
+import Avatar from '../../assets/Avatar.png';
+import './ProfileStatusInput.scss';
 
 const ProfileStatusInput = () => {
-    const [postContent, setPostContent] = useState('');
-    const user = JSON.parse(localStorage.getItem('loggedInUser'));
-    const [addPost] = useAddPostMutation();
-    
-    const handlePostContentChange = (e) => {
-        setPostContent(e.target.value);
-    };
-    
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        
-        if (postContent.trim() !== '') {
-          const postWithUserId = {content: postContent, UserID: user.user.UserID};
-          addPost(postWithUserId)
-          .then((response) => {
-            console.log('Post created successfully:', response);
-            setPostContent('');
-          })
-          .catch((error) => {
-            console.error('Error uploading photo:', error);
-          });
-        } else {
-            console.log('No post content entered');
-        }
-    };
+  const [postContent, setPostContent] = useState('');
+  const [videoUrl, setVideoUrl] = useState(''); // State for video URL
+  const [imageUrl, setImageUrl] = useState(''); // State for image URL
+  const user = JSON.parse(localStorage.getItem('loggedInUser'));
+  const [addPost] = useAddPostMutation();
 
-    //Function to show and hide photo url input
-        const [isVisible, setIsVisible] = useState(false);
+  const handlePostContentChange = (e) => {
+    setPostContent(e.target.value);
+  };
 
-        const toggleVisibility = () => {
-            setIsVisible(!isVisible);
-        };
+  const handleVideoUrlChange = (e) => {
+    setVideoUrl(e.target.value);
+  };
 
-    return (
-        <div className="ProfileStatusInput">
-            <div className='ProfileStatusInputTopContainer'>
-                <div className="ProfileStatusInputTop">
-                    <div className="profilePic"><img src={Avatar} alt="" /></div>
-                <form onSubmit={handleSubmit} className='ProfilePostForm'>
-                    <input
-                        className="statusInputArea"
-                        type="text"
-                        placeholder="What's on your mind?"
-                        value={postContent}
-                        onChange={handlePostContentChange}
-                        required
-                    />
+  const handleImageUrlChange = (e) => {
+    setImageUrl(e.target.value);
+  };
 
-                {isVisible && (
-                    <input
-                    className="statusInputArea"
-                    type="text"
-                    placeholder="Photo Url"
-                    // value={postContent}
-                    // onChange={handlePostContentChange}
-                    required
-                    />)}
-                </form>
-                </div>
-            </div>
-            <div className='ProfileStatusInputBottom'>
-                <div><AiOutlineYoutube /> Live Video</div>
-                <div onClick={toggleVisibility}> <IoImageOutline /> Image/Video</div>
-                <div><FaRegStar /> Activity</div>
-            </div>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (postContent.trim() !== '') {
+      const postWithUserData = {
+        content: postContent,
+        videoUrl: videoUrl, // Include video URL
+        imageUrl: imageUrl, // Include image URL
+        UserID: user.user.UserID,
+      };
+
+      addPost(postWithUserData)
+        .then((response) => {
+          console.log('Post created successfully:', postWithUserData);
+          setPostContent('');
+          setVideoUrl('');
+          setImageUrl('');
+        })
+        .catch((error) => {
+          console.error('Error creating post:', error);
+        });
+    } else {
+      console.log('No post content entered');
+    }
+  };
+
+  return (
+    <div className="ProfileStatusInput">
+      <div className="ProfileStatusInputTopContainer">
+        <div className="ProfileStatusInputTop">
+          <div className="profilePic">
+            <img src={Avatar} alt="User Avatar" />
+          </div>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Enter video URL"
+              value={videoUrl}
+              onChange={handleVideoUrlChange}
+            />
+            <input
+              type="text"
+              placeholder="Enter image URL"
+              value={imageUrl}
+              onChange={handleImageUrlChange}
+            />
+            <textarea
+              placeholder="Write your post content..."
+              value={postContent}
+              onChange={handlePostContentChange}
+            />
+            <button type="submit">Post</button>
+          </form>
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
 export default ProfileStatusInput;

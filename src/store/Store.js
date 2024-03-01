@@ -15,6 +15,7 @@ import { notificationApi } from '../features/notifications/notificationApi';
 import { postApi } from '../features/posts/postApi';
 import { commentApi } from '../features/Comments/CommentsApi';
 import { statusApi } from '../features/timeline/TimelineApi';
+import { likeApi } from '../features/Likes/LikesApi';
 
 
 export const store=configureStore({
@@ -27,13 +28,14 @@ export const store=configureStore({
         [postApi.reducerPath]:postApi.reducer,
         [notificationApi.reducerPath]:notificationApi.reducer,
         [commentApi.reducerPath]: commentApi.reducer,
-        [statusApi.reducerPath]:statusApi.reducer
+        [statusApi.reducerPath]:statusApi.reducer,
+        [likeApi.reducerPath]:likeApi.reducer
 
     },
 
 
 
-    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(userApi.middleware,photoApi.middleware, eventApi.middleware, friendApi.middleware,notificationApi.middleware,postApi.middleware,commentApi.middleware,statusApi.middleware)
+    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(userApi.middleware,photoApi.middleware, eventApi.middleware, friendApi.middleware,notificationApi.middleware,postApi.middleware,commentApi.middleware,statusApi.middleware, likeApi.middleware)
        
     })
 

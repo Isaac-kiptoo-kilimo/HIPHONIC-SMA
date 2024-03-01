@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useGetPostQuery } from '../../features/posts/postApi.js';
+import { useGetOnePostQuery } from '../../features/posts/postApi.js';
 
 // Icons
 import { FaHeart } from "react-icons/fa";
@@ -10,7 +10,7 @@ import { GoShareAndroid } from "react-icons/go";
 import './ProfileStatusPost.scss'
 
 const ProfileStatusPost = ({ loggedInUser, postId }) => {
-    const { data: post, error, isLoading, isError, isFetching } = useGetPostQuery(postId);
+    const { data: post, error, isLoading, isError, isFetching } = useGetOnePostQuery(postId);
     const [userDetails, setUserDetails] = useState(loggedInUser);
 
     useEffect(() => {
