@@ -11,8 +11,18 @@ export const postApi = createApi({
             providesTags: ['Posts']
         }),
 
-        getPost:builder.query({
+        getOnePost:builder.query({
             query:(post_id)=> `posts/${post_id}`,
+            providesTags: ['Posts']
+        }),
+
+        getOnePhotoPost:builder.query({
+            query:(post_id)=> `posts/photo/${post_id}`,
+            providesTags: ['Posts']
+        }),
+
+        getOneVideoPost:builder.query({
+            query:(post_id)=> `posts/videos/${post_id}`,
             providesTags: ['Posts']
         }),
 
@@ -44,4 +54,4 @@ export const postApi = createApi({
         })
     })
 })
-export const { useGetPostsQuery, useGetPostQuery, useAddPostMutation, useUpdatePostMutation, useDeletePostMutation}=postApi
+export const { useGetPostsQuery, useGetOnePhotoPostQuery, useGetOneVideoPostQuery, useGetOnePostQuery, useAddPostMutation, useUpdatePostMutation, useDeletePostMutation}=postApi

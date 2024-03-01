@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './Photos.scss';
 import PhotoForm from '../../components/photos/PhotoForm';
 import { AiFillMessage } from "react-icons/ai";
@@ -9,7 +9,6 @@ import { json } from 'react-router-dom';
 const Photos = () => {
   const [imagePaths, setImagePaths] = useState([]);
   const [comments, setComments] = useState([]);
-
 
 const photoUploader=JSON.parse(localStorage.getItem("loggedInUser"))
 const userID=photoUploader.user.UserID
@@ -37,7 +36,6 @@ console.log(data);
     setComments(updatedComments);
   };
   const[count, setCount] = useState(0)
- 
 
   return (
     <div className="photobum">
@@ -59,6 +57,7 @@ console.log(data);
       <div className="images">
         {data && data.map((photo) => (
           <div key={photo.id} className="image-container">
+            <video src={photo.PhotoURL} controls autoPlay >Video</video>
             <img src={photo.PhotoURL} alt={`Photo`} />
             <div className='photo-reaction'>
               <div onClick={() => handleClick()}>
@@ -87,10 +86,5 @@ console.log(data);
   );
 };
 
+
 export default Photos;
-
-
-
-
-
-

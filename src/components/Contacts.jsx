@@ -12,6 +12,8 @@ function Contacts() {
     setShowAll(!showAll);
   };
 
+  console.log("Users to display:", displayedUsers);
+
   return (
     <div className="Contacts">
       <div className="Heading">

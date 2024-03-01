@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGetPostsQuery } from '../../features/posts/postApi.js';
 import { useAddCommentMutation } from '../../features/Comments/CommentsApi.js';
+import { useGetPhotosQuery } from '../../features/Photos/Photoapi';
 // import { useGetCommentsQuery, useGetCommentQuery } from '../../features/Comments/CommentsApi.js';
 import { TbMoodSmile } from "react-icons/tb";
 import { IoIosLink } from "react-icons/io";
@@ -25,6 +26,11 @@ const ProfileStatusPost = ({ post }) => {
     const handlePostContentChange = (e) => {
         setCommentContent(e.target.value);
     };
+
+    //photo fetch
+    const photoUploader=JSON.parse(localStorage.getItem("loggedInUser"))
+const userID=photoUploader.user.UserID
+    const {data}=useGetPhotosQuery(userID)
 
     //Submit comment function
     const handleSubmit = (e) => {
@@ -79,10 +85,26 @@ const ProfileStatusPost = ({ post }) => {
                         <p>{post.content}</p>
                     </div>
                     <div className='profileStatusPostImageContent'>
+                        {/* ////////////////////////// */}
+
+                        <div className="images">
+        {data && data.map((photo) => (
+          <div key={photo.id} className="image-container">
+            <img src={photo.PhotoURL} alt={`Photo`} />
+              {comments && (
+              <div className="comment">
+                <p>{comments}</p>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+                        {/* //////////////////////////////// */}
                         {/* {UserID} */}
                     </div>
                     <div className='profileStatusPostInteraction'>
-                        <div className="like" onClick={handleClick}><FaHeart />{post.likes}{count} Likes</div>
+                        <div className="like" onClick={handleClick}><FaHeart />{count} Likes</div>
                         <div className="comment" onClick={toggleVisibility}><AiOutlineMessage />{post.comments}Comments</div>
                         <div className="share"><GoShareAndroid /> 201 Share</div>
                     </div>

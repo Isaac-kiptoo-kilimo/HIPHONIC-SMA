@@ -1,59 +1,58 @@
 import React, { useEffect, useState } from 'react';
-import { useGetPostQuery } from '../../features/posts/postApi.js';
-
-// Icons
+import { useNavigate } from 'react-router-dom';
+import { useGetPostsQuery } from '../../features/posts/postApi.js';
+import { useGetPostCommentQuery, useAddCommentMutation } from '../../features/Comments/CommentsApi.js';
 import { FaHeart } from "react-icons/fa";
 import { AiOutlineMessage } from "react-icons/ai";
 import { GoShareAndroid } from "react-icons/go";
+import Avatar from "../../assets/Avatar.png";
+import './ProfilePostCard.scss';
 
-// Styles
-import './ProfileStatusPost.scss'
+const ProfileStatusPost = ({postId}) => { // Add postId as a prop to fetch comments for a specific post
+    const navigate = useNavigate();
+    const [isVisible, setIsVisible] = useState(false);
+    const toggleVisibility = () => {
+      setIsVisible(!isVisible);
+    };
 
-const ProfileStatusPost = ({ loggedInUser, postId }) => {
-    const { data: post, error, isLoading, isError, isFetching } = useGetPostQuery(postId);
-    const [userDetails, setUserDetails] = useState(loggedInUser);
+    const [commentContent, setCommentContent] = useState('');
+    const user = JSON.parse(localStorage.getItem('loggedInUser'));
+    const [addComment] = useAddCommentMutation();
 
-    useEffect(() => {
-        setUserDetails(loggedInUser);
-    }, [loggedInUser]);
+    const { data: comments, error, isLoading } = useGetPostCommentQuery(postId); // Fetch comments for the given postId
+
+    const handlePostContentChange = (e) => {
+        setCommentContent(e.target.value);
+    }
+
+    const handleCommentId = () => {
+        console.log(comments); // Here you have access to comments fetched for the post
+    }
+
+    const [count, setCount] = useState(0);
+    const handleClick = () => {
+        setCount(count + 1);
+    };
 
     return (
         <div className="profileStatusPost">
-            <div className='profileStatusPostHeader'>
-                <div className="profilePic">
-                    {/* <img src={userDetails.user.profileImage} alt="Profile" /> */}
-                </div>
-                <div className="user">
-                    <p className="username">userDetails.user.Username</p>
-                    <p className="postDate">56 mins ago</p>
-                </div>
+            {/* Display post content here */}
+            <div className='profileStatusPostInteraction'>
+                <div className="like" onClick={handleClick}><FaHeart /> {count} Likes</div>
+                <div className="comment"><AiOutlineMessage onClick={toggleVisibility} />Comments</div>
+                <div className="share"><GoShareAndroid/> 201 Share</div>
             </div>
-            <div className='profileStatusPostTextContent'>
-                <div>
-                    {isError ? (
-                        <p>Error fetching post</p>
-                    ) : isLoading ? (
-                        <p>Loading...</p>
-                    ) : (
-                        post && (
-                            <div key={post.id}>
-                                <p>{post.content}</p>
-                                {/* Render post likes and comments here */}
-                                <div className='profileStatusPostInteraction'>
-                                    <div className="like"><FaHeart /> {post.likes} Likes</div>
-                                    <div className="comment"><AiOutlineMessage /> {post.comments} Comments</div>
-                                    <div className="share"><GoShareAndroid /> {post.shares} Shares</div>
-                                </div>
-                            </div>
-                        )
-                    )}
+            {isVisible && (
+                <div className="comments">
+                    {/* Render comments here */}
+                    {comments && comments.map(comment => (
+                        <div key={comment.id} className="comment">
+                            <p>{comment.content}</p>
+                            <p>{comment.user}</p>
+                        </div>
+                    ))}
                 </div>
-            </div>
-            <div className='profileStatusPostComment'>
-                <input
-                    type="text"
-                    placeholder='Write your message...' />
-            </div>
+            )}
         </div>
     )
 }
