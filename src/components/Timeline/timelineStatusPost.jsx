@@ -78,7 +78,8 @@ const ProfileStatusPost = ({post}) => {
                 <p>{post.content}</p>
             </div>
             <div className='profileStatusPostImageContent'>
-                {post.imageUrl}
+                <img src={post.imageUrl} alt="" />
+                
             </div>
             <div className='profileStatusPostInteraction'>
                 <div className="like" onClick={handleClick}><FaHeart />{count} Likes</div>
