@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import NavIcon from "../shared/NavIcon";
 import FriendIcon from "../../assets/friend-icon.png";
+import { createPortal } from 'react-dom';
 
 import "./PostsCard.scss";
+import CreateGroupPost from "../../features/groups/CreateGroupPost";
 
 
-const PostsCard = () => {
+const PostsCard = ({group}) => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleShowPost = () => {
+    setShowModal(true);
+  };
+
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
   return (
       <div className="post-card-head">
         <div className="post-card-left-items">
@@ -15,16 +27,23 @@ const PostsCard = () => {
           </div>
           </div>
           <div className="post-card-user-desc">
-            <h4>UI / UX Designer</h4>
+            <h4>{group.GroupName}</h4>
             <p>
               Bandung • <span>7 posts a day</span>
             </p>
           </div>
         </div>
        <div className="post-icon-card">
-       <NavIcon url={FriendIcon} />
+       <NavIcon url={FriendIcon} onClick={handleShowPost} />
        </div>
+       {
+          showModal && createPortal(
+            <CreateGroupPost closeModal={closeModal}  />,
+            document.body
+          )
+        }
       </div>
+
   );
 };
 

@@ -19,9 +19,6 @@ const TimelineUpdates = () => {
 
 
     const handleEdit = () => {
-      // console.log(userDetails.user);
-      // console.log(userDetails.user.UserID);
-      // setEditingUserId(userDetails.user.UserID);
       setShowModal(true);
     };
   
@@ -30,7 +27,6 @@ const TimelineUpdates = () => {
   
     const closeModal = () => {
       setShowModal(false);
-      // setEditingUserId(null);
     };
   return (
     <div className="timeContainer">
@@ -55,7 +51,7 @@ const TimelineUpdates = () => {
             statuses.map((status) => (
               <div className="timeline" key={status.StatusID}>
                 <div className="timeline-card-top">
-                  <img width={40} src={status.profileImage} alt="profile img" />
+                  <img width={40} src={status.ImagePath} alt="profile img" />
                   <p>{status.Username}</p>
                 </div>
               </div>

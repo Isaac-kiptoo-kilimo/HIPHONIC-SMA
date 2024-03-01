@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: space-between;
     border-bottom: 2px solid #F1F5F9;
-    padding: 1rem;
+    padding: 1rem 0;
     .group-page-icon{
         display: flex;
         flex-direction: row;
@@ -20,6 +20,7 @@
         }
     
       .create-group-btn{
+        margin-right: 10px;
         Button{
             display: flex;
             align-items: center;
