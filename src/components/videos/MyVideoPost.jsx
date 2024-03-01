@@ -44,6 +44,7 @@ const Video = ({ post }) => {
     return (
         <div className='myVideo'>
             <div className='videosBottomProfile'>
+                <div className='div'>
                 <div className="profilePic">
                 <img className="avatar"src={userDetails.user && userDetails.user.profileImage} alt="noimage" />
                 </div>
@@ -51,31 +52,35 @@ const Video = ({ post }) => {
                     <p className="username">{userDetails.user && userDetails.user.Username}</p>
                     <p className="postDate">Date</p>
                 </div>
+                </div>
+                <div>
                 <div style={{ color: "#94A3B8" }}><HiDotsHorizontal /></div>
+                </div>
             </div>
 
             <div className='videosBottomtext'>
                 <div className="images">
-                    {/* Map video posts */}
-                    {data && data.map((video) => (
-                        <div key={video.id} className="image-container">
-                            <video controls>
-                                <source src={video.videoUrl} type="video/mp4" />
+
+                    {data && data.map((post) => (
+                        <div key={post.id} className="image-container">
+                            <video controls autoPlay>
+                                <source src={post.videoUrl} />
                             </video>
                             
-                            {/* Display comments */}
-                            {video.content && (
+                            {post.content && (
                                 <div className="comment">
-                                    {/* <p>{video.content}</p> */}
+                                    <p>{post.content}</p>
                                 </div>
                             )}
                         </div>
                     ))}
                 </div>
-                <p>content</p>
+                <p>Posted video by {userDetails.user && userDetails.user.Username}</p>
             </div>
             <div className='videosBottomPreview'>
-                <img src={Play} alt="Play button" />
+                <video controls autoPlay>
+                    <source src="https://www.shutterstock.com/shutterstock/videos/1059365315/preview/stock-footage-human-circulatory-system-heart-beat-anatomy-animation-concept-d.webm"/>
+                </video>
             </div>
         </div>
     );
