@@ -19,10 +19,12 @@
         background-color: #414141;
         color: #fff;
 
-        .playButton {
-            background: none;
-            border: none;
+        video {
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+
     }
 
     .videoPreviewInteractions {

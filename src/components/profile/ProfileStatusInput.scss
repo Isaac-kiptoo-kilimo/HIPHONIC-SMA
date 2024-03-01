@@ -24,6 +24,20 @@
         gap: 7px;
         color: #64748B;
         }}
+
+        .statusPoster{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            background-color: #ffffff;
+            padding: 10px;
+            gap: 10px;
+
+            input{
+                width: 30%;
+            }
+        }
+
         .ProfilePostForm {
             width: 87%;
 
@@ -35,6 +49,7 @@
             border: none;
         }}
     }
+
     .ProfileStatusInputBottom {
         display: flex;
         align-items: center;
