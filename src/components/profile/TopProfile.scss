@@ -25,19 +25,27 @@
                     outline: none;           
                 }
             }
-          
+          .profile-img-top{
+            img{
+                border-radius: 50%;
+                margin-right: 10px;
+                width: 80px; 
+                height: 80px;
+            }
+          }
             .avatar{
                 margin-top: -50px;
                 width: 10%;
                 margin-left: 50px;
             }
+
         }
     }
     .bottom-top{
         display: flex;
         flex-direction: row;
         background-color: white;
-        padding: 1rem;
+        padding: 0.5rem;
         // width: 100%;
         gap: 20px;
         align-items: center;
@@ -79,6 +87,7 @@
             font-size: 20px;
             color: rgb(165, 165, 165);
         }
+       
     }
     
    

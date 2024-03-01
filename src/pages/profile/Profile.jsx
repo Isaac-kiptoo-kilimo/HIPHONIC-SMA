@@ -3,12 +3,11 @@ import './Profile.scss'
 
 //import components
 import CompleProfile from '../../components/profile/CompleteProfile'
-import ProfileIntro from '../../components/profile/ProfileIntro'
 import ProfilePhotos from '../../components/profile/ProfilePhotos'
 import ProfileStatusInput from '../../components/profile/ProfileStatusInput'
 import ProfileStatusPost from '../../components/profile/ProfilePostList'
 import TopProfile from '../../components/profile/TopProfile'
-
+import ProfileIntro from '../../components/profile/ProfileIntro'
 //import react features
 import { React, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'

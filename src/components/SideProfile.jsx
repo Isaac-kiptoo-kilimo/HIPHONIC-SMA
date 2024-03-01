@@ -28,7 +28,7 @@ function SideProfile() {
   return (
     <div className="sideProfile">
       <div className="SideImage">
-        <img onClick={handleProfile} width={60} src={userDetails.user && userDetails.user.profileImage} alt="avatar" />
+        <img className="side-imgn-profile"  onClick={handleProfile} width={60} src={userDetails.user && userDetails.user.profileImage} alt="avatar" />
       </div>
       <div className="leftprofile">
         <p className="Profilename">{userDetails.user && userDetails.user.Username}</p>
