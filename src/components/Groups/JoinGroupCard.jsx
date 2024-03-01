@@ -78,10 +78,8 @@ console.log(response);
           <Button onClick={()=>handleJoinGroup(group.GroupID)}  msg="Join Group" />
         </div>
         <div className="group-bottom">
-          <MembersIcons MbrIcon={group.profileImage}  />
-          <div className="group-para">
-            <p>2K</p>
-          </div>
+          <MembersIcons MbrIcon={group.GroupID}  />
+          
         </div>
       </div>
     </div>

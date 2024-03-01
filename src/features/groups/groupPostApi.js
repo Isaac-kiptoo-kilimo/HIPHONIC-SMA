@@ -18,7 +18,7 @@ export const groupPostApi=createApi({
 
         addGroupPost:builder.mutation({
             query:(groupPost)=>({
-                url: 'groups',
+                url: 'groupposts',
                 method:'POST',
                 body: groupPost
             }),
