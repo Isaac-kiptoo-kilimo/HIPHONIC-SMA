@@ -17,7 +17,6 @@ import Avatar from "../../assets/Avatar.png"
 import './timelineStatusPost.scss'
 
 //import components
-import User from "./TimelineUser.jsx"
 import CommentList from '../profile/PostCommentList.jsx';
 
 const ProfileStatusPost = ({post}) => {
@@ -78,7 +77,10 @@ const ProfileStatusPost = ({post}) => {
                 <p>{post.content}</p>
             </div>
             <div className='profileStatusPostImageContent'>
-                <img src={post.imageUrl} alt="" />
+                <img style={{borderRadius:"16px", backgroundColor:"black"}} height="200px" width="300px" src={post.imageUrl} alt="" />
+                <video style={{borderRadius:"16px", backgroundColor:"black"}} height="200px" width="300px" controls autoPlay>
+                    <source src={post.videoUrl}/>
+                </video>
                 
             </div>
             <div className='profileStatusPostInteraction'>

@@ -6,8 +6,8 @@ import './ProfileStatusInput.scss';
 
 const ProfileStatusInput = () => {
   const [postContent, setPostContent] = useState('');
-  const [videoUrl, setVideoUrl] = useState(''); // State for video URL
-  const [imageUrl, setImageUrl] = useState(''); // State for image URL
+  const [videoUrl, setVideoUrl] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
   const user = JSON.parse(localStorage.getItem('loggedInUser'));
   const [addPost] = useAddPostMutation();
 
@@ -29,8 +29,8 @@ const ProfileStatusInput = () => {
     if (postContent.trim() !== '') {
       const postWithUserData = {
         content: postContent,
-        videoUrl: videoUrl, // Include video URL
-        imageUrl: imageUrl, // Include image URL
+        videoUrl: videoUrl,
+        imageUrl: imageUrl,
         UserID: user.user.UserID,
       };
 
@@ -56,7 +56,7 @@ const ProfileStatusInput = () => {
           <div className="profilePic">
             <img src={Avatar} alt="User Avatar" />
           </div>
-          <form onSubmit={handleSubmit}>
+          <form className='statusPoster' onSubmit={handleSubmit}>
             <input
               type="text"
               placeholder="Enter video URL"
