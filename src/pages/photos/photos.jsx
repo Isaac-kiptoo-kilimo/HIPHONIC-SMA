@@ -65,7 +65,7 @@ console.log(data);
                  {count}<IoHeart />
               </div>
               <div>
-              <AiFillMessage />
+                <AiFillMessage />
                 <form onSubmit={(e) => {
                   e.preventDefault();
                   const comment = e.target.comment.value;

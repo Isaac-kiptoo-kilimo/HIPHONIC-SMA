@@ -9,7 +9,6 @@ import authReducer from "../features/user/authSllice";
 
 //import the APIs
 import { photoApi } from '../features/Photos/Photoapi';
-import {eventApi} from  '../features/Events/EventsApi';
 import { friendApi } from '../features/friends/friendApi';
 import { notificationApi } from '../features/notifications/notificationApi';
 import { postApi } from '../features/posts/postApi';
@@ -18,14 +17,14 @@ import { statusApi } from '../features/timeline/TimelineApi';
 import { groupApi } from '../features/groups/groupApi';
 import { groupMembersApi } from '../features/groupMembers/groupMembersApi';
 import { groupPostApi } from '../features/groups/groupPostApi';
-
+import {eventPostApi} from  '../features/Events/EventPostApi';
+// import {eventAtendeeApi} from '../features/EventAtendee/EventAtendeeApi'
 
 export const store=configureStore({
     reducer:{
         [userApi.reducerPath]:userApi.reducer,
         [photoApi.reducerPath]:photoApi.reducer,
         [postApi.reducerPath]:postApi.reducer,
-        [eventApi.reducerPath]:eventApi.reducer,
         [friendApi.reducerPath]:friendApi.reducer,
         [postApi.reducerPath]:postApi.reducer,
         [notificationApi.reducerPath]:notificationApi.reducer,
@@ -34,12 +33,14 @@ export const store=configureStore({
         [groupApi.reducerPath]:groupApi.reducer,
         [groupMembersApi.reducerPath]:groupMembersApi.reducer,
         [groupPostApi.reducerPath]:groupPostApi.reducer,
+        [eventPostApi.reducerPath]:eventPostApi.reducer,
+        // [eventAtendee.reducerPath]:eventAtendeeApi.reducer
 
     },
 
 
 
-    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(userApi.middleware,photoApi.middleware, eventApi.middleware, friendApi.middleware,notificationApi.middleware,postApi.middleware,commentApi.middleware,statusApi.middleware,groupApi.middleware,groupMembersApi.middleware,groupPostApi.middleware)
+    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(userApi.middleware,photoApi.middleware, friendApi.middleware,notificationApi.middleware,postApi.middleware,commentApi.middleware,statusApi.middleware,groupApi.middleware,groupMembersApi.middleware,groupPostApi.middleware,eventPostApi.middleware)
        
     })
 
