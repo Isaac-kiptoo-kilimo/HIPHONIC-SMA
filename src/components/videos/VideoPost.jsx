@@ -25,3 +25,5 @@ export const VideoPost = () => {
     </div>
     )
 }
+
+export default VideoPost;

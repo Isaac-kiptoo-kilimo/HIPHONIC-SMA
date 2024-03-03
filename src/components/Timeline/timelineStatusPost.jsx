@@ -72,7 +72,7 @@ const ProfileStatusPost = ({post}) => {
                             <p className="username">{user.username}</p>
                             <p className="postDate">On {post.post_date}</p>
                         </div>
-                    </div>
+            </div>
             <div className='profileStatusPostTextContent'>
                 <p>{post.content}</p>
             </div>

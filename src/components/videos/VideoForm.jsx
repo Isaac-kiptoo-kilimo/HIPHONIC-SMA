@@ -1,83 +1,64 @@
-//ProfileStatusInput
-import React, { useState, useEffect } from 'react';
-import { useAddPostMutation } from '../../features/posts/postApi';
-import Avatar from '../../assets/Avatar.png';
-// import './ProfileStatusInput.scss';
+import React, { useState } from 'react';
+import { useAddVideoMutation } from '../../features/Video/videoApi'; // Import the useAddVideoMutation hook
+import './VideoForm.scss'
 
 const VideoForm = () => {
-  const [postContent, setPostContent] = useState('');
   const [videoUrl, setVideoUrl] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
+  const [videoCaption, setVideoCaption] = useState('');
   const user = JSON.parse(localStorage.getItem('loggedInUser'));
-  const [addPost] = useAddPostMutation();
+  const [addVideo] = useAddVideoMutation(); // Destructure the useAddVideoMutation hook
 
-  const handlePostContentChange = (e) => {
-    setPostContent(e.target.value);
-  };
-
+  // Handle when the video URL field is changed
   const handleVideoUrlChange = (e) => {
     setVideoUrl(e.target.value);
   };
 
-  const handleImageUrlChange = (e) => {
-    setImageUrl(e.target.value);
+  // Handle when the video caption field is changed
+  const handleVideoCaptionChange = (e) => {
+    setVideoCaption(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  // Handle when the form is submitted
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (postContent.trim() !== '') {
-      const postWithUserData = {
-        content: postContent,
+    if (videoCaption.trim() !== '') {
+      const videoWithUserData = {
         videoUrl: videoUrl,
-        imageUrl: imageUrl,
+        videoCaption: videoCaption,
         UserID: user.user.UserID,
-      };
+      }
 
-      addPost(postWithUserData)
-        .then((response) => {
-          console.log('Post created successfully:', postWithUserData);
-          setPostContent('');
-          setVideoUrl('');
-          setImageUrl('');
-        })
-        .catch((error) => {
-          console.error('Error creating post:', error);
-        });
+      addVideo(videoWithUserData)
+      .then((response) => {
+        console.log('Video posted successfully:', videoWithUserData);
+        setVideoUrl('');
+        setVideoCaption('');
+      });
     } else {
       console.log('No post content entered');
     }
   };
 
   return (
-    <div className="ProfileStatusInput">
-      <div className="ProfileStatusInputTopContainer">
-        <div className="ProfileStatusInputTop">
-          <div className="profilePic">
-            <img src={Avatar} alt="User Avatar" />
-          </div>
-          <form className='statusPoster' onSubmit={handleSubmit}>
-            <input
-              type="text"
-              placeholder="Enter video URL"
-              value={videoUrl}
-              onChange={handleVideoUrlChange}
-            />
-            <input
-              type="text"
-              placeholder="Enter image URL"
-              value={imageUrl}
-              onChange={handleImageUrlChange}
-            />
-            <textarea
-              placeholder="Write your post content..."
-              value={postContent}
-              onChange={handlePostContentChange}
-            />
-            <button type="submit">Post</button>
-          </form>
-        </div>
-      </div>
+    <div className="myVInput">
+      <form onSubmit={handleSubmit} className='videoInputForm'>
+        <input
+          type="text"
+          value={videoUrl}
+          onChange={handleVideoUrlChange}
+          placeholder="Enter video URL..."
+          required
+        />
+        <input
+          type="text"
+          value={videoCaption}
+          onChange={handleVideoCaptionChange}
+          placeholder="Enter video caption..."
+          required
+        />
+        <button type="submit">Add Video</button>
+      </form>
     </div>
   );
 };

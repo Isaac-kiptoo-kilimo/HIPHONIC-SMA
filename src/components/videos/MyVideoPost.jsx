@@ -19,7 +19,7 @@ import Avatar from "../../assets/Avatar.png";
 // Import the necessary query hook
 import { useGetOneVideoPostQuery } from '../../features/posts/postApi';
 
-const Video = ({ post }) => {
+const Video = ({ video }) => {
     const [userDetails, setUserDetails] = useState({});
 
     // Fetch user from the logged-in user

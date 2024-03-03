@@ -26,6 +26,11 @@ export const postApi = createApi({
             providesTags: ['Posts']
         }),
 
+        getOnePostUID: builder.query({
+            query:(UserID) => `posts/uid/${UserID}`,
+            providesTags: ['Posts']
+        }),
+
         addPost:builder.mutation({
             query:(post) => ({
                 url: 'posts',
@@ -54,4 +59,5 @@ export const postApi = createApi({
         })
     })
 })
-export const { useGetPostsQuery, useGetOnePhotoPostQuery, useGetOneVideoPostQuery, useGetOnePostQuery, useAddPostMutation, useUpdatePostMutation, useDeletePostMutation}=postApi
+
+export const { useGetPostsQuery, useGetOnePhotoPostQuery, useGetOnePostUIDQuery, useGetOneVideoPostQuery, useGetOnePostQuery, useAddPostMutation, useUpdatePostMutation, useDeletePostMutation}=postApi
