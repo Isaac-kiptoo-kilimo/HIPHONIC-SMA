@@ -12,10 +12,13 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { FaChevronDown } from "react-icons/fa6";
 import Notification from '../components/Notification/Notification';
+import Messages from '../pages/messages/Messages'
 
 const Navbar = () => {
     const navigate = useNavigate();
     const[showProfile, setShowProfile]=useState(false)
+    const [showMessages, setShowMessages] = useState(false);
+
 
   const handleProfile=()=>{
       setShowProfile(true)
@@ -45,6 +48,13 @@ const Navbar = () => {
       const handleNotificationsClick = () => {
         setShowNotifications(!showNotifications);
   };
+
+  const handleMessagesClick = () => {
+    setShowMessages(true);
+    // setShowProfile(true)
+      navigate("/messages");
+      console.log("navigation");
+  };
     return (
         <>
         <div className="navbar">
@@ -58,7 +68,7 @@ const Navbar = () => {
                 </div>
                 <div>
                     <div className="nav-icons">
-                        <NavIcon url={Message} />
+                        <NavIcon onClick={handleMessagesClick} url={Message} />
                         <div className="notification-icon" onClick={handleNotificationsClick}>
                         <NavIcon url={ActiveNotification} />
 
@@ -79,7 +89,7 @@ const Navbar = () => {
               <Dropdown />
             </div>
           )}
-    
+    {/* {showMessages && <Messages />} */}
     </>
     );
 };

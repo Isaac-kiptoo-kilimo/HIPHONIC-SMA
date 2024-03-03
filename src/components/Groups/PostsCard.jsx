@@ -5,10 +5,16 @@ import { createPortal } from 'react-dom';
 
 import "./PostsCard.scss";
 import CreateGroupPost from "../../features/groups/CreateGroupPost";
+import ViewSingleGroup from "./ViewSingleGroup";
 
 
 const PostsCard = ({group}) => {
   const [showModal, setShowModal] = useState(false);
+  const [showViewSingle, setShowViewSingle] = useState(false);
+
+  const handleToggleViewSingle = () => {
+    setShowViewSingle(!showViewSingle);
+  };
 
   const handleShowPost = () => {
     setShowModal(true);
@@ -18,6 +24,7 @@ const PostsCard = ({group}) => {
   const closeModal = () => {
     setShowModal(false);
   };
+  
   return (
       <div className="post-card-head">
         <div className="post-card-left-items">
@@ -33,15 +40,18 @@ const PostsCard = ({group}) => {
             </p>
           </div>
         </div>
-       <div className="post-icon-card">
-       <NavIcon url={FriendIcon} onClick={handleShowPost} />
+       <div className="post-icon-card" onClick={handleToggleViewSingle}>
+       <NavIcon  url={FriendIcon}  />
        </div>
-       {
+       <div className="single-view-group">
+       {showViewSingle && <ViewSingleGroup GroupID={group.GroupID} />}
+       </div>
+       {/* {
           showModal && createPortal(
             <CreateGroupPost closeModal={closeModal}  />,
             document.body
           )
-        }
+        } */}
       </div>
 
   );

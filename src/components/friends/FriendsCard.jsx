@@ -34,7 +34,7 @@ const FriendsCard = () => {
               <div className="friend" key={index}>
                 <div className="friends-card-top">
                  <div className="img-name">
-                 <img width={60} src={friend.profileImage} alt={friend.ProfileImage} />
+                 <img width={60} height={60} style={{borderRadius:'50%'}} src={friend.profileImage} alt={friend.ProfileImage} />
                   <div className="friends-name">
                    <p>{friend.Username}</p>
                    <p>{friend.TagName}</p>
