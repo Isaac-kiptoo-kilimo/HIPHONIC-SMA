@@ -14,8 +14,16 @@ export const notificationApi=createApi({
         getNotification:builder.query({
             query:(userID)=> `notifications/user/${userID}`,
             providesTags: ['Notifications']
+        }),
+        patchNottification:builder.mutation({
+            query:(notification)=>({
+                url: `notifications/${notification.NotificationID}`,
+                method: 'PATCH',
+                body: notification
+            }),
+            invalidatesTags:['Notifications']
         })
     })
 })
 
-export const {useGetNotificationsQuery,useGetNotificationQuery}=notificationApi
+export const {useGetNotificationsQuery,useGetNotificationQuery,usePatchNottificationMutation}=notificationApi

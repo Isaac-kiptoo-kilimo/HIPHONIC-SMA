@@ -88,6 +88,18 @@ const userID=photoUploader.user.UserID
                             <div key={photo.id} className="image-container">
                                 <img src={photo.PhotoURL} alt={`Photo`} />
 
+                        <div className="images">
+        {/* {data && data.map((photo) => (
+          <div key={photo.id} className="image-container">
+            <img src={photo.PhotoURL} alt={`Photo`} />
+              {comments && (
+              <div className="comment">
+                <p>{comments}</p>
+              </div>
+            )}
+          </div>
+        ))} */}
+      </div>
                                 {/* Render comments here if needed */}
                             </div>
                         ))}
