@@ -13,6 +13,7 @@ const Photos = () => {
 const photoUploader=JSON.parse(localStorage.getItem("loggedInUser"))
 const userID=photoUploader.user.UserID
 console.log(userID)
+
 const {data}=useGetPhotosQuery(userID)
 console.log(data);
 
@@ -57,8 +58,7 @@ console.log(data);
       <div className="images">
         {data && data.map((photo) => (
           <div key={photo.id} className="image-container">
-            <video src={photo.PhotoURL} controls autoPlay >Video</video>
-            <img src={photo.PhotoURL} alt={`Photo`} />
+            <img src={photo.PhotoURL} alt="no image" />
             <div className='photo-reaction'>
               <div onClick={() => handleClick()}>
                  {count}<IoHeart />
