@@ -43,7 +43,7 @@ const ProfileStatusPost = ({post}) => {
         setIsVisible(!isVisible);
     };
 
-    //Submit functions
+    //Submit comment functions
     const handleSubmit = (e) => {
         e.preventDefault();
 

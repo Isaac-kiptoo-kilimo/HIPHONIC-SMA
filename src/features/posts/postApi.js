@@ -21,6 +21,7 @@ export const postApi = createApi({
             providesTags: ['Posts']
         }),
 
+        //Check this!
         getOneVideoPost:builder.query({
             query:(post_id)=> `posts/videos/${post_id}`,
             providesTags: ['Posts']

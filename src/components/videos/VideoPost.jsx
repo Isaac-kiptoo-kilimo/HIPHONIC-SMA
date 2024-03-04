@@ -9,6 +9,7 @@ import Play from '../../assets/Play.png'
 
 export const VideoPost = () => {
     return (
+    <div className='videoPostContainer'>
     <div className="videoPost">
         <div className="videoPreview">
         <video style={{borderRadius:"16px"}} height="100px" width="100%" controls autoPlay>
@@ -22,6 +23,8 @@ export const VideoPost = () => {
         <div className="videoPostButton">
             <button>See all</button>
         </div>
+    </div>
+    <div className='allCategoriesVideos'>Mout the videos in the cartegory here</div>
     </div>
     )
 }

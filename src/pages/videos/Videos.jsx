@@ -1,15 +1,25 @@
 import React, { useState } from 'react';
+
+//React icons
 import { CiSearch } from 'react-icons/ci';
-import { VideoPost } from '../../components/videos/VideoPost';
-import NewVideo from '../../components/videos/VideoForm';
 import { MdFileUpload } from "react-icons/md";
 import { ClipLoader } from 'react-spinners';
-import { useGetPostsQuery } from '../../features/posts/postApi';
+
+//Stylefile
 import './Videos.scss';
+
+//Component
 import VideoPostsList from "../../components/videos/VideoPostsLists"
+import { VideoPost } from '../../components/videos/VideoPost';
+import NewVideo from '../../components/videos/VideoForm';
+import VideoCategories from '../../components/videos/VideoCategories'
+
+//Mutations
+import { useGetVideosQuery } from '../../features/Video/videoApi';
 
 const Videos = () => {
-  // const {data: posts, error}
+  // All the videos functions
+  const {data} = useGetVideosQuery()
 
   // Add video hidden form
       const [isVisible, setIsVisible] = useState(false);
@@ -33,7 +43,8 @@ const Videos = () => {
             <button style={{ color: '#2563EB' }}>See all</button>
           </div>
           <div className="videosTopContentCards">
-            <VideoPost />
+            {/* <VideoPost /> */}
+            <VideoCategories />
           </div>
         </div>
       </div>
@@ -54,6 +65,7 @@ const Videos = () => {
           )}
         </div>
       </div>
+      <div className='allVideos'></div>
     </div>
   );
 };

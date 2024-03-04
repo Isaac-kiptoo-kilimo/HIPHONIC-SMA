@@ -14,32 +14,39 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            width: 30%;
+            gap: 20px;
+            // width: 30%;
+
             .user {
                 display: flex;
                 flex-direction: column;
-                align-items: center;
                 justify-content: flex-start;
+                gap: 10px;
             }
         }
     }
 
-    .videosBottomtext {
+    .videosBottomPost {
         font-weight: 500;
-        font-size: 14px;
+        font-size: 18px;
         color: #64748B;
-    }
-    .videosBottomPreview {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: fit-content;
-        width: fit-content;
-        border: 1px solid grey;
-        border-radius: 16px;
 
-        video{
-            border-radius: 16px;
+        .myVideoView {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .video-container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: fit-content;
+                border-radius: 13px;
+
+                video {
+                    border-radius: 13px;
+                }
+            }
         }
     }
 }

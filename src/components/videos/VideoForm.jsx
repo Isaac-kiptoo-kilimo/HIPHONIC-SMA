@@ -24,7 +24,7 @@ const VideoForm = () => {
 
     if (videoCaption.trim() !== '') {
       const videoWithUserData = {
-        videoUrl: videoUrl,
+        videoURL: videoUrl,
         videoCaption: videoCaption,
         UserID: user.user.UserID,
       }

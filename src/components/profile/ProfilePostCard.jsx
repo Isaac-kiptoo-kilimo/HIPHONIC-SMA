@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useGetPostsQuery } from '../../features/posts/postApi.js';
 import { useAddCommentMutation } from '../../features/Comments/CommentsApi.js';
 import {useGetOnePostUIDQuery} from '../../features/posts/postApi.js';
 // import { useGetCommentsQuery, useGetCommentQuery } from '../../features/Comments/CommentsApi.js';
@@ -85,18 +83,16 @@ const userID=photoUploader.user.UserID
                         <p>{post.content}</p>
                     </div>
                     <div className='profileStatusPostImageContent'>
-                        <div className="images">
-                            {data && data.map((photo) => (
-                              <div key={photo.id} className="image-container">
+                    <div className="images">
+                        {data && Array.isArray(data) && data.map((photo) => (
+                            <div key={photo.id} className="image-container">
                                 <img src={photo.PhotoURL} alt={`Photo`} />
-                                  {comments && (
-                                  <div className="comment">
-                                    <p>{comments}</p>
-                                  </div>
-                                )}
-                              </div>
-                            ))}
-                          </div>
+
+                                {/* Render comments here if needed */}
+                            </div>
+                        ))}
+                    </div>
+
                     </div>
                     <div className='profileStatusPostInteraction'>
                         <div className="like" onClick={handleClick}><FaHeart />{count} Likes</div>
