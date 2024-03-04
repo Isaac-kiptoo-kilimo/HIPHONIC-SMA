@@ -1,0 +1,22 @@
+.group-container{
+    // background-color: yellow;
+    padding: 20px 0;
+    width: 100%;
+    .single-sub-titles{
+        font-size: 20px;
+    }
+    .group-card-container{
+        width: 100%;
+        .card-contents{
+            width: 70%;
+            .post-card-head{
+                width: 90%;
+                margin: 0 auto;
+            }
+            .post-image{
+                width: 94%;
+                margin: 0 auto;
+            }
+        }
+    }
+}

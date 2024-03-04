@@ -1,10 +1,8 @@
 import React from "react";
 import "./RecentActivityCard.scss";
-import NavIcon from "../shared/NavIcon";
+
 import PostImageCard from "./PostImageCard";
-import RecentImage from "../../assets/recent-image1.png";
-import RecentImage2 from "../../assets/recent-image2.png";
-import RecentUser from "../../assets/recent-user.png";
+
 import { useGetGroupPostsQuery } from "../../features/groups/groupPostApi";
 import { format } from 'date-fns';
 import ActivityPoster from "../shared/ActivityPoster";
@@ -14,7 +12,7 @@ const RecentActivityCard = () => {
   console.log("data 4",data);
 
   return (
-   <div>
+   <div className="recent-activity-content">
      {data && data.map(activity=>(
       <div className="recent-card-container">
       <div className="recent-user">

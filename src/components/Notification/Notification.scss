@@ -16,8 +16,8 @@
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    max-height: 90vh;
+    width: 350px;
+    min-height: 92vh;
     overflow-y: auto; 
     padding: 10px;
     margin-left: 900px;
@@ -37,30 +37,29 @@
     margin: 10px;
 }
 .TodayNotification{
-    margin: 20px;
+    // margin: 20px;
+height: 100%;
+// background-color: #D7E9FB;
 }
 
 .people {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    // gap: 1rem;
     margin-top: 1rem;
-    max-height: 400px;
+    // max-height: 400px;
     overflow-y: auto; 
 }
 
-.friend {
-    text-align: center;
-}
 
-.yesterday {
-    margin-top: 5rem;
-    margin-bottom: 5rem;
-}
-.notification-item{
-    background-color: #ccc;
+
+.notification-items{
+    background-color: #C3DDF8;
     width: 100%;
     border-radius: 10px;
     padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 
 }

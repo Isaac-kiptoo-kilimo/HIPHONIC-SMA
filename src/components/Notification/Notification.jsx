@@ -1,37 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import xicon from '../../assets/close.close.png';
-import wade from '../../assets/Avatar.png';
-import jane from '../../assets/Avatar1.png';
-import esther from '../../assets/Avatar2.png';
-import cameron from '../../assets/Avatar3.png';
-import brooklyn from '../../assets/Avatar4.png';
 import './Notification.scss';
-import { useGetNotificationQuery } from '../../features/notifications/notificationApi';
+import { useGetNotificationQuery} from '../../features/notifications/notificationApi';
+import NotificationItem from './NotificationItem';
 
-const friends = [
-  { icon: wade, name: 'Angela Lee' },
-  { icon: jane, name: 'Jane Cooper' },
-  { icon: esther, name: 'Esther Howard' },
-  { icon: cameron, name: 'Cameron Williamson' },
-  { icon: brooklyn, name: 'Brooklyn Simmons' },
-];
 
-const Notification = ({ onClose }) => {
+const Notification = () => {
 const loggedInUserNotification=JSON.parse(localStorage.getItem('loggedInUser'))
 console.log(loggedInUserNotification);
-const UserID=loggedInUserNotification.user.UserID
 
+const UserID=loggedInUserNotification.user.UserID
   const {data:Notifications}=useGetNotificationQuery(UserID)
   // console.log(Notifications);
   const notifications = Notifications || [];
+
+
   console.log(notifications);
+  const [closeNotifications, setCloseNotifications] = useState(false);
+      
+      const handleNotificationsClick = () => {
+        setCloseNotifications(true);
+  };
 
   return (
     <div className="bigmain">
       <div className="notification">
         <div className="topNotification">
           <h4>Notification</h4>
-          <button onClick={onClose}>
+          <button onClick={handleNotificationsClick}>
             <img src={xicon} alt="Close Icon" />
           </button>
         </div>
@@ -44,29 +40,12 @@ const UserID=loggedInUserNotification.user.UserID
         </div>
         <div className='TodayNotification'>
         <div className="people">
-        {notifications && notifications.map((notification, index) => (
-            <div key={index} className="notification-item">
-              <img style={{width:"40px",height:"40px",borderRadius:"50%"}} src={notification.profileImage} alt="profile image" />
-              <span>{notification.message} </span>
-            </div>
-          ))}
-            
-          </div>
-          </div>
-          
-          {/* useGetNotificationQuery */}
-
-        <div className="yesterdayNotification">
-          <h4>YESTERDAY</h4>
-          <div className="people">
-            {friends.map((friend, index) => (
-              <div key={index} className="notification-item">
-                <img src={friend.icon} alt={friend.name} />
-                <span>{friend.name} Notification</span>
-              </div>
+            {notifications.map((notification, index) => (
+              <NotificationItem key={index} notification={notification} />
             ))}
           </div>
-        </div>
+          </div>
+        
       </div>
     </div>
   );

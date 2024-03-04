@@ -33,7 +33,7 @@ export const store=configureStore({
         [notificationApi.reducerPath]:notificationApi.reducer,
         [commentApi.reducerPath]: commentApi.reducer,
         [statusApi.reducerPath]:statusApi.reducer,
-        [likeApi.reducerPath]:likeApi.reducer
+        [likeApi.reducerPath]:likeApi.reducer,
        [groupApi.reducerPath]:groupApi.reducer,
         [groupMembersApi.reducerPath]:groupMembersApi.reducer,
         [groupPostApi.reducerPath]:groupPostApi.reducer,

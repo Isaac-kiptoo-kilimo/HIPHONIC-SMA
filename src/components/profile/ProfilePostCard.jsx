@@ -88,7 +88,7 @@ const userID=photoUploader.user.UserID
                         {/* ////////////////////////// */}
 
                         <div className="images">
-        {data && data.map((photo) => (
+        {/* {data && data.map((photo) => (
           <div key={photo.id} className="image-container">
             <img src={photo.PhotoURL} alt={`Photo`} />
               {comments && (
@@ -97,7 +97,7 @@ const userID=photoUploader.user.UserID
               </div>
             )}
           </div>
-        ))}
+        ))} */}
       </div>
 
                         {/* //////////////////////////////// */}

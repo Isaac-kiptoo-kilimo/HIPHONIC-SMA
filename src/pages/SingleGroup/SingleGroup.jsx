@@ -13,6 +13,7 @@ import {
   ToasterContainer,
   SuccessToast,
 } from "../../toaster/Toaster";
+import './SingleGroup.scss'
 import ClipLoader from "react-spinners/ClipLoader";
 import { useParams } from "react-router-dom";
 import CreateGroupPost from "../../features/groups/CreateGroupPost";
@@ -36,14 +37,14 @@ const SingleGroup = () => {
     <div className="group-container">
       {/* <ToasterContainer /> */}
       {/* <GroupHeader /> */}
-      <div className="group-sub-titles">
+      <div className="single-sub-titles">
         <div className="sub-titles-left">
-          <h4>Suggested for you</h4>
-          <p>Groups you might be interested in.</p>
+          <h2 style={{textAlign:"center"}}>Welcome To this Group</h2>
+          <p style={{textAlign:"center"}} >You can Message The admin and be able to create an activity.</p>
         </div>
-        <div className="sub-titles-right">
+        {/* <div className="sub-titles-right">
           <p className="navlink">See All</p>
-        </div>
+        </div> */}
       </div>
       <div className="group-card-container">
         {data &&
@@ -65,7 +66,9 @@ const SingleGroup = () => {
                 </div>
                 <div className="post-icon-card"></div>
               </div>
-              <PostImageCard PostImage={group.group_image} />
+              <div className="post-image">
+              <PostImageCard PostImage={group.group_image} /> 
+              </div>
               <div className="group-page-icon">
                 <div className="group-btn-card">
                   <Button msg="Join Group" />
@@ -78,6 +81,7 @@ const SingleGroup = () => {
           ))}
       </div>
       <CreateGroupPost/>
+
     </div>
   );
 };
