@@ -2,9 +2,6 @@
 import {configureStore} from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query/react';
 import {userApi} from '../features/user/userApi'
-
-
-
 import authReducer from "../features/user/authSllice";
 
 //import the APIs
@@ -47,7 +44,4 @@ export const store=configureStore({
        
     })
 
-
 setupListeners(store.dispatch)
-
-

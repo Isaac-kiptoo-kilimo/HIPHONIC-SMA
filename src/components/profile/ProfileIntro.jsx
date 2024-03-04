@@ -23,7 +23,9 @@ const ProfileIntro = () => {
   useEffect(() => {
     const storedUserDetails = JSON.parse(localStorage.getItem('loggedInUser'))
     setUserDetails(storedUserDetails);
-  
+    const registeredDate=storedUserDetails.user.registeredDate
+    // let currentDate = format(registeredDate, 'MM/dd/yyyy');
+  console.log(registeredDate);
   },[])
   
     return (

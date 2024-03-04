@@ -6,6 +6,7 @@ import User from '../profile/userInfocard';
 
 // Import icons
 import { HiDotsHorizontal } from "react-icons/hi";
+import { MdDelete } from "react-icons/md";
 
 // Import assets
 import Play from '../../assets/Play.png';
@@ -13,13 +14,11 @@ import Play from '../../assets/Play.png';
 // Import React
 import React, { useState, useEffect } from 'react';
 
-// Import assets
-import Avatar from "../../assets/Avatar.png";
-
 // Import the necessary query hook
-import { useGetOneVideoPostQuery } from '../../features/posts/postApi';
+// deletePost
+import { useDeleteVideoMutation } from '../../features/Video/videoApi';
 
-const Video = ({ post }) => {
+const Video = ({ video }) => {
     const [userDetails, setUserDetails] = useState({});
 
     // Fetch user from the logged-in user
@@ -31,15 +30,28 @@ const Video = ({ post }) => {
         setUserDetails(storedUserDetails);
     }, []);
 
-    // Video fetch
-    const videoUploader = JSON.parse(localStorage.getItem("loggedInUser"));
-    const userID = videoUploader.user.UserID;
-    const { data } = useGetOneVideoPostQuery(userID);
+    //Delete button view and hide
+    // Add video hidden form
+    const [isVisible, setIsVisible] = useState(false);
 
-    // Function to check if the post is from the logged-in user
-    const isUserPost = (post) => {
-        return loggedInUser && post.UserID === loggedInUser.user.UserID;
+    const toggleVisibility = () => {
+        setIsVisible(!isVisible);
     };
+
+    //Delete post function
+    const {deleteVideo} = useDeleteVideoMutation()
+    const videoID = video.videoID
+    const handleDelete = async (videoID) => {
+        try {
+            await deleteVideo({videoID})
+        } catch (error) {
+            console.log('Error deleting video post:', error);
+        }
+    };
+
+    console.log("This is the videos id",videoID);
+
+
 
     return (
         <div className='myVideo'>
@@ -50,37 +62,29 @@ const Video = ({ post }) => {
                 </div>
                 <div className="user">
                     <p className="username">{userDetails.user && userDetails.user.Username}</p>
-                    <p className="postDate">Date</p>
+                    <p>{video.UploadDate}</p>
                 </div>
                 </div>
                 <div>
-                <div style={{ color: "#94A3B8" }}><HiDotsHorizontal /></div>
+                <div style={{ color: "#94A3B8" }}><HiDotsHorizontal onClick={toggleVisibility}/>
+                    <div>{isVisible && (
+                        <button><MdDelete onClick={handleDelete} style={{fontSize:"17px"}}/></button>
+                        )}
+                    </div>
+                </div>
                 </div>
             </div>
-
-            <div className='videosBottomtext'>
-                <div className="images">
-
-                    {data && data.map((post) => (
-                        <div key={post.id} className="image-container">
-                            <video controls autoPlay>
-                                <source src={post.videoUrl} />
-                            </video>
-                            
-                            {post.content && (
-                                <div className="comment">
-                                    <p>{post.content}</p>
-                                </div>
-                            )}
-                        </div>
-                    ))}
+            <div className='videosBottomPost'>
+                <div className="myVideoView">
+                    <div key={video.id} className="video-container">
+                        <video controls autoPlay width="800px" height="400px">
+                            <source src={video.videoURL} />
+                        </video>
+                    </div>
+                    <div className="comment-container">
+                        <p>{video.videoCaption}</p>
+                    </div>
                 </div>
-                <p>Posted video by {userDetails.user && userDetails.user.Username}</p>
-            </div>
-            <div className='videosBottomPreview'>
-                <video controls autoPlay>
-                    <source src="https://www.shutterstock.com/shutterstock/videos/1059365315/preview/stock-footage-human-circulatory-system-heart-beat-anatomy-animation-concept-d.webm"/>
-                </video>
             </div>
         </div>
     );

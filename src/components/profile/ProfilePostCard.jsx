@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useGetPostsQuery } from '../../features/posts/postApi.js';
 import { useAddCommentMutation } from '../../features/Comments/CommentsApi.js';
-import { useGetPhotosQuery } from '../../features/Photos/Photoapi';
+import {useGetOnePostUIDQuery} from '../../features/posts/postApi.js';
 // import { useGetCommentsQuery, useGetCommentQuery } from '../../features/Comments/CommentsApi.js';
 import { TbMoodSmile } from "react-icons/tb";
 import { IoIosLink } from "react-icons/io";
@@ -30,7 +28,7 @@ const ProfileStatusPost = ({ post }) => {
     //photo fetch
     const photoUploader=JSON.parse(localStorage.getItem("loggedInUser"))
 const userID=photoUploader.user.UserID
-    const {data}=useGetPhotosQuery(userID)
+    const {data}=useGetOnePostUIDQuery(userID)
 
     //Submit comment function
     const handleSubmit = (e) => {
@@ -85,23 +83,16 @@ const userID=photoUploader.user.UserID
                         <p>{post.content}</p>
                     </div>
                     <div className='profileStatusPostImageContent'>
-                        {/* ////////////////////////// */}
+                    <div className="images">
+                        {data && Array.isArray(data) && data.map((photo) => (
+                            <div key={photo.id} className="image-container">
+                                <img src={photo.PhotoURL} alt={`Photo`} />
 
-                        <div className="images">
-        {data && data.map((photo) => (
-          <div key={photo.id} className="image-container">
-            <img src={photo.PhotoURL} alt={`Photo`} />
-              {comments && (
-              <div className="comment">
-                <p>{comments}</p>
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
+                                {/* Render comments here if needed */}
+                            </div>
+                        ))}
+                    </div>
 
-                        {/* //////////////////////////////// */}
-                        {/* {UserID} */}
                     </div>
                     <div className='profileStatusPostInteraction'>
                         <div className="like" onClick={handleClick}><FaHeart />{count} Likes</div>

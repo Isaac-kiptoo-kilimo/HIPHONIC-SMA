@@ -13,6 +13,7 @@ const Photos = () => {
 const photoUploader=JSON.parse(localStorage.getItem("loggedInUser"))
 const userID=photoUploader.user.UserID
 console.log(userID)
+
 const {data}=useGetPhotosQuery(userID)
 console.log(data);
 
