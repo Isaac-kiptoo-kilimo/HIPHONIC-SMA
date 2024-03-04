@@ -1,0 +1,27 @@
+// Button.scss
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #007bff; /* Button background color */
+    color: #ffffff; /* Button text color */
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    
+    &:hover {
+      background-color: #0056b3; /* Button background color on hover */
+    }
+    
+    img {
+      margin-right: 5px; 
+    }
+    
+    span {
+      font-size: 16px; 
+    }
+  }
+  

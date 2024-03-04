@@ -42,9 +42,7 @@ const PhotoForm = ({ addPhotoUrl }) => {
             required
           />
         </div>
-        <div>
         <button id='uploadbutton' type="submit">Upload Photo</button>
-        </div>
       </form>
     </div>
   );
