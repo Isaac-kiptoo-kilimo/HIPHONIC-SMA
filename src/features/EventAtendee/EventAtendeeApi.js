@@ -1,32 +1,38 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-export const eventAtendeeApi = createApi({
-    reducerPath: 'eventAtendeeApi',
+export const eventAttendeeApi = createApi({
+    reducerPath: 'eventAttendeeApi',
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/api/' }),
-    tagTypes: ['EventAtendee'],
+    tagTypes: ['EventAttendee'],
     endpoints: (builder) => ({
-        createEventAtendee: builder.mutation({
-            query: (eventAtendee) => ({
-                url: `eventAtendee`, 
+        createEventAttendee: builder.mutation({
+            query: (eventAttendee) => ({
+                url: `eventAttendee`, 
                 method: 'POST',
-                body: eventAtendee
+                body: eventAttendee
             }),
-            invalidatesTags: ['EventAtendee']
+            invalidatesTags: ['EventAttendee']
         }),
         getEventAttendees: builder.query({
-            query: (EventID) => `eventAtendee/${EventID}`, 
-            providesTags: (result, error,EventID) => [
-                { type: 'EventAtendee', id: EventID }
+            query: (EventID) => `eventAttendee/${EventID}`, 
+            providesTags: (result, error, EventID) => [
+                { type: 'EventAttendee', id: EventID }
             ]
         }),
         deleteEventAttendee: builder.mutation({
-            query: ({EventID, attendeeId }) => ({
-                url: `eventAtendee/${EventID}/${attendeeId}`,
+            query: ({ EventID, attendeeId }) => ({
+                url: `eventAttendee/${EventID}/${attendeeId}`,
                 method: 'DELETE'
             }),
-            invalidatesTags: ['EventAtendee']
+            invalidatesTags: ['EventAttendee']
+        }),
+        getEventAttendeesForEvent: builder.query({
+            query: (EventID) => `event/${EventID}/attendees`, 
+            providesTags: (result, error, EventID) => [
+                { type: 'EventAttendee', id: EventID }
+            ]
         })
     })
 });
 
-export const { useCreateEventAtendeeMutation, useGetEventAttendeesQuery, useDeleteEventAttendeeMutation } = eventAtendeeApi;
+export const { useCreateEventAttendeeMutation, useGetEventAttendeesQuery, useDeleteEventAttendeeMutation, useGetEventAttendeesForEventQuery } = eventAttendeeApi;

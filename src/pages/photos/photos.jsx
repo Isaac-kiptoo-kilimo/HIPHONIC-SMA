@@ -57,7 +57,6 @@ console.log(data);
       <div className="images">
         {data && data.map((photo) => (
           <div key={photo.id} className="image-container">
-            <video src={photo.PhotoURL} controls autoPlay >Video</video>
             <img src={photo.PhotoURL} alt={`Photo`} />
             <div className='photo-reaction'>
               <div onClick={() => handleClick()}>

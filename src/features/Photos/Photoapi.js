@@ -25,6 +25,10 @@ export const photoApi = createApi({
             }),
             invalidatesTags: ['Photo'],
         }),
+        getPhotosByUserID: builder.query({
+            query: (UserID) => `photo/${UserID}`,
+            providesTags: ["Photo"]
+          }),
         deletePhoto: builder.mutation({
             query: (id) => ({
                 url: `photo/${id}`,
@@ -35,5 +39,5 @@ export const photoApi = createApi({
     })
 });
 
-export const { useGetPhotosQuery, useAddPhotoMutation, useDeletePhotoMutation, useUpdatePhotoMutation } = photoApi;
+export const { useGetPhotosQuery, useAddPhotoMutation, useDeletePhotoMutation, useUpdatePhotoMutation, useGetPhotosByUserIDQuery } = photoApi;
 

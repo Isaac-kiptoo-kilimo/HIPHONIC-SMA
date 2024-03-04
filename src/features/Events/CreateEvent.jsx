@@ -9,13 +9,13 @@ const CreateEvent = ({ closeModal }) => {
   const UserID = user.user.UserID;
 
   const [formData, setFormData] = useState({
-    eventName: "",
-    description: "",
-    eventDate: "",
-    location: "",
-    eventPosterURL: ""
+    EventName: "",
+    Description: "",
+    EventDate: "",
+    Location: "",
+    EventPosterURL: ""
   });
-console.log(formData);
+console.log("form data",formData);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -23,6 +23,12 @@ console.log(formData);
       [name]: value
     });
   };
+
+ 
+  
+
+  
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,44 +60,44 @@ console.log(formData);
         <input
         className="input-field"
           type="text"
-          name="eventName"
+          name="EventName"
           placeholder="Event Name"
-          value={formData.eventName}
+          value={formData.EventName}
           onChange={handleChange}
           required
         />
         <input
         className="input-field"
           type="text"
-          name="description"
+          name="Description"
           placeholder="Event Description"
-          value={formData.description}
+          value={formData.Description}
           onChange={handleChange}
           required
         />
         <input
         className="input-field"
           type="date"
-          name="eventDate"
-          value={formData.eventDate}
+          name="EventDate"
+          value={formData.EventDate}
           onChange={handleChange}
           required
         />
         <input
         className="input-field"
           type="text"
-          name="location"
+          name="Location"
           placeholder="Event Location"
-          value={formData.location}
+          value={formData.Location}
           onChange={handleChange}
           required
         />
         <input
         className="input-field"
           type="text"
-          name="eventPosterURL"
+          name="EventPosterURL"
           placeholder="Event Poster URL"
-          value={formData.eventPosterURL}
+          value={formData.EventPosterURL}
           onChange={handleChange}
           required
         />

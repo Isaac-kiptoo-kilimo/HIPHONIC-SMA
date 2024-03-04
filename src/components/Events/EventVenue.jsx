@@ -11,7 +11,6 @@ function EventVenue({location}) {
         </div>
         <div className="venue-content">
             <p>{location}</p>
-            <p>Kentucky 39495</p>
         </div>
     </div>
   )
