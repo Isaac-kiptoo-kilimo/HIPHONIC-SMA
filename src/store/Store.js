@@ -2,9 +2,6 @@
 import {configureStore} from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query/react';
 import {userApi} from '../features/user/userApi'
-
-
-
 import authReducer from "../features/user/authSllice";
 
 //import the APIs
@@ -19,8 +16,7 @@ import { likeApi } from '../features/Likes/LikesApi';
 import { groupApi } from '../features/groups/groupApi';
 import { groupMembersApi } from '../features/groupMembers/groupMembersApi';
 import { groupPostApi } from '../features/groups/groupPostApi';
-
-
+import { videoApi } from '../features/Video/videoApi';
 
 export const store=configureStore({
     reducer:{
@@ -33,20 +29,29 @@ export const store=configureStore({
         [notificationApi.reducerPath]:notificationApi.reducer,
         [commentApi.reducerPath]: commentApi.reducer,
         [statusApi.reducerPath]:statusApi.reducer,
-        [likeApi.reducerPath]:likeApi.reducer
-       [groupApi.reducerPath]:groupApi.reducer,
+        [likeApi.reducerPath]:likeApi.reducer,
+        [groupApi.reducerPath]:groupApi.reducer,
         [groupMembersApi.reducerPath]:groupMembersApi.reducer,
         [groupPostApi.reducerPath]:groupPostApi.reducer,
-
+        [videoApi.reducerPath]:videoApi.reducer,
     },
 
-
-
-    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(userApi.middleware,photoApi.middleware, eventApi.middleware, friendApi.middleware,notificationApi.middleware,postApi.middleware,commentApi.middleware,statusApi.middleware,groupApi.middleware, likeApi.middleware,groupMembersApi.middleware,groupPostApi.middleware)
-       
+    middleware:(getDefaultMiddleware)=>getDefaultMiddleware()
+    .concat(
+        userApi.middleware,
+        photoApi.middleware,
+        eventApi.middleware,
+        friendApi.middleware,
+        notificationApi.middleware,
+        postApi.middleware,
+        commentApi.middleware,
+        statusApi.middleware,
+        groupApi.middleware,
+        likeApi.middleware,
+        groupMembersApi.middleware,
+        groupPostApi.middleware,
+        videoApi.middleware
+        )
     })
 
-
 setupListeners(store.dispatch)
-
-

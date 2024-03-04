@@ -4,6 +4,10 @@ import { useAddPostMutation } from '../../features/posts/postApi';
 import Avatar from '../../assets/Avatar.png';
 import './ProfileStatusInput.scss';
 
+import { RxVideo } from "react-icons/rx";
+import { LuImage } from "react-icons/lu";
+import { FaRegStar } from "react-icons/fa6";
+
 const ProfileStatusInput = () => {
   const [postContent, setPostContent] = useState('');
   const [videoUrl, setVideoUrl] = useState('');
@@ -21,6 +25,13 @@ const ProfileStatusInput = () => {
 
   const handleImageUrlChange = (e) => {
     setImageUrl(e.target.value);
+  };
+
+  // Add video and image hidden form
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleVisibility = () => {
+      setIsVisible(!isVisible);
   };
 
   const handleSubmit = (e) => {
@@ -58,25 +69,35 @@ const ProfileStatusInput = () => {
           </div>
           <form className='statusPoster' onSubmit={handleSubmit}>
             <input
+              className='statusinputContainers'
               type="text"
               placeholder="Enter video URL"
               value={videoUrl}
               onChange={handleVideoUrlChange}
             />
-            <input
-              type="text"
-              placeholder="Enter image URL"
-              value={imageUrl}
-              onChange={handleImageUrlChange}
-            />
-            <textarea
-              placeholder="Write your post content..."
-              value={postContent}
-              onChange={handlePostContentChange}
-            />
-            <button type="submit">Post</button>
+            {isVisible && (
+              <div className='statusPoster'>
+              <input
+                className='statusinputContainers'
+                type="text"
+                placeholder="Enter image URL"
+                value={imageUrl}
+                onChange={handleImageUrlChange}
+              />
+              <input
+                className='statusinputContainers'
+                placeholder="Write your post content..."
+                value={postContent}
+                onChange={handlePostContentChange}
+              /></div>
+          )}
           </form>
         </div>
+      </div>
+      <div className='ProfileStatusInputTopContainerButtons'>
+        <div><RxVideo /> Live Video</div>
+        <div><LuImage onClick={toggleVisibility}/> Image/Video</div>
+        <div><FaRegStar /> Activity</div>
       </div>
     </div>
   );
