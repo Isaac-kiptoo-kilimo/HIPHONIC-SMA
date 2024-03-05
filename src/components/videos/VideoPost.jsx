@@ -1,30 +1,35 @@
+import React, {useState} from 'react';
+
 //import stylefile
 import './VideoPost.scss'
 
-//import stylefile
-import { HiPlay } from "react-icons/hi2";
+export const VideoPost = (Category) => {
+    // Add video hidden form
+  const [isVisible, setIsVisible] = useState(false);
 
-// /import assets
-import Play from '../../assets/Play.png'
+  const toggleVisibility = () => {
+      setIsVisible(!isVisible);
+  };
 
-export const VideoPost = () => {
     return (
     <div className='videoPostContainer'>
     <div className="videoPost">
         <div className="videoPreview">
         <video style={{borderRadius:"16px"}} height="100px" width="100%" controls autoPlay>
-            <source src="https://www.shutterstock.com/shutterstock/videos/1076924570/preview/stock-footage-human-circulatory-system-heart-anatomy-animation-concept-d.webm"/>
+            <source src={Category.category.previewURL}/>
         </video>
         </div>
         <div className="videoPreviewInteractions">
-            <div>Category: My videos</div>
-            <div>Likes</div>
+            <div>{Category.category.categoryName}</div>
+            {/* <div>Likes</div> */}
         </div>
-        <div className="videoPostButton">
+        <div className="videoPostButton"  onClick={toggleVisibility}>
             <button>See all</button>
         </div>
+        {isVisible && (
+                <div className='categoryVideos'>Videos</div>
+              )}
     </div>
-    <div className='allCategoriesVideos'>Mout the videos in the cartegory here</div>
     </div>
     )
 }

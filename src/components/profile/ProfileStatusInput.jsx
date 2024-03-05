@@ -69,14 +69,13 @@ const ProfileStatusInput = () => {
           </div>
           <form className='statusPoster' onSubmit={handleSubmit}>
             <input
-              className='statusinputContainers'
-              type="text"
-              placeholder="Enter video URL"
-              value={videoUrl}
-              onChange={handleVideoUrlChange}
-            />
+                className='statusinputContainers'
+                placeholder="Write your post content..."
+                value={postContent}
+                onChange={handlePostContentChange}
+              />
             {isVisible && (
-              <div className='statusPoster'>
+            // <div className='statusPosters'>
               <input
                 className='statusinputContainers'
                 type="text"
@@ -84,13 +83,8 @@ const ProfileStatusInput = () => {
                 value={imageUrl}
                 onChange={handleImageUrlChange}
               />
-              <input
-                className='statusinputContainers'
-                placeholder="Write your post content..."
-                value={postContent}
-                onChange={handlePostContentChange}
-              /></div>
-          )}
+              )}
+              <button onClick={handleSubmit} style={{padding:"10px 20px 10px 20px"}}>Post</button>
           </form>
         </div>
       </div>

@@ -1,11 +1,15 @@
 import React, {useState} from 'react';
 import PostCommentCard from './PostCommentCard.jsx';
 import './PostCommentList.scss';
-import { useGetCommentsQuery } from '../../features/Comments/CommentsApi.js';
+import { useGetPostCommentQuery } from '../../features/Comments/CommentsApi.js';
 import { ClipLoader } from 'react-spinners';
 
-const PostCommentList = () => {
-    const { data: comments, error, isLoading, isError,isFetching } = useGetCommentsQuery({ refetchOnReconnect: true });
+const PostCommentList = ({PostID}) => {
+    
+    const { data: comments, error, isLoading, isError,isFetching } = useGetPostCommentQuery(PostID);
+    console.log("This is the logged PostID:",PostID);
+
+    console.log("This is the logged comments:",comments);
 
     if (isError) {
         return <div>{error?.data?.message || 'Error fetching comments'}</div>;
@@ -15,15 +19,14 @@ const PostCommentList = () => {
         return <ClipLoader color='#000' loading={true}/>;
     }
 
-    console.log("This is the logged comments", comments);
-
     return (
         <div className='PostCommentList'>
             <p style={{color:"white", padding:"10px 0 0 0"}}>Get all comments...</p>
             
             <section className='section'>
-                {comments && <PostCommentCard key={comments.id} comments={comments} />
-                }
+                {comments && comments.map((comment, index) => (
+                <PostCommentCard key={comments.id} comment={comment} />
+                ))}
             </section>
             <p style={{color:"white", padding:"10px 0 0 0"}}>The end of comments</p>
         </div>

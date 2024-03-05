@@ -49,10 +49,6 @@ const Video = ({ video }) => {
         }
     };
 
-    console.log("This is the videos id",videoID);
-
-
-
     return (
         <div className='myVideo'>
             <div className='videosBottomProfile'>
