@@ -5,7 +5,7 @@ import { useGetNotificationQuery} from '../../features/notifications/notificatio
 import NotificationItem from './NotificationItem';
 
 
-const Notification = () => {
+const Notification = ({onClick}) => {
 const loggedInUserNotification=JSON.parse(localStorage.getItem('loggedInUser'))
 console.log(loggedInUserNotification);
 
@@ -27,7 +27,7 @@ const UserID=loggedInUserNotification.user.UserID
       <div className="notification">
         <div className="topNotification">
           <h4>Notification</h4>
-          <button onClick={handleNotificationsClick}>
+          <button onClick={onClick}>
             <img src={xicon} alt="Close Icon" />
           </button>
         </div>

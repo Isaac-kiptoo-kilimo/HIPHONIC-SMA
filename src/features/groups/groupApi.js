@@ -43,5 +43,7 @@ export const groupApi=createApi({
         })
     })
 })
-// http://localhost:5000/api/groups?order=desc
+
+// http://localhost:5000/api/groupposts/
+
 export const {useGetGroupsQuery,useGetGroupQuery,useAddGroupMutation,useUpdateGroupMutation,useDeleteGroupMutation}=groupApi

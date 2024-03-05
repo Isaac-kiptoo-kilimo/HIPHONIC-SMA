@@ -1,12 +1,12 @@
 import React from 'react'
 import ClipLoader from "react-spinners/ClipLoader";
-import { useGetUsersQuery } from './userApi';
+import { useGetNonFriendsUsersQuery, useGetUsersQuery } from './userApi';
 import './UsersList.scss';
 import AllUsers from '../../components/friends/AllUsers';
 
 const usersList = () => {
-  const { data: users, error, isLoading, isError, isFetching } = useGetUsersQuery();
-  console.log(users)
+  const { data: nonFriendUsers, error, isLoading, isError, isFetching ,refetch: refetchNonFriendUsers} = useGetNonFriendsUsersQuery();
+  console.log(nonFriendUsers)
   // const userResponse=users.Users
     return (
       <div>
@@ -17,8 +17,8 @@ const usersList = () => {
         </div>
         <section className='user-container'>
           {
-            users && users.map((user) => (
-              <AllUsers key={user.UserID} user={user} />
+            nonFriendUsers && nonFriendUsers.map((user) => (
+              <AllUsers key={user.UserID} user={user} refetchNonFriendUsers={refetchNonFriendUsers} />
             ))
           }
         </section>
