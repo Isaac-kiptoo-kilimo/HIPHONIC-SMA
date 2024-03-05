@@ -1,27 +1,26 @@
-// Button.scss
 
-.button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #007bff; /* Button background color */
-    color: #ffffff; /* Button text color */
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+// .button {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     // background-color: #007bff; 
+//     color: #ffffff; 
+//     border: none;
+//     border-radius: 4px;
+//     padding: 10px 20px;
+//     cursor: pointer;
+//     transition: background-color 0.3s ease; 
     
-    &:hover {
-      background-color: #0056b3; /* Button background color on hover */
-    }
+//     &:hover {
+//       background-color: #0056b3; 
+//     }
     
-    img {
-      margin-right: 5px; 
-    }
+//     img {
+//       margin-right: 5px; 
+//     }
     
-    span {
-      font-size: 16px; 
-    }
-  }
+//     span {
+//       font-size: 16px; 
+//     }
+//   }
   

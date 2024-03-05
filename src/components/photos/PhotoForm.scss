@@ -6,21 +6,19 @@
   margin-top: 40px;
   display: flex;
   flex-direction: row;
-  // background-color: white;
-}
-
+  
 .input {
   margin-bottom: 10px; 
   background-color: white;
 }
 
 .input input {
-  width: 40%;
+  width: 80%;
   padding: 10px;
-  font-size: 16px;
+  font-size: 12px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  border-color: #007bff;
+  // border-color: #007bff;
   // background-color:white;
 }
 
@@ -31,7 +29,7 @@
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 12px;
   transition: background-color 0.3s ease;
   box-shadow: #ccc;
 
@@ -39,5 +37,8 @@
 }
 
 button:hover {
-  background-color: #0056b3; 
+  // background-color: #0056b3; 
 }
+  // background-color: white;
+}
+

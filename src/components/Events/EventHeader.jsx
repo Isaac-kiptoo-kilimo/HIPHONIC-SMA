@@ -22,14 +22,7 @@ const EventHeader = () => {
       <button
   type="button"
   onClick={toggleCreateEvent}
-  style={{
-    backgroundColor: 'blue', 
-    color: 'white',         
-    padding: '10px 20px',    
-    borderRadius: '5px',     
-    border: 'none',        
-    cursor: 'pointer'        
-  }}
+ 
 >
   Create Event
 </button>
