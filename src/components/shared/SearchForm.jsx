@@ -4,7 +4,7 @@ import './SearchForm.scss';
 
 const SearchForm = () => {
   return (
-    <div className="search-form">
+    <div className="search-form1">
       <div className="input">
         <input type="search" placeholder="Search..." />
       </div>

@@ -19,7 +19,7 @@ const PhotoForm = ({ addPhotoUrl }) => {
       addPhoto(photoWithUserId)
         .then((response) => {
           console.log('Photo uploaded successfully:', response);
-          addPhotoUrl(photoUrl); // Add newly uploaded photo URL to the state
+          addPhotoUrl(photoUrl);
           setPhotoUrl('');
         })
         .catch((error) => {

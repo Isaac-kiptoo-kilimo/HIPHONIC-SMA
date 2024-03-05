@@ -14,9 +14,9 @@ export const eventAttendeeApi = createApi({
             invalidatesTags: ['EventAttendee']
         }),
         getEventAttendees: builder.query({
-            query: (EventID) => `eventAttendee/${EventID}`, 
-            providesTags: (result, error, EventID) => [
-                { type: 'EventAttendee', id: EventID }
+            query: (AttendeeID) => `eventAttendee/${AttendeeID}`, 
+            providesTags: (result, error, AttendeeID) => [
+                { type: 'EventAttendee', id: AttendeeID }
             ]
         }),
         deleteEventAttendee: builder.mutation({
@@ -31,8 +31,13 @@ export const eventAttendeeApi = createApi({
             providesTags: (result, error, EventID) => [
                 { type: 'EventAttendee', id: EventID }
             ]
+        }),
+        getEventsRegisteredByUser: builder.query({
+            query: (AttendeeID) => `eventAttendees/user/${AttendeeID}`, 
+            providesTags: ['EventAttendee']
+            
         })
     })
 });
 
-export const { useCreateEventAttendeeMutation, useGetEventAttendeesQuery, useDeleteEventAttendeeMutation, useGetEventAttendeesForEventQuery } = eventAttendeeApi;
+export const {  useGetEventsRegisteredByUserQuery, useCreateEventAttendeeMutation, useGetEventAttendeesQuery, useDeleteEventAttendeeMutation, useGetEventAttendeesForEventQuery } = eventAttendeeApi;

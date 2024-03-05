@@ -35,9 +35,13 @@ export const photoApi = createApi({
                 method: 'DELETE'
             }),
             invalidatesTags: ['Photo'],
+        }),
+        getAllPhotos: builder.query({
+            query: () => 'photos',
+            providesTags: ['Photo']
         })
     })
 });
 
-export const { useGetPhotosQuery, useAddPhotoMutation, useDeletePhotoMutation, useUpdatePhotoMutation, useGetPhotosByUserIDQuery } = photoApi;
+export const { useGetPhotosQuery, useAddPhotoMutation, useDeletePhotoMutation, useUpdatePhotoMutation, useGetPhotosByUserIDQuery, useGetAllPhotosQuery } = photoApi;
 

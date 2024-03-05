@@ -8,5 +8,9 @@
     padding: 1rem;
     flex-direction: row;
     justify-content: space-between;
-    
+    .create button {
+        padding: 20px 20px;
+        margin-right: 20px;
+        // background-color: rgb(71, 105, 179);
+    }
 }
