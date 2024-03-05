@@ -16,7 +16,8 @@ const ProfileStatusPost = ({ post }) => {
     const [commentContent, setCommentContent] = useState('');
     const user = JSON.parse(localStorage.getItem('loggedInUser'));
     const [addComment] = useAddCommentMutation();
-    
+
+    // console.log("This is the logged post",post);
     const toggleVisibility = () => {
         setIsVisible(!isVisible);
     };
@@ -27,8 +28,10 @@ const ProfileStatusPost = ({ post }) => {
 
     //photo fetch
     const photoUploader=JSON.parse(localStorage.getItem("loggedInUser"))
-const userID=photoUploader.user.UserID
+    const userID=photoUploader.user.UserID
     const {data}=useGetOnePostUIDQuery(userID)
+
+    // console.log("logged data",imageUrl);
 
     //Submit comment function
     const handleSubmit = (e) => {
@@ -66,6 +69,7 @@ const userID=photoUploader.user.UserID
         setCount(count + 1);
     };
 
+
     return (
         <div className="profileStatusPost">
             {isUserPost() && ( // Only render the post if it belongs to the logged-in user
@@ -83,6 +87,9 @@ const userID=photoUploader.user.UserID
                         <p>{post.content}</p>
                     </div>
                     <div className='profileStatusPostImageContent'>
+<<<<<<< HEAD
+                        <img src={post.imageUrl} alt="img" />
+=======
                     <div className="images">
                         {data && Array.isArray(data) && data.map((photo) => (
                             <div key={photo.id} className="image-container">
@@ -105,10 +112,11 @@ const userID=photoUploader.user.UserID
                         ))}
                     </div>
 
+>>>>>>> eb925481279bcdc753e3fb2fb7fa0d7ca45dc916
                     </div>
                     <div className='profileStatusPostInteraction'>
                         <div className="like" onClick={handleClick}><FaHeart />{count} Likes</div>
-                        <div className="comment" onClick={toggleVisibility}><AiOutlineMessage />{post.comments}Comments</div>
+                        <div className="comment" onClick={toggleVisibility}><AiOutlineMessage />Comments</div>
                         <div className="share"><GoShareAndroid /> 201 Share</div>
                     </div>
                     <div>
@@ -130,7 +138,7 @@ const userID=photoUploader.user.UserID
                         </div>
                         <div className="fetchedComments">
                             {isVisible && (
-                                <div><CommentList /></div>
+                                <div><CommentList PostID={post.post_id}/></div>
                             )}
                         </div>
                     </div>

@@ -17,7 +17,7 @@ export const commentApi = createApi({
         }),
 
         getPostComment:builder.query({
-            query:(PostID)=> `comments/${PostID}`,
+            query:(PostID)=> `comments/post/${PostID}`,
             providesTags: ['Comments']
         }),
 

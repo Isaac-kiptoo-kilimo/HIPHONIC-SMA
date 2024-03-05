@@ -7,6 +7,7 @@
     .videosTop {
         background-color: #fff;
         border-radius: 13px;
+        // overflow: scroll;
 
         .videosTopHeader {
             display: flex;
@@ -22,12 +23,32 @@
                 padding: 20px;
                 font-weight: 700;
             }
-            .videosTopContentCards {
+
+            .videosTopContentBody {
                 display: flex;
                 flex-direction: row;
+                align-items: center;
                 overflow: scroll;
-                padding: 20px;
+            
+                .videoCategories {
+                    display: flex;
+                    flex-direction: row;
+                    padding: 20px;
+                }
+
+            .categoryInput {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 200px;
+                height: 200px;
+                padding: 50px;
+                border-radius: 13px;
+                border: 5px solid black;
+                border-style: dotted;
             }
+        }
         }
     }
     .videosBottom {

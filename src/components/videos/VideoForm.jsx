@@ -6,7 +6,7 @@ const VideoForm = () => {
   const [videoUrl, setVideoUrl] = useState('');
   const [videoCaption, setVideoCaption] = useState('');
   const user = JSON.parse(localStorage.getItem('loggedInUser'));
-  const [addVideo] = useAddVideoMutation(); // Destructure the useAddVideoMutation hook
+  const [addVideo] = useAddVideoMutation();
 
   // Handle when the video URL field is changed
   const handleVideoUrlChange = (e) => {

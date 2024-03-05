@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { CiSearch } from 'react-icons/ci';
 import { MdFileUpload } from "react-icons/md";
 import { ClipLoader } from 'react-spinners';
+import { MdAddCircle } from "react-icons/md";
 
 //Stylefile
 import './Videos.scss';
@@ -12,21 +13,28 @@ import './Videos.scss';
 import VideoPostsList from "../../components/videos/VideoPostsLists"
 import { VideoPost } from '../../components/videos/VideoPost';
 import NewVideo from '../../components/videos/VideoForm';
-import VideoCategories from '../../components/videos/VideoCategories'
+import VideoCategoryList from '../../components/videos/videoCategoryList'
+import CategoryInput from '../../components/videos/videoCategoryInput'
 
 //Mutations
 import { useGetVideosQuery } from '../../features/Video/videoApi';
+import { useGetCategoriesQuery, useAddCategoryMutation } from '../../features/videoCategory/videoCategoryApi';
 
 const Videos = () => {
-  // All the videos functions
+  const [videoCaption, setVideoCaption] = useState('');
+  const [videoCategoryName, setvideoCategoryName] = useState('');
+
+// Video post
+// All the videos functions
   const {data} = useGetVideosQuery()
+  // console.log("This is the logged data items:",data);
 
-  // Add video hidden form
-      const [isVisible, setIsVisible] = useState(false);
+// Add video hidden form
+  const [isVisible, setIsVisible] = useState(false);
 
-      const toggleVisibility = () => {
-          setIsVisible(!isVisible);
-      };
+  const toggleVisibility = () => {
+      setIsVisible(!isVisible);
+  };
 
   return (
     <div className="Videos">
@@ -42,9 +50,16 @@ const Videos = () => {
             <div>Categories to explore</div>
             <button style={{ color: '#2563EB' }}>See all</button>
           </div>
-          <div className="videosTopContentCards">
-            {/* <VideoPost /> */}
-            <VideoCategories />
+          <div className='videosTopContentBody'>
+            <div className="videoCategories">
+              <VideoCategoryList />
+            </div>
+            <div className='categoryInput'>
+              <p  onClick={toggleVisibility}>Click to add new category</p>
+              {isVisible && (
+                <CategoryInput/>
+              )}
+            </div>
           </div>
         </div>
       </div>
