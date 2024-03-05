@@ -1,4 +1,3 @@
-// useTimeAgo.js
 import { useEffect, useState } from 'react';
 
 const useTimeAgo = (timestamp) => {
@@ -7,16 +6,19 @@ const useTimeAgo = (timestamp) => {
     const createdAt = new Date(timestamp);
     const timeDifference = currentTime - createdAt;
 
-    const minutes = Math.floor(timeDifference / (1000 * 60));
-    const hours = Math.floor(timeDifference / (1000 * 60 * 60));
-    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    const seconds = Math.floor(timeDifference / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
 
-    if (minutes < 60) {
-      return `${minutes} m${minutes === 1 ? '' : ''}`;
+    if (seconds < 60) {
+      return `${seconds} second${seconds === 1 ? '' : 's'}`;
+    } else if (minutes < 60) {
+      return `${minutes} minute${minutes === 1 ? '' : 's'}`;
     } else if (hours < 24) {
-      return `${hours} h${hours === 1 ? '' : ''}`;
+      return `${hours} hour${hours === 1 ? '' : 's'}`;
     } else {
-      return `${days} d${days === 1 ? '' : ''} `;
+      return `${days} day${days === 1 ? '' : 's'}`;
     }
   };
 
@@ -25,7 +27,7 @@ const useTimeAgo = (timestamp) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setTimeAgo(calculateTimeAgo(timestamp));
-    }, 60000); // Update every minute
+    }, 1000); 
 
     return () => clearInterval(interval);
   }, [timestamp]);

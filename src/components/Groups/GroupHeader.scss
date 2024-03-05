@@ -11,8 +11,27 @@
         flex-direction: row;
         align-items: center;
         gap: 1rem;
+        .input{
+          width: 30vw;
+          margin-right:10px 0 10px 0;
+          display: flex;
+          align-items: center;
+          .input-text{
+              width: 100%;
+              padding: 14px;
+              border-radius: 10px;
+              border: none;
+              outline: none;
+              background-color: #F8FAFC;
+          }
+      }
        .circled-search-icon{
-
+        border: 1px solid grey;
+        padding: 10px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
        }
        
         .larger-search-bar{
