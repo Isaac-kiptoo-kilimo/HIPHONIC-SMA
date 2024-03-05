@@ -13,9 +13,12 @@ import {
   ToasterContainer,
   SuccessToast,
 } from "../../toaster/Toaster";
+import "./SingleGroup.scss";
 import ClipLoader from "react-spinners/ClipLoader";
 import { useParams } from "react-router-dom";
 import CreateGroupPost from "../../features/groups/CreateGroupPost";
+import RecentActivityCard from "../../components/Groups/RecentActivityCard";
+import GroupActivity from "./GroupActivity";
 
 const SingleGroup = () => {
   const { GroupID } = useParams();
@@ -33,19 +36,21 @@ const SingleGroup = () => {
     return <div>😐: {error.data.message}</div>;
   }
   return (
-    <div className="group-container">
+    <div className="single-group-container">
       {/* <ToasterContainer /> */}
       {/* <GroupHeader /> */}
-      <div className="group-sub-titles">
+      <div className="single-recent-sub-titles">
         <div className="sub-titles-left">
-          <h4>Suggested for you</h4>
-          <p>Groups you might be interested in.</p>
+          <h2 style={{ textAlign: "center" }}>Welcome To this Group</h2>
+          <p style={{ textAlign: "center" }}>
+            You can Message The admin and be able to create an activity.
+          </p>
         </div>
-        <div className="sub-titles-right">
+        {/* <div className="sub-titles-right">
           <p className="navlink">See All</p>
-        </div>
+        </div> */}
       </div>
-      <div className="group-card-container">
+      <div className="recent-group-card-container">
         {data &&
           data.map((group) => (
             <div className="card-contents" key={group.GroupID}>
@@ -65,7 +70,9 @@ const SingleGroup = () => {
                 </div>
                 <div className="post-icon-card"></div>
               </div>
-              <PostImageCard PostImage={group.group_image} />
+              <div className="post-image">
+                <PostImageCard PostImage={group.group_image} />
+              </div>
               <div className="group-page-icon">
                 <div className="group-btn-card">
                   <Button msg="Join Group" />
@@ -74,10 +81,16 @@ const SingleGroup = () => {
                   <MembersIcons MbrIcon={group.GroupID} />
                 </div>
               </div>
+              <CreateGroupPost/>
+              <GroupActivity GroupID={group.GroupID}/>
             </div>
+           
           ))}
       </div>
-      <CreateGroupPost/>
+      
+      <div>
+        
+      </div>
     </div>
   );
 };

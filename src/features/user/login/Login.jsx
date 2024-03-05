@@ -108,7 +108,7 @@ const Login = () => {
                 <input
                   type="email"
                   id="Email"
-                  name="Email"
+                  name="Email" 
                   {...register("Email")}
                   placeholder="Email"
                 />

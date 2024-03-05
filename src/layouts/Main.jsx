@@ -19,37 +19,67 @@ import Groups from '../pages/groups/Groups';
 import FriendsPage from '../pages/friends/FriendsPage';
 import Messages from '../pages/messages/Messages';
 import SingleGroup from '../pages/SingleGroup/SingleGroup';
+import { useEffect, useState } from 'react';
+import LoadingApp from '../components/loading/LoadingApp';
+import ProgressBar from '../components/loading/ProgressBar';
 
 const mainContent = () => {
-    return (
-      <div className='mainContainer'>
-      <div className="navbar">
-          <Navbar />
-      </div>
-        <div className="mainBottom">
-          <div className="sidebar">
-          <Sidebar />
-          </div>
-          <div className="mainPageContent">
-         <Routes>
-       <Route path='/profile' element={ <Profile />}/>
-       <Route path='/timeline' element={ <Timeline />}/>
-       <Route path='/videos' element={ <Videos />}/>
-       <Route path='/groups' element={ <Groups />}/>
-       <Route path='/friends' element={ <FriendsPage />}/>
-       <Route path='/photos' element={ <Photos />}/>
-       <Route path='/events' element={<Event/>}/>
-       <Route path='/messages' element={<Messages/>}/>
-       <Route path='/Single/:GroupID' element={<SingleGroup/>}/>
- 
-         </Routes>
-         </div>
-           <div className="rightBar">
-            < RightBar/>
-          </div>
-         </div>
-     </div>
+const[isLoading,setIsLoading]=useState(true)
+const [progress,setProgress]=useState(0)
 
+useEffect(()=>{
+
+const handleLoading=()=>{
+setTimeout(()=>{
+  setIsLoading(false)
+  setProgress(100)
+},2000)
+
+};
+handleLoading()
+},[])
+
+
+    return (
+    <div>
+      { isLoading ? (
+        <div>
+        <LoadingApp />
+        <ProgressBar progress={progress} />
+       </div>
+      ) : (
+        <div className='mainContainer'>
+        <div className="navbar">
+            <Navbar />
+        </div>
+          <div className="mainBottom">
+            <div className="sidebar">
+            <Sidebar />
+            </div>
+            <div className="mainPageContent">
+           <Routes>
+         <Route path='/profile' element={ <Profile />}/>
+         <Route path='/timeline' element={ <Timeline />}/>
+         <Route path='/videos' element={ <Videos />}/>
+         <Route path='/groups' element={ <Groups />}/>
+         <Route path='/friends' element={ <FriendsPage />}/>
+         <Route path='/photos' element={ <Photos />}/>
+         <Route path='/events' element={<Event/>}/>
+         <Route path='/messages' element={<Messages/>}/>
+         <Route path='/Single/:GroupID' element={<SingleGroup/>}/>
+   
+           </Routes>
+           </div>
+             <div className="rightBar">
+              < RightBar/>
+            </div>
+           </div>
+       </div>
+  
+      )
+
+      }
+    </div>
       
 
     );

@@ -6,7 +6,6 @@ import authReducer from "../features/user/authSllice";
 
 //import the APIs
 import { photoApi } from '../features/Photos/Photoapi';
-import {eventApi} from  '../features/Events/EventsApi';
 import { friendApi } from '../features/friends/friendApi';
 import { notificationApi } from '../features/notifications/notificationApi';
 import { postApi } from '../features/posts/postApi';
@@ -18,13 +17,14 @@ import { groupMembersApi } from '../features/groupMembers/groupMembersApi';
 import { groupPostApi } from '../features/groups/groupPostApi';
 import { videoApi } from '../features/Video/videoApi';
 import { videoCategoryApi } from '../features/videoCategory/videoCategoryApi';
+import {eventPostApi} from  '../features/Events/EventPostApi';
+import { eventAttendeeApi } from '../features/EventAtendee/EventAtendeeApi';
+
 
 export const store=configureStore({
     reducer:{
         [userApi.reducerPath]:userApi.reducer,
         [photoApi.reducerPath]:photoApi.reducer,
-        [postApi.reducerPath]:postApi.reducer,
-        [eventApi.reducerPath]:eventApi.reducer,
         [friendApi.reducerPath]:friendApi.reducer,
         [postApi.reducerPath]:postApi.reducer,
         [notificationApi.reducerPath]:notificationApi.reducer,
@@ -36,13 +36,14 @@ export const store=configureStore({
         [groupPostApi.reducerPath]:groupPostApi.reducer,
         [videoApi.reducerPath]:videoApi.reducer,
         [videoCategoryApi.reducerPath]:videoCategoryApi.reducer,
+        [eventPostApi.reducerPath]:eventPostApi.reducer,
+        [eventAttendeeApi.reducerPath]:eventAttendeeApi.reducer
     },
 
     middleware:(getDefaultMiddleware)=>getDefaultMiddleware()
     .concat(
         userApi.middleware,
         photoApi.middleware,
-        eventApi.middleware,
         friendApi.middleware,
         notificationApi.middleware,
         postApi.middleware,
@@ -53,8 +54,11 @@ export const store=configureStore({
         groupMembersApi.middleware,
         groupPostApi.middleware,
         videoApi.middleware,
-        videoCategoryApi.middleware
+        videoCategoryApi.middleware,
+        eventPostApi.middleware, 
+        eventAttendeeApi.middleware
         )
-    })
+    }, 
+)
 
 setupListeners(store.dispatch)

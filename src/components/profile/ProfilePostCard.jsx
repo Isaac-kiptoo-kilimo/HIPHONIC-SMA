@@ -87,7 +87,32 @@ const ProfileStatusPost = ({ post }) => {
                         <p>{post.content}</p>
                     </div>
                     <div className='profileStatusPostImageContent'>
+<<<<<<< HEAD
                         <img src={post.imageUrl} alt="img" />
+=======
+                    <div className="images">
+                        {data && Array.isArray(data) && data.map((photo) => (
+                            <div key={photo.id} className="image-container">
+                                <img src={photo.PhotoURL} alt={`Photo`} />
+
+                        <div className="images">
+        {/* {data && data.map((photo) => (
+          <div key={photo.id} className="image-container">
+            <img src={photo.PhotoURL} alt={`Photo`} />
+              {comments && (
+              <div className="comment">
+                <p>{comments}</p>
+              </div>
+            )}
+          </div>
+        ))} */}
+      </div>
+                                {/* Render comments here if needed */}
+                            </div>
+                        ))}
+                    </div>
+
+>>>>>>> eb925481279bcdc753e3fb2fb7fa0d7ca45dc916
                     </div>
                     <div className='profileStatusPostInteraction'>
                         <div className="like" onClick={handleClick}><FaHeart />{count} Likes</div>

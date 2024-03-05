@@ -7,10 +7,13 @@ export const groupPostApi=createApi({
     endpoints: (builder)=>({
 
         getGroupPosts:builder.query({
-            query:()=> 'groupposts',
+            query:()=> 'groupposts?order=desc ',
             providesTags: ['groupPosts']
         }),
-
+        getGroupActivityPosts:builder.query({
+            query:(GroupID)=> `groupposts/${GroupID}`,
+            providesTags: ['groupPosts']
+        }),
         getGroupPost:builder.query({
             query:(GroupPostID)=> `groupposts/single/${GroupPostID}`,
             providesTags: ['groupPosts']
@@ -44,4 +47,4 @@ export const groupPostApi=createApi({
     })
 })
 
-export const {useGetGroupPostsQuery,useGetGroupPostQuery,useAddGroupPostMutation,useUpdateGroupPostMutation,useDeleteGroupPostMutation}=groupPostApi
+export const {useGetGroupPostsQuery,useGetGroupActivityPostsQuery,useGetGroupPostQuery,useAddGroupPostMutation,useUpdateGroupPostMutation,useDeleteGroupPostMutation}=groupPostApi

@@ -76,8 +76,7 @@
   background-color: rgba(212, 210, 221, 0.5);
   opacity: 0; 
   transition: opacity 0.3s ease;
-}
-
+  
 image-container:hover .photo-reaction {
   opacity: 1; 
 }
@@ -90,6 +89,8 @@ image-container:hover .photo-reaction {
 
 .photo-reaction div svg {
   font-size: 24px;
+
+}
 
 }
 

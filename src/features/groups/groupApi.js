@@ -7,7 +7,7 @@ export const groupApi=createApi({
     endpoints: (builder)=>({
 
         getGroups:builder.query({
-            query:()=> 'groups',
+            query:()=> 'groups?order=desc',
             providesTags: ['groups']
         }),
 
@@ -43,5 +43,7 @@ export const groupApi=createApi({
         })
     })
 })
+
+// http://localhost:5000/api/groupposts/
 
 export const {useGetGroupsQuery,useGetGroupQuery,useAddGroupMutation,useUpdateGroupMutation,useDeleteGroupMutation}=groupApi

@@ -38,16 +38,20 @@ const Navbar = () => {
     }, [navigate]);
     const [isLogoutVisible, setLogoutVisibility] = useState(false);
     const toggleLogout = () => {
-        console.log("I am clicked");
-        console.log("Correct");
+        
         setLogoutVisibility(!isLogoutVisible);
         console.log("Toggle Logout: ", isLogoutVisible);
       };
       const [showNotifications, setShowNotifications] = useState(false);
       
       const handleNotificationsClick = () => {
-        setShowNotifications(!showNotifications);
+        setShowNotifications(true);
   };
+  
+  const handleClose=()=>{
+    setShowNotifications(false);
+    console.log(showNotifications);
+  }
 
   const handleMessagesClick = () => {
     setShowMessages(true);
@@ -73,8 +77,7 @@ const Navbar = () => {
                         <NavIcon url={ActiveNotification} />
 
                         
-                        {showNotifications && <Notification />}
-                      </div>
+                        {showNotifications && <Notification onClick={handleClose}  />}                      </div>
                       <img className="profile" onClick={handleProfile}  width={80} src={userDetails.user && userDetails.user.profileImage} alt="profile" />
 
                         {/* <NavIcon onClick={toggleLogout} url={Chevron}  /> */}

@@ -1,32 +1,14 @@
-.events {
-    margin-left: 5vh;
+.event-right-content{
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #F8FAFC;
+  width: 100%;
+  .event-middle-content{
+      margin: 10px auto;
+      width: 100%; 
+      background-color: white;
+      border-radius: 10px;   
+
   }
-  
-  .topic {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  .event-cards{
-    margin-right: 10px;
-    margin-top: 10px;
-    .top-card{
-        margin: 10px;
-    }
-    .botton-card{
-        margin-top: 10px;
-    }
-  }
-  
-  .topnavigate {
-    display: flex;
-    flex-direction: row;
-    gap: 0.5rem;
-    margin: 20px;
-    justify-content: space-between;
-    .navigation{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-  }
+
+}

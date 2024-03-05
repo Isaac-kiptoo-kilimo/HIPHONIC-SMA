@@ -58,13 +58,13 @@ console.log(data);
       <div className="images">
         {data && data.map((photo) => (
           <div key={photo.id} className="image-container">
-            <img src={photo.PhotoURL} alt="no image" />
+            <img src={photo.PhotoURL} alt={`Photo`} />
             <div className='photo-reaction'>
               <div onClick={() => handleClick()}>
                  {count}<IoHeart />
               </div>
               <div>
-              <AiFillMessage />
+                <AiFillMessage />
                 <form onSubmit={(e) => {
                   e.preventDefault();
                   const comment = e.target.comment.value;
