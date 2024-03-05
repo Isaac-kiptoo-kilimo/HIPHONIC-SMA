@@ -9,23 +9,30 @@ const PostList = () => {
 
     let latestPost = null;
 
-    if (isLoading || isFetching) {
-        return <ClipLoader color='#000' loading={true}/>;
-    }
-
     if (isError) {
         return <div>{error.data.message}</div>;
     }
 
+    // Find the latest post
     if (posts && posts.length > 0) {
-
-        // Find the most recent post
-        latestPost = posts[0];
+        latestPost = posts.reduce((prevPost, currentPost) => {
+            return (new Date(prevPost.created_at) > new Date(currentPost.created_at)) ? prevPost : currentPost;
+        });
     }
+
+    // Function to extract time from date
+    const extractTimeFromDate = (dateString) => {
+        const date = new Date(dateString);
+        return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    };
 
     return (
         <div className='UserPostsList'>
-            {latestPost && <ProfilePostCard key={latestPost.id} post={latestPost} />}
+            {isError && <div>{error.data.message}</div>}
+            {(isLoading || isFetching) && <ClipLoader color='#000' loading={true} />}
+            <section>
+                {latestPost && <ProfilePostCard post={{ ...latestPost, created_at: extractTimeFromDate(latestPost.created_at) }} />}
+            </section>
         </div>
     );
 }

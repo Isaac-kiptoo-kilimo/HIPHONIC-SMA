@@ -28,7 +28,7 @@ const ProfileStatusPost = ({post}) => {
         const handlePostContentChange = (e) => {
             setCommentContent(e.target.value);
         }
-
+console.log("post id here",post);
     //Likes action
     const [count, setCount] = useState(0);
 
@@ -48,7 +48,7 @@ const ProfileStatusPost = ({post}) => {
         e.preventDefault();
 
             if (commentContent.trim() !== '') {
-                const commentWithUserId = {Content: commentContent, UserID: user.user.UserID};
+                const commentWithUserId = {Content: commentContent, UserID: user.user.UserID,PostID:post.post_id};
                 addComment(commentWithUserId)
                 .then((response) => {
                     console.log('Comment sent!:', response);
@@ -70,18 +70,14 @@ const ProfileStatusPost = ({post}) => {
                         </div>
                         <div className="user">
                             <p className="username">{user.username}</p>
-                            <p className="postDate">On {post.post_date}</p>
+                            <p className="postDate">{post.post_date}</p>
                         </div>
             </div>
             <div className='profileStatusPostTextContent'>
                 <p>{post.content}</p>
             </div>
             <div className='profileStatusPostImageContent'>
-                <img style={{borderRadius:"16px", backgroundColor:"black"}} height="200px" width="300px" src={post.imageUrl} alt="" />
-                <video style={{borderRadius:"16px", backgroundColor:"black"}} height="200px" width="300px" controls autoPlay>
-                    <source src={post.videoUrl}/>
-                </video>
-                
+                <img style={{borderRadius:"16px"}} src={post.imageUrl} alt="err" />
             </div>
             <div className='profileStatusPostInteraction'>
                 <div className="like" onClick={handleClick}><FaHeart />{count} Likes</div>
@@ -106,10 +102,12 @@ const ProfileStatusPost = ({post}) => {
                 </div>
             </div>
             <div className="fetchedComments">
-                            {isVisible && (
-                                <div><CommentList /></div>
-                            )}
-                        </div>
+                {isVisible && (
+                    <div>
+                        <CommentList PostID={post.post_id} />
+                    </div>
+                    )}
+            </div>
             </div>
         </div>
     )

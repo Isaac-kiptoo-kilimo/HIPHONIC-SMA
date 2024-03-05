@@ -17,6 +17,7 @@ import { groupApi } from '../features/groups/groupApi';
 import { groupMembersApi } from '../features/groupMembers/groupMembersApi';
 import { groupPostApi } from '../features/groups/groupPostApi';
 import { videoApi } from '../features/Video/videoApi';
+import { videoCategoryApi } from '../features/videoCategory/videoCategoryApi';
 
 export const store=configureStore({
     reducer:{
@@ -34,6 +35,7 @@ export const store=configureStore({
         [groupMembersApi.reducerPath]:groupMembersApi.reducer,
         [groupPostApi.reducerPath]:groupPostApi.reducer,
         [videoApi.reducerPath]:videoApi.reducer,
+        [videoCategoryApi.reducerPath]:videoCategoryApi.reducer,
     },
 
     middleware:(getDefaultMiddleware)=>getDefaultMiddleware()
@@ -50,7 +52,8 @@ export const store=configureStore({
         likeApi.middleware,
         groupMembersApi.middleware,
         groupPostApi.middleware,
-        videoApi.middleware
+        videoApi.middleware,
+        videoCategoryApi.middleware
         )
     })
 

@@ -8,11 +8,11 @@ const VideoPostList = () => {
   // console.log('video uploader',videoUploader);
   const UserID = videoUploader.user.UserID
   
-  console.log("The user id:",UserID);
+  // console.log("The user id:",UserID);
 
   const { data: Video, error, isLoading, isError, isFetching } = useGetUserVideoQuery(UserID);
   // console.log("This is the logged posts:", Video);
-  console.log("video", Video);
+  // console.log("video", Video);
 
     return (
     <div className="video-list">
