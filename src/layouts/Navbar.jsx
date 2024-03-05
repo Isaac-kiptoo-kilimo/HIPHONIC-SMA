@@ -47,6 +47,11 @@ const Navbar = () => {
       const handleNotificationsClick = () => {
         setShowNotifications(true);
   };
+  
+  const handleClose=()=>{
+    setShowNotifications(false);
+    console.log(showNotifications);
+  }
 
   const handleMessagesClick = () => {
     setShowMessages(true);
@@ -72,7 +77,7 @@ const Navbar = () => {
                         <NavIcon url={ActiveNotification} />
 
                         
-                        {showNotifications && <Notification  />}                      </div>
+                        {showNotifications && <Notification onClick={handleClose}  />}                      </div>
                       <img className="profile" onClick={handleProfile}  width={80} src={userDetails.user && userDetails.user.profileImage} alt="profile" />
 
                         {/* <NavIcon onClick={toggleLogout} url={Chevron}  /> */}

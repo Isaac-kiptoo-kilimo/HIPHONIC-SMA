@@ -10,7 +10,10 @@ export const userApi=createApi({
             query:()=> 'users',
             providesTags: ['Users']
         }),
-
+        getNonFriendsUsers:builder.query({
+            query:()=> 'users/nonfriend',
+            providesTags: ['Users']
+        }),
         getUser:builder.query({
             query:(userID)=> `users/single/${userID}`,
             providesTags: ['Users']
@@ -67,4 +70,5 @@ export const userApi=createApi({
     })
 })
 
-export const {useGetUsersQuery,useGetUserQuery,useAddUserMutation,useAuthenticateUserMutation,useUpdateUserMutation,useUpdatePasswordMutation,useDeleteUserMutation}=userApi
+
+export const {useGetUsersQuery,useGetUserQuery,useGetNonFriendsUsersQuery,useAddUserMutation,useAuthenticateUserMutation,useUpdateUserMutation,useUpdatePasswordMutation,useDeleteUserMutation}=userApi

@@ -5,7 +5,7 @@ import { useAddFriendshipMutation } from "../../features/friends/friendApi";
 import { ErrorToast, ToasterContainer, SuccessToast } from "../../toaster/Toaster"; 
 import { LoadingToast } from "../../toaster/Toaster"; 
 
-const AllUsers = ({ user }) => {
+const AllUsers = ({ user, refetchNonFriendUsers  }) => {
   const [addFriendship]=useAddFriendshipMutation();
   const localStorageUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
@@ -21,6 +21,7 @@ console.log(userID1);
 
   }else{
     SuccessToast(response.data.message);
+    refetchNonFriendUsers ()
   }
   }
 
